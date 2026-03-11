@@ -15,7 +15,9 @@ client = MongoClient(uri)
 # seleccionar base de datos
 db = client[database_name]
 
+#si imprime esto es que funciona
 print("Conexión exitosa a MongoDB Atlas")
+print(db.list_collection_names()) #debe imprimir []
 
 
 #para usar esta conexion en otros archivos (ejemplo)
