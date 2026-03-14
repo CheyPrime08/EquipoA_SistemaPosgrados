@@ -35,7 +35,13 @@ Es obligatorio seguir estas reglas para que el código sea uniforme y legible pa
 - **Nombre de Componentes (React)**: Uso obligatorio de **PascalCase** tanto en el nombre del archivo `.jsx` como en la función del componente.
   - Ejemplo: `Navbar.jsx`, `AgendaTable.jsx`, `InscripcionesForm.jsx`.
 - **Constantes**: Valores que no cambian en el tiempo van en mayúsculas sostenidas.
-  - Ejemplo: `MAX_FILE_SIZE`, `DEFAULT_SEMESTER
+  - # Ejemplo: `MAX_FILE_SIZE`, `DEFAULT_SEMESTER
+- **Variables y Funciones**: Usar camelCase. Los nombres deben ser descriptivos y en inglés.
+  - Ejemplo: isUserAuthenticated, calculateTotalGrade.
+- **Nombre de Archivos**: Todo en minúsculas y separado por guiones.
+  - Ejemplo: report-controller.py, user-profile.jsx.
+- **Constantes**: Valores que no cambian en el tiempo van en mayúsculas sostenidas.
+  - Ejemplo: MAX_FILE_SIZE, DEFAULT_SEMESTER.
 
 ---
 
@@ -56,8 +62,7 @@ En tipos de commits, solo se mencionan algunos cuantos. Utiliza el tipo de commi
 
 ### Gestión de Ramas
 
-La rama **main** es solo para código terminado y probado. El desarrollo diario se hace en **develop**.
-
+La rama **main** es solo para código terminado y probado.
 Para mantener el orden, se sugiere un esquema jerárquico por funcionalidad, permitiendo flexibilidad de organización a los líderes de cada equipo:
 
 - **Ramas de Módulo (Base)**: Ramas principales de cada equipo que nacen de `develop`.
