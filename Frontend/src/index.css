@@ -1,9 +1,0 @@
-@import "tailwindcss";
-
-body {
-    font-family: 'Montserrat', sans-serif;
-}
-
-input:focus {
-    outline: none;
-}
