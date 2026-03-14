@@ -4,9 +4,9 @@ import {
   LogoUDG,
   decoIzquierda,
   decoDerecha,
-} from "./assets/img/Preregistro/acces";
+} from "./assets/preregistro/acces";
 
-import Inputs from "./components/Preregistro/inputs/inputs";
+import Inputs from "./components/preregistro/inputs/inputs";
 
 function App() {
   // estados para guardar los datos
