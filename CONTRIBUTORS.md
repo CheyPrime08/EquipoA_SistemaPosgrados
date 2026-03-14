@@ -35,13 +35,7 @@ Es obligatorio seguir estas reglas para que el código sea uniforme y legible pa
 - **Nombre de Componentes (React)**: Uso obligatorio de **PascalCase** tanto en el nombre del archivo `.jsx` como en la función del componente.
   - Ejemplo: `Navbar.jsx`, `AgendaTable.jsx`, `InscripcionesForm.jsx`.
 - **Constantes**: Valores que no cambian en el tiempo van en mayúsculas sostenidas.
-  - # Ejemplo: `MAX_FILE_SIZE`, `DEFAULT_SEMESTER
-- **Variables y Funciones**: Usar camelCase. Los nombres deben ser descriptivos y en inglés.
-  - Ejemplo: isUserAuthenticated, calculateTotalGrade.
-- **Nombre de Archivos**: Todo en minúsculas y separado por guiones.
-  - Ejemplo: report-controller.py, user-profile.jsx.
-- **Constantes**: Valores que no cambian en el tiempo van en mayúsculas sostenidas.
-  - Ejemplo: MAX_FILE_SIZE, DEFAULT_SEMESTER.
+  - Ejemplo: `MAX_FILE_SIZE`, `DEFAULT_SEMESTER`
 
 ---
 
@@ -49,7 +43,7 @@ Es obligatorio seguir estas reglas para que el código sea uniforme y legible pa
 
 ### Mensajes de Commit
 
-No se aceptarán mensajes genéricos. Deben seguir el formato: tipo(modulo): descripción corta.
+No se aceptarán mensajes genéricos. Deben seguir el formato: tipo(modulo o descripcion muy corta del commit): descripción desarrollada.
 
 - **feat**: Cuando agregas una funcionalidad nueva.
 - **fix**: Cuando corriges un error en el código.
