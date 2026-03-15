@@ -1,31 +1,31 @@
-import { useState } from "react";
+import { Link } from "react-router-dom";
 import {
   Fondo,
   LogoUDG,
   decoIzquierda,
   decoDerecha,
-} from "../../assets/preregistro/acces";
+} from "../../../assets/preregistro/acces";
 
-import Inputs from "../../components/preregistro/inputs/inputs";
+import Inputs from "../../../components/preregistro/inputs/inputs";
 
 function Login() {
-  // estados para guardar los datos
-  const [codigo, setCodigo] = useState("");
-  const [password, setPassword] = useState("");
-
-  // funcion para ya comunicar python
   const handleLogin = async (e) => {
     e.preventDefault();
 
+    // Aqui extraemos los datos del formulario automáticamente
+    const formData = new FormData(e.target);
+    const credentials = Object.fromEntries(formData);
+
+    console.log("Enviando credenciales a Python:", credentials);
+
     try {
-      // Aqui segun deberia ir la ruta real del back
       const response = await fetch("http://localhost:5000/api/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        // Aqui en teoria envio el código y password a Python/MongoDB
-        body: JSON.stringify({ codigo, password }),
+        // enviar el jason
+        body: JSON.stringify(credentials),
       });
 
       const data = await response.json();
@@ -62,24 +62,17 @@ function Login() {
           </p>
         </div>
         <div className="flex flex-col mt-10">
-          {/* mando a llamar la funcion principal al formulario */}
           <form
             onSubmit={handleLogin}
             className="flex flex-col justify-center items-center gap-11.25"
           >
-            {/* paso los estados a sus inputs */}
-            <Inputs
-              type="text"
-              placeholder="Código..."
-              value={codigo}
-              onChange={(e) => setCodigo(e.target.value)}
-            />
+            <Inputs type="text" placeholder="Código..." name="codigo" />
             <Inputs
               type="password"
               placeholder="Contraseña..."
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              name="password"
             />
+
             <div className="flex gap-2 items-center w-full justify-between">
               <div>
                 <img className="flex-1" src={decoIzquierda} alt="" />
@@ -103,6 +96,19 @@ function Login() {
               </button>
             </div>
           </form>
+
+          <div className="flex flex-1 justify-center items-center mt-10 ">
+            <div className="rounded-2xl px-5 py-2 text-[#846c50] font-bold flex gap-2">
+              <p>¿No eres Alumno?</p>
+              <Link
+                to="/preregistro"
+                className="bg-[#c9b59c] px-3 rounded-[5px] 
+                transition-transform duration-300 hover:bg-[#a1845fa2] hover:scale-105 shadow-lg/20"
+              >
+                <p className="text-[#ffffff]"> Preregístrate</p>
+              </Link>
+            </div>
+          </div>
         </div>
       </div>
     </div>
