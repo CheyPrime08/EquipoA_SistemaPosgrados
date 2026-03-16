@@ -1,4 +1,5 @@
 import React from 'react';
+import leonLogo from '@/components/ui/leon-logo.png';
 import {
     Home,
     Users,
@@ -27,7 +28,7 @@ export default function RevAlumnos() {
             <aside className="w-64 border-r border-[#EBE3D5] flex flex-col justify-between py-8 px-6 shrink-0">
                 <div>
                     <div className="flex items-center gap-2 px-4 mb-20">
-                        <img src="/ui/leon-logo.png" alt="Logo" />
+                        <img src={leonLogo} alt="Logo" className="w-24 h-24 object-contain absolute top-1 left-1" />
                     </div>
                     <nav className="space-y-1 px-1 py-2 border-b border-[#EBE3D5]">
                         <NavItem icon={<Home size={18} />} label="Inicio" />
