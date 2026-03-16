@@ -27,7 +27,7 @@ export default function RevAlumnos() {
             <aside className="w-64 border-r border-[#EBE3D5] flex flex-col justify-between py-8 px-6 shrink-0">
                 <div>
                     <div className="flex items-center gap-2 px-4 mb-20">
-                        {/* Logo */}
+                        <img src="/ui/leon-logo.png" alt="Logo" />
                     </div>
                     <nav className="space-y-1 px-1 py-2 border-b border-[#EBE3D5]">
                         <NavItem icon={<Home size={18} />} label="Inicio" />
@@ -43,20 +43,20 @@ export default function RevAlumnos() {
                 </div>
             </aside>
 
-            {/* 2. DISEÑO PRINCIPAL */}
+            {/* Enfoque principal */}
             <main className="flex-1 flex flex-col h-screen overflow-hidden relative">
 
-                {/* TOP BAR / Header Global */}
+                {/* Barra superior Header */}
                 <header className="h-16 px-8 flex items-center justify-between border-b border-[#EBE3D5]">
                     <div className="text-sm font-medium text-stone-500">Sistema de Posgrados</div>
 
-                    {/* Selector Central (Ciclo Escolar) */}
+                    {/* Selector de Ciclo Escolar */}
                     <div className="absolute left-1/2 -translate-x-1/2 top-0 bg-[#FAF8F5] border border-[#EBE3D5] border-t-0 shadow-sm rounded-b-2xl px-6 py-3 flex items-center gap-3 cursor-pointer z-10">
                         <span className="text-sm font-medium text-stone-700">Ciclo Escolar 2026-A</span>
                         <ChevronDown size={16} className="text-stone-500" />
                     </div>
 
-                    {/* Iconos a la derecha y barra buscar global*/}
+                    {/* Iconos y barra de búsqueda global */}
                     <div className="flex items-center gap-5">
                         <div className="flex items-center w-64 px-4 py-2 bg-transparent border border-[#EBE3D5] rounded-xl">
                             <Search size={16} className="text-stone-400 mr-2 shrink-0" />
@@ -69,13 +69,14 @@ export default function RevAlumnos() {
                     </div>
                 </header>
 
-                {/* 3. ÁREA DE TRABAJO (Listado central + Panel lateral derecho) */}
+                {/* Área de trabajo (Listado) */}
                 <div className="flex-1 flex overflow-hidden">
 
-                    {/* Listado central (Tabla) */}
+                    {/* Tabla */}
                     <section className="flex-1 px-8 py-6 flex flex-col overflow-hidden">
                         <h1 className="text-[28px] font-medium mb-6 text-stone-800">Revisión del Alumnado</h1>
 
+                        {/* Barra de búsqueda */}
                         <div className="flex items-center w-80 px-4 py-2.5 mb-6 bg-white border border-[#EBE3D5] rounded-xl shadow-sm shrink-0">
                             <Search size={18} className="text-stone-400 mr-2 shrink-0" />
                             <input type="text" placeholder="Buscar" className="bg-transparent border-none outline-none text-sm w-full placeholder:text-stone-400" />
@@ -115,7 +116,7 @@ export default function RevAlumnos() {
                                 </button>
                             </div>
 
-                            {/* Pestañas (Tabs)  */}
+                            {/* Pestañas */}
                             <div className="flex gap-6 border-b border-[#EBE3D5] mb-2 text-sm overflow-x-auto whitespace-nowrap scrollbar-hide">
                                 <button className="pb-3 text-stone-500 hover:text-stone-800 transition-colors">Datos Generales</button>
                                 <button className="pb-3 text-stone-500 hover:text-stone-800 transition-colors">Documentos Personales</button>
