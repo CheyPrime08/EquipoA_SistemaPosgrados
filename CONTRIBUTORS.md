@@ -6,25 +6,19 @@ El repositorio se divide en dos carpetas. Cada equipo debe limitar su trabajo a 
 
 ### Backend Python
 
-Todo lo relacionado con el servidor se encuentra en /backend.
+Todo lo relacionado con el servidor se encuentra en **/backend**.
 
-- **/core**: Configuración global, base de datos y utilidades compartidas.
-- **/inscripciones**: Lógica de aspirantes, carga de documentos y selección.
-- **/academico**: Gestión de mallas curriculares, docentes y calificaciones.
-- **/tesis**: Seguimiento de protocolos de investigación y tutores.
+- **/db**: Archivos de conexión, modelos de base de datos y esquemas.
 
 ### Frontend React
 
-Todo lo relacionado con la interfaz de usuario se encuentra en /frontend/src.
+El entorno se basa en Vite. Todo lo relacionado con la interfaz de usuario se encuentra en **/frontend/src**:
 
-- **/components**: Elementos comunes como botones, barras de navegación y modales.
-- **/inscripciones**: Pantallas y formularios del proceso de admisión.
-- **/academico**: Dashboards de notas, materias y horarios.
-- **/tesis**: Gestión de archivos y seguimiento de grados.
+- **/components**: Elementos reutilizables correspondientes a cada modulo.
+- **/pages**: Vistas completas y pantallas principales organizadas por módulo.
+- /assets: Imagenes correspondientes a cada modulo.
 
-Los directorios y carpetas, en los que sera organizado, esta por ser definidos, sin embargo
-la estructura anterior sirve como plantilla, un punto de partida.
-Así mismo el nombre de los directorios esta por ser definido.
+Los directorios y carpetas, se iran redefiniendo conforme el proyecto vaya avanzando.
 
 ---
 
@@ -32,12 +26,16 @@ Así mismo el nombre de los directorios esta por ser definido.
 
 Es obligatorio seguir estas reglas para que el código sea uniforme y legible para todos:
 
-- **Variables y Funciones**: Usar camelCase. Los nombres deben ser descriptivos y en inglés.
-  - Ejemplo: isUserAuthenticated, calculateTotalGrade.
+- **Directorios (Carpetas)**: Todos los nombres de carpetas deben ir en **minúsculas** (lowercase). Esto evita errores de ruta en servidores Linux y mantiene la consistencia del proyecto.
+  - Ejemplo: `/frontend`, `/backend`, `/components`, `/inscripciones`.
+- **Variables y Funciones**: Usar **camelCase**. Los nombres deben ser descriptivos y en inglés.
+  - Ejemplo: `isUserAuthenticated`, `calculateTotalGrade`.
 - **Nombre de Archivos**: Todo en minúsculas y separado por guiones.
-  - Ejemplo: report-controller.py, user-profile.jsx.
+  - Ejemplo: `report-controller.py`, `user-profile.js`.
+- **Nombre de Componentes (React)**: Uso obligatorio de **PascalCase** tanto en el nombre del archivo `.jsx` como en la función del componente.
+  - Ejemplo: `Navbar.jsx`, `AgendaTable.jsx`, `InscripcionesForm.jsx`.
 - **Constantes**: Valores que no cambian en el tiempo van en mayúsculas sostenidas.
-  - Ejemplo: MAX_FILE_SIZE, DEFAULT_SEMESTER.
+  - Ejemplo: `MAX_FILE_SIZE`, `DEFAULT_SEMESTER`
 
 ---
 
@@ -45,7 +43,7 @@ Es obligatorio seguir estas reglas para que el código sea uniforme y legible pa
 
 ### Mensajes de Commit
 
-No se aceptarán mensajes genéricos. Deben seguir el formato: tipo(modulo): descripción corta.
+No se aceptarán mensajes genéricos. Deben seguir el formato: tipo(modulo o descripcion muy corta del commit): descripción desarrollada.
 
 - **feat**: Cuando agregas una funcionalidad nueva.
 - **fix**: Cuando corriges un error en el código.
@@ -58,12 +56,16 @@ En tipos de commits, solo se mencionan algunos cuantos. Utiliza el tipo de commi
 
 ### Gestión de Ramas
 
-La rama main es solo para código terminado y probado. El desarrollo diario se hace en develop.
-Cada tarea debe tener su propia rama saliendo de develop con el formato: feature/modulo/nombre-tarea.
+La rama **main** es solo para código terminado y probado.
+Para mantener el orden, se sugiere un esquema jerárquico por funcionalidad, permitiendo flexibilidad de organización a los líderes de cada equipo:
 
-Ejemplo: feature/academico/historial-notas
+- **Ramas de Módulo (Base)**: Ramas principales de cada equipo que nacen de `develop`.
+  - Ejemplo: `Modulo3_Coordinacion`
+- **Ramas de Tarea (Sub-ramas)**: Ramas individuales para funcionalidades específicas que nacen de la rama del módulo.
 
-De nuevo las ramas de git, nombres y demas estan por ser definidas.
+La intencion es que los integrantes de los equipos trabajen de manera individual, en sus propias subramas, integrando sus cambios a su rama base correspondiente a su modulo.
+
+Una vez cada equipo tenga un MVP la intencion es integrar lo correspondiente de las ramas bases, a la rama develop, para su revision y aprovacion posterior a la integracion al main.
 
 ---
 
