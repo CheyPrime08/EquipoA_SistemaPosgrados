@@ -1,6 +1,7 @@
 import { Routes, Route, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import RevAlumnos from "./pages/coordinacion/alumnos/rev-alumnos";
+import HomeCoord from "./pages/coordinacion/agenda/HomeCoord";
 
 function Home() {
   const navigate = useNavigate();
@@ -25,6 +26,7 @@ function App() {
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/rev-alumnos" element={<RevAlumnos />} />
+      <Route path="/coord-home" element={<HomeCoord />} />
     </Routes>
   );
 }
