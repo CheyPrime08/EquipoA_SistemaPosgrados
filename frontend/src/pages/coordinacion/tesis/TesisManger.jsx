@@ -1,124 +1,183 @@
 import React, { useState } from 'react';
+import { SidebarProvider, SidebarInset } from "@/components/ui/sidebar";
+import { CoordSidebar } from "@/components/coordinacion/shared/CoordSidebar";
+import { CoordHeader } from "@/components/coordinacion/shared/CoordHeader";
+import {
+    Search,
+    ChevronDown,
+    LayoutGrid,
+    Bell,
+    Settings,
+    MoreHorizontal,
+    ChevronsUpDown,
+    CalendarDays
+} from 'lucide-react';
 
 const TesisManager = () => {
-  const [theses, setTheses] = useState([
-    { id: 1, student: 'Juan Carlos', code: '219583058', title: 'Inteligencia Artificial en Medicina', status: true },
-    { id: 2, student: 'Gerardo', code: '000000000', title: 'Desarrollo web con React', status: false },
-    { id: 3, student: 'Diego Josuan', code: '111111111', title: 'Ciberseguridad en IoT', status: true },
-    { id: 4, student: 'Viviana', code: '222222222', title: 'Machine Learning para finanzas', status: false },
-    { id: 5, student: 'Sergio', code: '333333333', title: 'Postgrades software', status: false },
-    { id: 6, student: 'Claudia', code: '444444444', title: 'Ux Desing', status: true },
-  ]);
+    const [theses, setTheses] = useState([
+        { id: 1, student: 'Juan Carlos', code: '219583058', title: 'Inteligencia Artificial en Medicina', status: true },
+        { id: 2, student: 'Gerardo', code: '000000000', title: 'Desarrollo web con React', status: false },
+        { id: 3, student: 'Diego Josuan', code: '111111111', title: 'Ciberseguridad en IoT', status: true },
+        { id: 4, student: 'Viviana', code: '222222222', title: 'Machine Learning para finanzas', status: false },
+        { id: 5, student: 'Sergio', code: '333333333', title: 'Postgrades software', status: false },
+        { id: 6, student: 'Claudia', code: '444444444', title: 'Ux Desing', status: true },
+    ]);
 
-  const handleToggleStatus = (id) => {
-    const updatedTheses = theses.map((thesis) => {
-      if (thesis.id === id) {
-        return { ...thesis, status: !thesis.status };
-      }
-      return thesis;
-    });
-    setTheses(updatedTheses);
-  };
+    const handleToggleStatus = (id) => {
+        const updatedTheses = theses.map((thesis) => {
+            if (thesis.id === id) {
+                return { ...thesis, status: !thesis.status };
+            }
+            return thesis;
+        });
+        setTheses(updatedTheses);
+    };
 
-  return (
-    <div className="m-8 w-full max-w-5xl mx-auto text-gray-800">
-      
-      <h1 className="text-2xl font-normal mb-6 text-gray-900">Tesis</h1>
+    return (
+        <SidebarProvider className="flex-col h-screen overflow-hidden bg-[#FAF8F5] text-stone-800 font-sans antialiased">
+            <CoordHeader />
+            <div className="flex flex-1 overflow-hidden relative">
+                <CoordSidebar />
+                <SidebarInset className="bg-transparent flex flex-1 overflow-hidden">
+                    {/* Enfoque principal */}
+                    <main className="flex-1 flex flex-col h-full overflow-hidden relative">
 
-      {/* Tarjeta principal */}
-      <div className="bg-[#f9f8f6] rounded-xl p-8 shadow-xl border border-[#e5e0d8]">
-        
-        {/* Cabecera y buscador */}
-        <div className="flex justify-between items-center mb-6">
-          <h2 className="text-xl font-normal text-gray-800">Gestion de tesis</h2>
-          <div className="relative">
-            <input 
-              type="text" 
-              placeholder="Buscar alumno..." 
-              className="pl-4 pr-10 py-1.5 border border-[#d9cfc7] rounded-full text-sm focus:outline-none focus:ring-1 focus:ring-[#c9b59c] w-48 bg-white"
-            />
-            <svg className="w-4 h-4 absolute right-3 top-2 text-[#c9b59c]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
-            </svg>
-          </div>
-        </div>
+                        {/* Barra superior Header */}
+                        <header className="h-16 px-8 flex items-center justify-between border-b border-[#EBE3D5]">
+                            <div className="text-sm font-medium text-stone-500">Gestión de Tesis</div>
 
-        {/* CONTENEDOR DE LA TABLA COMPLETA */}
-        <div className="border border-[#d9cfc7] rounded-lg shadow-sm bg-white overflow-hidden">
-          
-          {/*fija (fecha limite)*/}
-          <div className="bg-[#efe9e3] px-6 py-4 flex justify-between items-center border-b border-[#d9cfc7]">
-            <div>
-              <label className="block text-xs text-gray-600 mb-1">Fecha limite</label>
-              <div className="bg-white rounded-md px-3 py-1.5 flex items-center gap-3 w-max border border-[#d9cfc7]">
-                <span className="text-sm text-gray-700">17 Mar 2026</span>
-                <svg className="w-4 h-4 text-[#c9b59c]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
-                </svg>
-              </div>
+                            {/* Selector de Ciclo Escolar */}
+                            <div className="absolute left-1/2 -translate-x-1/2 top-0 bg-[#FAF8F5] border border-[#EBE3D5] border-t-0 shadow-sm rounded-b-2xl px-6 py-3 flex items-center gap-3 cursor-pointer z-10">
+                                <span className="text-sm font-medium text-stone-700">Ciclo Escolar 2026-A</span>
+                                <ChevronDown size={16} className="text-stone-500" />
+                            </div>
+
+                            {/* Iconos */}
+                            <div className="flex items-center gap-5">
+                                <LayoutGrid size={20} className="text-stone-400 hover:text-stone-700 cursor-pointer" />
+                                <Settings size={20} className="text-stone-400 hover:text-stone-700 cursor-pointer" />
+                                <Bell size={20} className="text-stone-400 hover:text-stone-700 cursor-pointer" />
+                                <div className="w-8 h-8 rounded-full bg-[#C9B29B] cursor-pointer"></div>
+                            </div>
+                        </header>
+
+                        {/* Área de trabajo */}
+                        <div className="flex-1 flex overflow-hidden">
+                            <section className="flex-1 px-8 py-6 flex flex-col overflow-hidden">
+                                
+                                <div className="flex justify-between items-end mb-6 shrink-0">
+                                    <h1 className="text-[28px] font-medium text-stone-800">Tesis</h1>
+                                    
+                                    {/* Fecha limite */}
+                                    <div className="flex flex-col items-end">
+                                        <label className="text-xs text-stone-500 mb-1">Fecha límite</label>
+                                        <div className="bg-white rounded-xl px-4 py-2 flex items-center gap-3 border border-[#EBE3D5] shadow-sm">
+                                            <span className="text-sm font-medium text-stone-700">17 Mar 2026</span>
+                                            <CalendarDays size={16} className="text-[#C9B29B]" />
+                                        </div>
+                                    </div>
+                                </div>
+
+                                {/* Barra de búsqueda */}
+                                <div className="flex items-center w-80 px-4 py-2.5 mb-6 bg-white border border-[#EBE3D5] rounded-xl shadow-sm shrink-0">
+                                    <Search size={18} className="text-stone-400 mr-2 shrink-0" />
+                                    <input type="text" placeholder="Buscar alumno..." className="bg-transparent border-none outline-none text-sm w-full placeholder:text-stone-400 text-stone-700" />
+                                </div>
+
+                                {/* Tabla */}
+                                <div className="bg-[#FAF8F5] rounded-2xl border border-[#EBE3D5] overflow-auto flex-1 shadow-[0_4px_24px_rgba(0,0,0,0.02)]">
+                                    <table className="w-full text-left border-collapse whitespace-nowrap">
+                                        <thead className="bg-[#EFE9E0] sticky top-0 z-10">
+                                            <tr>
+                                                <Th sortable={false}></Th>
+                                                <Th>Alumno</Th>
+                                                <Th>Título de Tesis</Th>
+                                                <Th>Revisión</Th>
+                                                <th className="py-4 px-6 font-medium text-sm text-stone-600 text-right">
+                                                    Acciones
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody className="divide-y divide-[#EBE3D5]">
+                                            {theses.map((thesis) => (
+                                                <TesisRow 
+                                                    key={thesis.id} 
+                                                    thesis={thesis} 
+                                                    onToggle={handleToggleStatus} 
+                                                />
+                                            ))}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </section>
+                        </div>
+                    </main>
+                </SidebarInset>
             </div>
-            <button className="text-gray-500 hover:text-[#c9b59c] transition-colors font-bold tracking-widest leading-none">
-              ...
-            </button>
-          </div>
-          {/* zona scroll variable */}
-          <div className="max-h-[400px] overflow-y-auto bg-white">
-            {theses.map((thesis) => (
-              <div 
-                key={thesis.id} 
-                className="grid grid-cols-[3rem_8rem_1fr_10rem_2rem] gap-4 items-center px-6 py-5 border-b border-[#d9cfc7] last:border-b-0 hover:bg-[#f9f8f6] transition-colors"
-              >
-                {/* Icono */}
-                <div className="w-8 h-8 rounded-full bg-[#f9f8f6] flex items-center justify-center border border-[#d9cfc7] text-[#c9b59c]">
-                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd"></path>
-                  </svg>
-                </div>
-
-                {/* Info del alumno */}
-                <div className="flex flex-col">
-                  <span className="text-sm text-gray-800">{thesis.student}</span>
-                  <span className="text-sm text-gray-500">{thesis.code}</span>
-                </div>
-
-                {/* Título de la tesis */}
-                <div className="text-sm text-gray-700 font-medium truncate pr-4">
-                  {thesis.title}
-                </div>
-
-                {/* Toggle Status */}
-                <div className="flex items-center gap-3">
-                  <div className="flex flex-col">
-                    <span className="text-sm text-gray-800">estado</span>
-                    <span className="text-xs text-[#c9b59c]">
-                      {thesis.status ? "revisado" : "pendiente"}
-                    </span>
-                  </div>
-                  <label className="relative inline-flex items-center cursor-pointer ml-2">
-                    <input 
-                      type="checkbox" 
-                      className="sr-only peer" 
-                      checked={thesis.status} 
-                      onChange={() => handleToggleStatus(thesis.id)} 
-                    />
-                    <div className="w-10 h-5 bg-[#d9cfc7] peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-[#d9cfc7] after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-[#c9b59c]"></div>
-                  </label>
-                </div>
-
-                {/* Opciones */}
-                <div className="text-right">
-                  <button className="text-gray-400 hover:text-[#c9b59c] transition-colors font-bold tracking-widest leading-none">
-                    ...
-                  </button>
-                </div>
-              </div>
-            ))}
-          </div>
-
-        </div>
-      </div>
-    </div>
-  );
+        </SidebarProvider>
+    );
 };
 
 export default TesisManager;
+
+// Subcomponentes //
+
+// Th para cabeceras
+function Th({ children, sortable = true }) {
+    return (
+        <th className="py-4 px-6 font-medium text-sm text-stone-600">
+            <div className="flex items-center gap-2">
+                {children}
+                {sortable && <ChevronsUpDown size={14} className="text-stone-400" />}
+            </div>
+        </th>
+    );
+}
+
+// Fila de la tabla adaptada para tesis
+function TesisRow({ thesis, onToggle }) {
+    return (
+        <tr className="hover:bg-white transition-colors cursor-pointer group">
+            <td className="py-4 px-6 w-16">
+                <div className="w-8 h-8 rounded-full bg-[#EFE9E0] flex items-center justify-center border border-[#EBE3D5] text-[#C9B29B]">
+                    <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd"></path>
+                    </svg>
+                </div>
+            </td>
+            <td className="py-4 px-6 text-sm">
+                <div className="flex flex-col">
+                    <span className="text-stone-800 font-medium">{thesis.student}</span>
+                    <span className="text-stone-500">{thesis.code}</span>
+                </div>
+            </td>
+            <td className="py-4 px-6 text-sm text-stone-700 font-medium">
+                <div className="max-w-xs truncate" title={thesis.title}>
+                    {thesis.title}
+                </div>
+            </td>
+            <td className="py-4 px-6">
+                <div className="flex items-center gap-3">
+                    <div className="flex flex-col">
+                        <span className="text-sm text-stone-800">Estado</span>
+                        <span className="text-xs text-[#C9B29B] font-medium">
+                            {thesis.status ? "Revisado" : "Pendiente"}
+                        </span>
+                    </div>
+                    <label className="relative inline-flex items-center cursor-pointer ml-2">
+                        <input 
+                            type="checkbox" 
+                            className="sr-only peer" 
+                            checked={thesis.status} 
+                            onChange={(e) => { e.stopPropagation(); onToggle(thesis.id); }} 
+                        />
+                        <div className="w-10 h-5 bg-[#EBE3D5] peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-[#EBE3D5] after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-[#C9B29B]"></div>
+                    </label>
+                </div>
+            </td>
+            <td className="py-4 px-6 text-sm text-stone-400 text-right">
+                <button className="hover:text-stone-800 transition-colors"><MoreHorizontal size={18} /></button>
+            </td>
+        </tr>
+    );
+}
