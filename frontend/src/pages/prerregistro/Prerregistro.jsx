@@ -86,9 +86,9 @@ export default function Prerregistro() {
                                             </tr>
                                         </thead>
                                         <tbody className="divide-y divide-[#EBE3D5]">
-                                            <TableRow code="ASP1234" name="Ana García" program="Maestría en IA" date="15 Mar 2026" status="En Revisión" statusColor="bg-[#D8C4B6]" />
-                                            <TableRow code="ASP5678" name="Pedro López" program="Doctorado en Ciencias" date="10 Mar 2026" status="Aceptado" statusColor="bg-[#DBD3C8]" />
-                                            <TableRow code="ASP9012" name="Laura Ramírez" program="Maestría en IA" date="18 Mar 2026" status="Pendiente" statusColor="bg-[#E6D5C5]" />
+                                            <TableRow code="ASP1234" name="Juan Gutierrez" program="Maestría en IA" date="15 Mar 2026" status="En Revisión" statusColor="bg-[#FADE70]" />
+                                            <TableRow code="ASP5678" name="Vivi Navarro" program="Doctorado en Ciencias computacionales" date="10 Mar 2026" status="Aceptado" statusColor="bg-[#ACFA91]" />
+                                            <TableRow code="ASP9012" name="Diego Josuan" program="Maestría en IA" date="18 Mar 2026" status="Pendiente" statusColor="bg-[#F58971]" />
                                         </tbody>
                                     </table>
                                 </div>
