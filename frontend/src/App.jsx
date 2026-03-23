@@ -1,16 +1,15 @@
-import { useState } from "react";
-import { Button } from "@/components/ui/button";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Tesis from "./pages/alumnos/Tesis";
+import Documentos from "./pages/alumnos/Documentos";
 
 function App() {
   return (
-    <>
-      <div>
-        <p class="text-black">Hola mundo</p>
-      </div>
-      <div>
-        <Button>prueba</Button>
-      </div>
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Tesis />} />
+        <Route path="/documentos" element={<Documentos />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
