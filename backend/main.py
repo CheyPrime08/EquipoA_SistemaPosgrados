@@ -1,21 +1,46 @@
+"""
+BACKEND FASTAPI - SISTEMA DE POSGRADOS
+======================================
+
+Este es el archivo principal de la aplicación FastAPI.
+Aquí se configura la aplicación, los middlewares y se registran todas las rutas.
+"""
+
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 import asyncio
+from backend.routes import preregistro
 
-app = FastAPI()
+# Crear la aplicación FastAPI
+app = FastAPI(
+    title="API Sistema de Posgrados",
+    description="API para gestionar preregistros, alumnos y coordinación de posgrados",
+    version="1.0.0"
+)
 
-# Permitir peticiones desde el frontend (React usa Vite en el puerto 5173 por defecto)
+# CONFIGURACIÓN DE MIDDLEWARES
+# ============================
+
+# Middleware CORS - Permite que el frontend (React) se comunique con el backend
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=["*"],  # En producción especificar dominio exacto
     allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
+    allow_methods=["*"],  # GET, POST, PUT, DELETE, etc.
+    allow_headers=["*"],  # Todos los headers
 )
+
+
+# RUTAS DE AUTENTICACIÓN
+# ======================
 
 @app.post("/api/login")
 async def mock_login(req: Request):
+    """
+    Endpoint de login simulado.
+    En producción, esto verificaría credenciales contra la base de datos.
+    """
     try:
         data = await req.json()
     except Exception:
@@ -35,7 +60,7 @@ async def mock_login(req: Request):
         if "alumno" in str(codigo).lower():
             rol = "alumno"
         elif "coord" in str(codigo).lower():
-            rol = "coordinacion"
+            rol = "coordinador"
 
         return {
             "success": True,
@@ -52,25 +77,42 @@ async def mock_login(req: Request):
             }
         )
 
-@app.post("/api/preregistro")
-async def mock_preregistro(req: Request):
-    try:
-        data = await req.json()
-    except Exception:
-        data = {}
-        
-    print(f"Datos de pre-registro recibidos: {data}")
-    
-    # Simulamos un delay de red
-    await asyncio.sleep(0.5)
-    
-    return JSONResponse(
-        status_code=201, # Código 201 Created
-        content={
-            "success": True,
-            "message": "Registro completado exitosamente (Simulado)"
+
+# REGISTRO DE RUTAS
+# =================
+
+# Incluir las rutas de preregistro
+app.include_router(preregistro.router)
+
+
+# RUTAS DE SALUD (Health Check)
+# =============================
+
+@app.get("/health")
+async def health_check():
+    """Endpoint para verificar que el servidor está activo"""
+    return {
+        "status": "healthy",
+        "message": "Backend funcionando correctamente"
+    }
+
+
+@app.get("/")
+async def root():
+    """Endpoint raíz - muestra información sobre la API"""
+    return {
+        "nombre": "API Sistema de Posgrados",
+        "version": "1.0.0",
+        "endpoints": {
+            "docs": "/docs",  # Documentación interactiva de Swagger
+            "redoc": "/redoc",  # Documentación alternativa
+            "health": "/health"  # Estado del servidor
         }
-    )
+    }
+
+
+# PUNTO DE ENTRADA
+# ================
 
 if __name__ == "__main__":
     import uvicorn
