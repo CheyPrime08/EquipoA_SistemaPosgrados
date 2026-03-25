@@ -116,5 +116,20 @@ async def root():
 
 if __name__ == "__main__":
     import uvicorn
+    import os
+    
+    # Obtener configuración del puerto
+    port = int(os.getenv("API_PORT", 5000))
+    host = os.getenv("API_HOST", "0.0.0.0")
+    
     # El frontend hace llamadas a http://localhost:5000
-    uvicorn.run("main:app", host="0.0.0.0", port=5000, reload=True)
+    print(f"🚀 Iniciando servidor en http://{host}:{port}")
+    print(f"📚 Documentación en http://localhost:{port}/docs")
+    print(f"🔗 API en http://localhost:{port}/api")
+    
+    uvicorn.run(
+        "backend.main:app",  # ← Ruta correcta del módulo
+        host=host,
+        port=port,
+        reload=True
+    )
