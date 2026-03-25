@@ -6,6 +6,12 @@ Este es el archivo principal de la aplicación FastAPI.
 Aquí se configura la aplicación, los middlewares y se registran todas las rutas.
 """
 
+import sys
+import os
+
+# Agregar la carpeta raíz al path para que Python encuentre el módulo backend
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
@@ -131,5 +137,5 @@ if __name__ == "__main__":
         "backend.main:app",  # ← Ruta correcta del módulo
         host=host,
         port=port,
-        reload=True
+        reload=False  # Desactivado para simplificar
     )

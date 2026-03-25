@@ -15,7 +15,7 @@ router = APIRouter(prefix="/api/preregistro", tags=["preregistro"])
 service = PreregistroService()
 
 
-def obtener_rol_usuario(authorization: Optional[str] = Header(None)) -> str:
+def obtener_rol_usuario(authorization: Optional[str] = Header(None, alias="Authorization")) -> str:
     """
     Simula la obtención del rol del usuario desde el header de autorización.
     En producción, se verificaría un JWT token.
