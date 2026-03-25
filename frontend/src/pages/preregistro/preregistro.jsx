@@ -12,9 +12,11 @@ import {
   InputExplicar,
   InputEsUDG,
 } from "../../components/preregistro/inputs/Eleccion";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function Preregistro() {
+  const navigate = useNavigate();
+
   const handleRegistro = async (e) => {
     e.preventDefault();
 
@@ -35,6 +37,8 @@ function Preregistro() {
 
       if (response.ok) {
         console.log("¡Registro exitoso!");
+        alert("Pre-registro generado correctamente. Redirigiendo a inicio de sesión...");
+        navigate("/");
       }
     } catch (error) {
       console.error("Error:", error);

@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
   Fondo,
   LogoUDG,
@@ -9,6 +9,8 @@ import {
 import Inputs from "../../../components/preregistro/inputs/inputs";
 
 function Login() {
+  const navigate = useNavigate();
+
   const handleLogin = async (e) => {
     e.preventDefault();
 
@@ -32,8 +34,14 @@ function Login() {
 
       if (response.ok) {
         console.log("¡Inicio de sesión exitoso!", data);
-        // localStorage.setItem("token", data.token);
-        // Y rediriges al usuario a otra pantalla
+        localStorage.setItem("token", data.token);
+        if (data.rol === "alumno") {
+          navigate("/alumnos");
+        } else if (data.rol === "coordinacion") {
+          navigate("/coordinacion");
+        } else {
+          navigate("/admin");
+        }
       } else {
         console.error(
           "Error devuelto por el servidor:",
