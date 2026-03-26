@@ -4,10 +4,6 @@ import { CoordSidebar } from "@/components/coordinacion/shared/CoordSidebar";
 import { CoordHeader } from "@/components/coordinacion/shared/CoordHeader";
 import {
     Search,
-    ChevronDown,
-    LayoutGrid,
-    Bell,
-    Settings,
     MoreHorizontal,
     ChevronsUpDown,
     CalendarDays
@@ -41,25 +37,6 @@ const TesisManager = () => {
                 <SidebarInset className="bg-transparent flex flex-1 overflow-hidden">
                     {/* Enfoque principal */}
                     <main className="flex-1 flex flex-col h-full overflow-hidden relative">
-
-                        {/* Barra superior Header */}
-                        <header className="h-16 px-8 flex items-center justify-between border-b border-[#EBE3D5]">
-                            <div className="text-sm font-medium text-stone-500">Gestión de Tesis</div>
-
-                            {/* Selector de Ciclo Escolar */}
-                            <div className="absolute left-1/2 -translate-x-1/2 top-0 bg-[#FAF8F5] border border-[#EBE3D5] border-t-0 shadow-sm rounded-b-2xl px-6 py-3 flex items-center gap-3 cursor-pointer z-10">
-                                <span className="text-sm font-medium text-stone-700">Ciclo Escolar 2026-A</span>
-                                <ChevronDown size={16} className="text-stone-500" />
-                            </div>
-
-                            {/* Iconos */}
-                            <div className="flex items-center gap-5">
-                                <LayoutGrid size={20} className="text-stone-400 hover:text-stone-700 cursor-pointer" />
-                                <Settings size={20} className="text-stone-400 hover:text-stone-700 cursor-pointer" />
-                                <Bell size={20} className="text-stone-400 hover:text-stone-700 cursor-pointer" />
-                                <div className="w-8 h-8 rounded-full bg-[#C9B29B] cursor-pointer"></div>
-                            </div>
-                        </header>
 
                         {/* Área de trabajo */}
                         <div className="flex-1 flex overflow-hidden">
