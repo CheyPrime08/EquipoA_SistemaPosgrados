@@ -1,4 +1,5 @@
 import {
+  Home,
   Calendar,
   ListTodo,
   Users,
@@ -6,23 +7,12 @@ import {
   BookMarked,
   MessageCircleQuestion,
   SquareUserRound,
+  Archive,
 } from "lucide-react";
 
 export const coordRoutes = [
-  { title: "Agenda", url: "/", icon: Calendar },
+  { title: "Inicio", url: "/", icon: Home },
+  { title: "Agenda", url: "/agenda", icon: Calendar },
   { title: "Pendientes", url: "/pendientes", icon: ListTodo },
-  {
-    title: "Alumnos",
-    icon: Users,
-    subItems: [
-      { title: "Expedientes", url: "/alumnos/expedientes", icon: Folder },
-      { title: "Tesis", url: "/alumnos/tesis", icon: BookMarked },
-      {
-        title: "Tutorías",
-        url: "/alumnos/tutorias",
-        icon: MessageCircleQuestion,
-      },
-    ],
-  },
-  { title: "Aspirantes", url: "/aspirantes", icon: SquareUserRound },
+  { title: "Archivo", url: "/archivo", icon: Archive },
 ];

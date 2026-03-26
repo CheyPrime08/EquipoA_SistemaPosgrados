@@ -14,7 +14,6 @@ export function AppHeader({ rutas }) {
     (r) => r.url === location.pathname && r.url !== "/",
   );
   const tituloActivo = (rutaActiva ?? subRutaActiva)?.title ?? "";
-
   return (
     <header className="h-18 bg-sidebar/95 flex shrink-0 items-center gap-4 px-4">
       <button
@@ -39,6 +38,7 @@ export function AppHeader({ rutas }) {
           </>
         )}
       </div>
+      <div className="ml-auto mr-3 h-8 w-8 rounded-full bg-primary cursor-pointer" />
     </header>
   );
 }

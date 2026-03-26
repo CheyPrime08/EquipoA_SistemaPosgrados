@@ -1,11 +1,16 @@
-import { useState } from "react";
-import { BrowserRouter } from "react-router-dom";
-import HomeCoord from "./pages/coordinacion/agenda/HomeCoord";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import InicioCoord from "./pages/coordinacion/inicio/InicioCoord";
+import ArchivoCoord from "./pages/coordinacion/archivo/ArchivoCoord";
 
 function App() {
   return (
     <BrowserRouter>
-      <HomeCoord />
+      <Routes>
+        <Route path="/" element={<InicioCoord />} />
+        <Route path="/agenda" element={<InicioCoord />} />
+        <Route path="/pendientes" element={<InicioCoord />} />
+        <Route path="/archivo" element={<ArchivoCoord />} />
+      </Routes>
     </BrowserRouter>
   );
 }
