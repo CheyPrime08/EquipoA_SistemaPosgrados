@@ -2,8 +2,8 @@ import { SidebarProvider, SidebarInset } from "@/components/ui/sidebar";
 import { CoordSidebar } from "@/components/coordinacion/shared/CoordSidebar";
 import { CoordHeader } from "@/components/coordinacion/shared/CoordHeader";
 import { CoordPanel } from "@/components/coordinacion/shared/CoordPanel";
-import { CardCiclo } from "@/components/coordinacion/shared/CardCiclo";
-import { CardConvocatoria } from "@/components/coordinacion/shared/CardConvocatoria";
+import { CardCiclo } from "@/components/coordinacion/shared/card/CardCiclo";
+import { CardConvocatoria } from "@/components/coordinacion/shared/card/CardConvocatoria";
 import { AddConvoc } from "@/components/coordinacion/inicio/AddConvoc";
 
 const InicioCoord = () => {

@@ -5,7 +5,7 @@ import { CoordSidebar } from "@/components/coordinacion/shared/CoordSidebar";
 import { CoordHeader } from "@/components/coordinacion/shared/CoordHeader";
 import { CoordPanel } from "@/components/coordinacion/shared/CoordPanel";
 import { PanelHeader } from "@/components/shared/PanelHeader";
-import { CardConvocatoria } from "@/components/coordinacion/shared/CardConvocatoria";
+import { CardConvocatoria } from "@/components/coordinacion/shared/card/CardConvocatoria";
 
 const ArchivoCoord = () => {
   const [seccion, setSeccion] = useState("Egresados");
