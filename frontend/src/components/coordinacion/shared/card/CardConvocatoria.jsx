@@ -41,6 +41,7 @@ export function CardConvocatoria({
           onMouseDown={() => handlePress("contact")}
           isPressed={isPressed("contact")}
           iconClassName="text-sidebar-foreground/50"
+          etiqueta="Aspirantes"
         />
         <CardButton
           icon={EllipsisVertical}
@@ -48,6 +49,7 @@ export function CardConvocatoria({
           onMouseDown={() => handlePress("options")}
           isPressed={isPressed("options")}
           iconClassName="text-sidebar-foreground/50"
+          etiqueta="Más opciones"
         />
       </div>
     </div>

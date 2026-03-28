@@ -34,6 +34,7 @@ export function CardCiclo({
           onMouseDown={() => handlePress("contact")}
           isPressed={isPressed("contact")}
           iconClassName="text-sidebar-foreground"
+          etiqueta="Alumnos"
         />
         <CardButton
           icon={EllipsisVertical}
@@ -41,6 +42,7 @@ export function CardCiclo({
           onMouseDown={() => handlePress("options")}
           isPressed={isPressed("options")}
           iconClassName="text-sidebar-foreground"
+          etiqueta="Más opciones"
         />
       </div>
     </div>

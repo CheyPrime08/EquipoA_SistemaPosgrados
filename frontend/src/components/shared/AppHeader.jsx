@@ -12,8 +12,9 @@ export function AppHeader({ rutas }) {
       <HeaderButton
         onClick={toggleSidebar}
         icon={Menu}
-        etiqueta="Desplegar menú"
+        etiqueta="Menú principal"
         className="ml-3"
+        align="start"
       />
       <TituloRuta rutas={rutas} />
       <BotonUsuario />
