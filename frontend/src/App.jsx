@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import InicioCoord from "./pages/coordinacion/inicio/InicioCoord";
-import ArchivoCoord from "./pages/coordinacion/archivo/ArchivoCoord";
+import InicioCoord from "@/pages/coordinador/inicio/InicioCoord";
+import ArchivoCoord from "@/pages/coordinador/archivo/ArchivoCoord";
 
 function App() {
   return (
