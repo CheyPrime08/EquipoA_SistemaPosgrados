@@ -1,0 +1,38 @@
+@keyframes borderPulseIn {
+  0% {
+    border-width: 0.5px;
+    opacity: 0.1;
+  }
+  100% {
+    border-width: 10px;
+    opacity: 0.0009;
+  }
+}
+.animacion-click {
+  animation: borderPulseIn 0.1s ease-out forwards;
+}
+.borde-base {
+  position: absolute;
+  inset: 0;
+  border-radius: 360px;
+  border-style: solid;
+  border-color: hsl(var(--primary));
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0;
+  transition: opacity 0s;
+
+  [data-sidebar="menu-button"],
+  [data-sidebar="menu-sub-button"] {
+    transition:
+      background-color 0.15s ease,
+      color 0.15s ease !important;
+  }
+  [data-sidebar="menu-button"] *,
+  [data-sidebar="menu-sub-button"] * {
+    transition: none !important;
+  }
+  [data-sidebar="menu-button"] .chevron-icon {
+    transition: transform 0.2s ease !important;
+  }
+}
