@@ -4,9 +4,9 @@ import {
   LogoUDG,
   decoIzquierda,
   decoDerecha,
-} from "../../../assets/preregistro/acces";
+} from "../../assets/preregistro/acces";
 
-import Inputs from "../../../components/preregistro/inputs/inputs";
+import Inputs from "../../modules/preregistro/components/inputs/inputs";
 
 function Login() {
   const handleLogin = async (e) => {

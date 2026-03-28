@@ -4,14 +4,14 @@ import {
   LogoUDG,
 } from "../../assets/preregistro/acces";
 
-import NombreInputs from "../../components/preregistro/inputs/NombreCompleto";
-import Contacto from "../../components/preregistro/inputs/Contactos";
+import NombreInputs from "../../modules/preregistro/components/inputs/NombreCompleto";
+import Contacto from "../../modules/preregistro/components/inputs/Contactos";
 import {
   Eleccion,
   ElegirPosgrado,
   InputExplicar,
   InputEsUDG,
-} from "../../components/preregistro/inputs/Eleccion";
+} from "../../modules/preregistro/components/inputs/Eleccion";
 import { Link } from "react-router-dom";
 
 function Preregistro() {

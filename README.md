@@ -1,17 +1,17 @@
-# EquipoA_SistemaPosgrados
+# ✨ EquipoA_SistemaPosgrados
 
 Sistema de Gestión para Funciones Administrativas y Académicas de un Posgrado
 
-## Tecnologías:
+## 🧑‍💻 Tecnologías:
 
-HTML
-CSS
-JavaScript
-React
-Python
-MongoDB
+- **HTML**
+- **CSS**
+- **JavaScript**
+- **React**
+- **Python**
+- **MongoDB**
 
-## Guía de instalación frontend
+## 📋 Guía de instalación frontend
 
 Sigue estos pasos para probar el proyecto localmente:
 
@@ -45,7 +45,7 @@ Sigue estos pasos para probar el proyecto localmente:
     npm run dev
 ```
 
-## Reglas de Contribución
+## 📃 Reglas de Contribución
 
 Para garantizar la estabilidad del proyecto, es obligatorio cumplir con el siguiente protocolo de trabajo:
 
@@ -66,3 +66,11 @@ Para garantizar la estabilidad del proyecto, es obligatorio cumplir con el sigui
 - **Issues:** Es obligatorio revisar la sección de **Issues** en el repositorio antes de iniciar cualquier tarea para asegurar que el trabajo esté alineado con las metas.
 - **Lineamientos:** Consultar los **Lineamientos de Contribuidores** para asegurar el estándar de calidad y estilo del código.
 
+# 📂 Estructuras del Proyecto
+
+La arquitectura detallada, el árbol de directorios y las reglas específicas de código de cada área se encuentran documentadas en sus respectivas carpetas.
+
+Por favor, lee la documentación del área en la que vayas a trabajar:
+
+- 💻 [**Arquitectura y Reglas del Frontend**](./frontend/README.md)
+- ⚙️ [**Arquitectura y Reglas del Backend**](./backend/README.md)

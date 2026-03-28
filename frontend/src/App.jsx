@@ -1,4 +1,4 @@
-import Login from "./pages/preregistro/login/login";
+import Login from "./pages/login/login";
 import Preregistro from "./pages/preregistro/preregistro";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
