@@ -7,40 +7,36 @@
 # 📂 Estructura y Arquitectura del Proyecto (Frontend)
 
 ```text
-/
 ├── 📁 src
-│   ├── 📁 api            # Servicios y configuración de peticiones HTTP
-│   ├── 📁 assets         # Recursos estáticos (docs, icons, images, logos)
-│   ├── 📁 components     # Componentes de UI reutilizables
-│   │   ├── 📁 common     # Componentes compartidos
-│   │   ├── 📁 layout     # Estructura de página (Navbar, Sidebar)
-│   │   ├── 📁 ui         # Átomos de interfaz (buttons, inputs)
-│   │   └── plantilla.jsx
-│   ├── 📁 context        # Estados globales (Auth, Theme)
-│   ├── 📁 context        # Estados globales (Auth, Theme)
-│   ├── 📁 hooks          # Custom hooks para lógica reutilizable
-│   ├── 📁 lib            # Configuraciones y utilidades (utils.js)
-│   ├── 📁 modules       # Módulos con lógica
-│   │   ├── 📁 admin
-│   │   ├── 📁 preregistro
-│   │   ├── 📁 alumnado
-│   │   └── 📁 coordinacion (agenda, alumnos, aspirantes, tesis)
-│   ├── 📁 pages          # Vistas principales/Rutas de la aplicación
-│   │   ├── 📁 admin
-│   │   ├── 📁 preregistro
-│   │   ├── 📁 alumnado
-│   │   └── 📁 coordinacion
-│   ├── 📁 routes         # Configuración de URLs y protección de vistas
-│   ├── 📁 styles         # Estilos globales y variables CSS
-│   ├── App.jsx           # Componente raíz y rutas
-│   ├── 🎨 index.css      # Estilos globales
-│   └── main.jsx          # Punto de entrada de React
-├── ⚙️ components.json
-├── eslint.config.js
-├── 🌐 index.html
-├── ⚙️ jsconfig.json
-├── ⚙️ package.json
-└── vite.config.js
+│   ├── 📁 api            # Servicios y configuración de peticiones HTTP (Axios/Fetch)
+│   ├── 📁 assets         # Recursos estáticos (docs, icons, images, logos) organizados por rol
+│   ├── 📁 components     # Componentes de React reutilizables
+│   │   ├── 📁 common     # Componentes compartidos (Header, Sidebar, Tooltips)
+│   │   ├── 📁 layout     # Estructuras de página (Dashboard layouts)
+│   │   ├── 📁 ui         # Átomos de interfaz (shadcn/ui: buttons, inputs, dialogs)
+│   │   └── 📄 plantilla.jsx
+│   ├── 📁 constants      # Valores estáticos, configuraciones y textos fijos por módulo
+│   ├── 📁 context        # Estados globales de la aplicación (Auth, UI State)
+│   ├── 📁 hooks          # Custom hooks (animaciones, detección de móvil, etc.)
+│   ├── 📁 lib            # Utilidades y funciones de ayuda (utils.js)
+│   ├── 📁 modules        # Lógica de negocio y componentes específicos por funcionalidad
+│   │   ├── 📁 admin      # Gestión de administrador
+│   │   ├── 📁 alumnado   # Procesos relativos al alumno
+│   │   ├── 📁 coordinacion # Gestión completa (agenda, alumnos, aspirantes, tesis)
+│   │   ├── 📁 login      # Lógica de autenticación
+│   │   └── 📁 preregistro # Flujo de registro inicial
+│   ├── 📁 pages          # Vistas principales vinculadas a las rutas (Admin, Alumno, Coord)
+│   ├── 📁 routes         # Definición de rutas, navegación y archivos de rutas por rol
+│   ├── 📁 styles         # Estilos específicos y animaciones CSS por módulo
+│   ├── 📄 App.jsx        # Componente raíz y orquestador de rutas
+│   ├── 🎨 index.css      # Estilos globales y Tailwind base
+│   └── 📄 main.jsx       # Punto de entrada de la aplicación
+├── ⚙️ components.json    # Configuración de shadcn/ui
+├── 📄 eslint.config.js   # Reglas de linter para calidad de código
+├── 🌐 index.html         # Plantilla HTML principal
+├── ⚙️ jsconfig.json      # Configuración de alias de rutas (Path mapping)
+├── ⚙️ package.json       # Dependencias y scripts del proyecto
+└── 📄 vite.config.js     # Configuración del empaquetador Vite
 ```
 
 ## 🛑 Reglas de Arquitectura: Lo que SÍ debo y lo que NO debo...
@@ -69,6 +65,7 @@
 
 > **Para que este proyecto no sea Teletubbies:**
 > Es **Recomendable** seguir estas reglas para nombrar archivos y variables:
+> Es necesario para algunas configuraciones de react, asi que intenten seguir el formato lo maximo posible
 
 | Tipo de Archivo / Elemento                     | 📝 Regla a seguir                                      | ✅ SÍ (Ejemplo Correcto)                                                | ❌ NO (Ejemplo Incorrecto)                                        |
 | :--------------------------------------------- | :----------------------------------------------------- | :---------------------------------------------------------------------- | :---------------------------------------------------------------- |
