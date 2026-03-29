@@ -64,7 +64,8 @@
 ## 🏷️ Convenciones de Nomenclatura (Naming Conventions)
 
 > **Para que este proyecto no sea Teletubbies:**
-> Para que el proyecto parezca escrito por una sola persona y no por 15 distintas, es **obligatorio** seguir estas reglas para nombrar archivos y variables:
+> Es **Recomendable** seguir estas reglas para nombrar archivos y variables:
+> Es necesario para algunas configuraciones de react, asi que intenten seguir el formato lo maximo posible
 
 | Tipo de Archivo / Elemento                     | 📝 Regla a seguir                                      | ✅ SÍ (Ejemplo Correcto)                                                | ❌ NO (Ejemplo Incorrecto)                                        |
 | :--------------------------------------------- | :----------------------------------------------------- | :---------------------------------------------------------------------- | :---------------------------------------------------------------- |
