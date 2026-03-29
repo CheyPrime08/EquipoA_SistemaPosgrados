@@ -47,7 +47,9 @@ export function ModalAddConvoc({ children }) {
         </div>
 
         <DialogHeader className="flex-none pb-8">
-          <DialogTitle className="text-2xl">Añadir convocatoria</DialogTitle>
+          <DialogTitle className="text-2xl tracking-tight">
+            Añadir convocatoria
+          </DialogTitle>
         </DialogHeader>
 
         <form
