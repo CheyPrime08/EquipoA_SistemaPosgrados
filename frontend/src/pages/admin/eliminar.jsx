@@ -30,3 +30,4 @@ const Eliminar = () => {
   );
 };
 
+export default Eliminar;

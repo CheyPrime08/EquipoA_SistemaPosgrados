@@ -32,4 +32,4 @@ const Agregar = () => {
   );
 };
 
-
+export default Agregar;

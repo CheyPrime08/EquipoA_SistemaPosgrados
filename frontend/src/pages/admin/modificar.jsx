@@ -35,3 +35,4 @@ const Modificar = () => {
   );
 };
 
+export default Modificar;
