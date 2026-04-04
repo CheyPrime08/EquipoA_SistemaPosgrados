@@ -1,34 +1,61 @@
-import { Link } from "react-router-dom";
-import { Button } from "@/components/ui/button";
+import { EstadosDefaultWrapper } from "./EstadosDefaultWrapper";
+import grupitoA from "../../components/ui/personas.png";
+import grupitoM from "../../components/ui/personas.png";
+import grupitoE from "../../components/ui/personas.png";
 import leonLogo from "../../components/ui/leon-logo.png";
+import "./style.css";
 
-const Agregar = () => {
+function Agregar() {
   return (
-    <div className="p-6">
-      <aside className="fixed top-0 left-0 w-56 h-full bg-sidebar flex flex-col gap-4 p-6">
-        <Link to="/agregar" className="menu-opcion">Agregar</Link>
-        <Link to="/modificar" className="menu-opcion">Modificar</Link>
-        <Link to="/eliminar" className="menu-opcion">Eliminar</Link>
-      </aside>
+    <div className="agregar">
+      <div className="franja-lateral" />
 
-      <main className="ml-60">
-        <img src={leonLogo} alt="Logo León" className="w-32 mb-4" />
-        <h1 className="text-2xl font-bold mb-2">SISTEMA GESTIÓN POSGRADOS</h1>
-        <h2 className="text-xl text-muted-foreground mb-4">Administrar Posgrados</h2>
-        <h3 className="text-lg text-primary mb-6">Agregar Posgrado</h3>
+      <div className="div">Agregar</div>
+      <div className="text-wrapper-2">Modificar</div>
+      <div className="text-wrapper-3">Eliminar</div>
 
-        <form className="flex flex-col gap-4 max-w-md">
-          <input type="text" placeholder="Nombre del Posgrado" className="border border-border rounded-md p-2" />
-          <input type="text" placeholder="Nombre del Coordinador" className="border border-border rounded-md p-2" />
-          <input type="email" placeholder="Correo" className="border border-border rounded-md p-2" />
-          <input type="text" placeholder="Código" className="border border-border rounded-md p-2" />
-          <input type="tel" placeholder="Teléfono" className="border border-border rounded-md p-2" />
-          <Button type="submit">Agregar</Button>
-        </form>
-      </main>
+      <img className="grupito-a" alt="Grupito a" src={grupitoA} />
+      <img className="grupito-m" alt="Grupito m" src={grupitoM} />
+      <img className="grupito-e" alt="Grupito e" src={grupitoE} />
+      <img className="leon" alt="Logo León" src={leonLogo} />
+
+      <div className="franja-superior" />
+
+      <div className="text-wrapper-4">SISTEMA GESTION POSGRADOS</div>
+      <div className="text-wrapper-5">Administrar Posgrados</div>
+
+      <div className="rectangulo-blanco" />
+      <div className="text-wrapper-6">Agregar Posgrado</div>
+      <div className="rectangulo-beige" />
+
+      <div className="text-wrapper-7">Correo</div>
+      <div className="telefono">Teléfono</div>
+      <div className="codigo">Código</div>
+      <div className="text-wrapper-8">Nombre del Coordinador</div>
+      <div className="text-wrapper-9">Nombre del Posgrado</div>
+
+      <div className="text-posg">
+        <div className="text-wrapper-10">Text</div>
+      </div>
+      <div className="text-cordi">
+        <div className="text-wrapper-10">Text</div>
+      </div>
+      <div className="text-correo">
+        <div className="text-wrapper-10">Text</div>
+      </div>
+      <div className="text-codigo">
+        <div className="text-wrapper-10">Text</div>
+      </div>
+      <div className="text-telefono">
+        <div className="text-wrapper-10">Text</div>
+      </div>
+
+      <EstadosDefaultWrapper
+        className="boton-agr-instance"
+        estados="default"
+      />
     </div>
   );
-};
-
+}
 
 export default Agregar;
