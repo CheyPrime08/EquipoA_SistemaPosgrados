@@ -1,4 +1,4 @@
-import { EstadosDefaultWrapper } from "./EstadosDefaultWrapper";
+import { Button } from "@/components/ui/button";
 import grupitoA from "../../components/ui/personas.png";
 import grupitoM from "../../components/ui/personas.png";
 import grupitoE from "../../components/ui/personas.png";
