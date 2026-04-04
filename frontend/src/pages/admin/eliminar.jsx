@@ -6,7 +6,6 @@ import leonLogo from "../../components/ui/leon-logo.png";
 const Eliminar = () => {
   return (
     <div className="p-6">
-      {/* Menú lateral */}
       <aside className="fixed top-0 left-0 w-56 h-full bg-sidebar flex flex-col gap-4 p-6">
         <Link to="/agregar" className="menu-opcion">Agregar</Link>
         <Link to="/modificar" className="menu-opcion">Modificar</Link>

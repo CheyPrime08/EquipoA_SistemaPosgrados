@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
-import Agregar from "./pages/admin/agregar";
-import Modificar from "./pages/admin/modificar";
-import Eliminar from "./pages/admin/eliminar";
+import Agregar from "./pages/admin/Agregar";
+import Modificar from "./pages/admin/Modificar";
+import Eliminar from "./pages/admin/Eliminar";
 
 function App() {
   return (
