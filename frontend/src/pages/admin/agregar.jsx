@@ -3,7 +3,6 @@ import grupitoA from "../../components/ui/personas.png";
 import grupitoM from "../../components/ui/personas.png";
 import grupitoE from "../../components/ui/personas.png";
 import leonLogo from "../../components/ui/leon-logo.png";
-import "./style.css";
 
 function Agregar() {
   return (
