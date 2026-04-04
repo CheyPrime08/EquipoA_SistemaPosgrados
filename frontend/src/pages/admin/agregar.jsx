@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import Button from "../../components/ui/button.jsx";
+import { Button } from "@/components/ui/button";
 import leonLogo from "../../components/ui/leon-logo.png";
 
 const Agregar = () => {
