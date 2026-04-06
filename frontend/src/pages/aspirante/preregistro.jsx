@@ -1,10 +1,10 @@
 import {
   FondoPrere,
   Separacion,
-  LogoUDG,
-} from "../../assets/preregistro/acces";
+} from "../../assets/images/aspirante/accesAspirante";
+import { LogoUDG } from "../../assets/logos/acceslogo";
 
-import NombreInputs from "../../modules/preregistro/components/inputs/NombreCompleto";
+import NombreInputs from "../../modules/preregistro/components/inputs/inputsGenerales";
 import Contacto from "../../modules/preregistro/components/inputs/Contactos";
 import {
   Eleccion,

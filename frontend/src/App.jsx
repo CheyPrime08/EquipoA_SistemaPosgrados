@@ -1,14 +1,10 @@
-import Login from "./pages/login/login";
-import Preregistro from "./pages/preregistro/preregistro";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import RoutesAspirante from "./routes";
+import { BrowserRouter } from "react-router-dom";
 
 function App() {
   return (
     <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Login />} />
-        <Route path="/preregistro" element={<Preregistro />} />
-      </Routes>
+      <RoutesAspirante />
     </BrowserRouter>
   );
 }
