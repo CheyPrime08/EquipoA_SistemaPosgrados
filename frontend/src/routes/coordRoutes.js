@@ -9,12 +9,13 @@ import {
 } from "lucide-react";
 
 export const coordRoutes = [
-  { title: "Agenda", url: "/", icon: Calendar },
+  { title: "Agenda", url: "/home-coord", icon: Calendar },
   { title: "Pendientes", url: "/pendientes", icon: ListTodo },
   {
     title: "Alumnos",
     icon: Users,
     subItems: [
+      { title: "Revisión", url: "/rev-alumnos", icon: ListTodo },
       { title: "Expedientes", url: "/alumnos/expedientes", icon: Folder },
       { title: "Tesis", url: "/alumnos/tesis", icon: BookMarked },
       {
@@ -25,4 +26,5 @@ export const coordRoutes = [
     ],
   },
   { title: "Aspirantes", url: "/aspirantes", icon: SquareUserRound },
+  { title: "Pre-Registro", url: "/prerregistro", icon: ListTodo },
 ];
