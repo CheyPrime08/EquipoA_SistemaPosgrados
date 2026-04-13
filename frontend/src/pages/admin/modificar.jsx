@@ -31,7 +31,7 @@ const Modificar = () => {
 
           <div className="bg-card border border-border rounded-lg p-6 shadow-md h-full">
             <div className="bg-muted border border-border rounded-md p-6 flex flex-col gap-4 h-full">
-              <div className="w-full text-right"><h3 className="text-2xl text-muted-foreground">Agregar Posgrado</h3></div> 
+              <div className="w-full text-right"><h3 className="text-2xl text-muted-foreground">Modificar Posgrado</h3></div> 
               {/* Búsqueda */}
               <div className="flex gap-4 items-center">
                 <input
