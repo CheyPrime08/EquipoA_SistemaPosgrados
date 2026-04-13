@@ -1,6 +1,6 @@
 import { Routes, Route, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import RevAlumnos from "./pages/coordinacion/alumnos/rev-alumnos";
+import RevAlumnos from "./pages/coordinacion/alumnos/RevAlumnos";
 import HomeCoord from "./pages/coordinacion/agenda/HomeCoord";
 
 function Home() {
