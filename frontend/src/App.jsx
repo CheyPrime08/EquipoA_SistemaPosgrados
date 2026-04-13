@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Agregar from "./pages/admin/Agregar";
 import Modificar from "./pages/admin/Modificar";
-import Eliminar from "./pages/admin/Eliminar";
+
 
 function App() {
   return (
@@ -10,7 +10,6 @@ function App() {
         <Route path="/" element={<Agregar />} />
         <Route path="/agregar" element={<Agregar />} />
         <Route path="/modificar" element={<Modificar />} />
-        <Route path="/eliminar" element={<Eliminar />} />
       </Routes>
     </BrowserRouter>
   );

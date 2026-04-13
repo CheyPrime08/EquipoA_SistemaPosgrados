@@ -18,10 +18,6 @@ function Agregar() {
           <img src={grupitoM} alt="Grupito M" className="w-6 h-6" />
           <Link to="/modificar" className="hover:text-primary">Modificar</Link>
         </div>
-        <div className="flex items-center gap-2">
-          <img src={grupitoE} alt="Grupito E" className="w-6 h-6" />
-          <Link to="/eliminar" className="hover:text-primary">Eliminar</Link>
-        </div>
       </aside>
 
       <main className="flex-1 flex flex-col">
