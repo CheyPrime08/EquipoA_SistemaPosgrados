@@ -15,8 +15,8 @@
   --popover-foreground: oklch(0.145 0 0); /*No se*/
   --primary: oklch(0.205 0 0);  /*Letras de titulos Modificar*/
   --primary-foreground: oklch(0.985 0 0); /*Letras del boton de abajo*/
-  --secondary: oklch(0.97 0 0); /*Boton de busqueda*/
-  --secondary-foreground: oklch(0.205 0 0); /*Letras del boton de busqueda*/
+  --secondary: oklch(0.205 0 0); /*Boton de busqueda*/
+  --secondary-foreground: oklch(100% 0.00011 271.152); /*Letras del boton de busqueda*/
   --muted: oklch(0.94 0.01 64) ; /* cuadro interno y Barra superior*/
   --muted-foreground: oklch(0.556 0 0); /* Tiulo del modulo*/
   --accent: oklch(0.97 0 0); /* No se*/
