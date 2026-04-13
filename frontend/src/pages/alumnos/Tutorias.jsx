@@ -6,20 +6,19 @@ import { useNavigate } from "react-router-dom";
 
 export default function Tesis() {
 
+    // Estados para cada tipo de archivo
     const navigate = useNavigate();
-
     const [archivo, setArchivo] = useState(null);
-
     const [reportes, setReportes] = useState([]);
-
     const inputFileRef = useRef(null);
 
+    // Función de selección
     const seleccionarArchivo = (e) => {
         setArchivo(e.target.files[0]);
     };
 
+    // Subir el archivo al backend 
     const subirArchivo = async () => {
-
         if (!archivo) {
             alert("Selecciona un archivo primero");
             return;
@@ -29,7 +28,6 @@ export default function Tesis() {
         formData.append("archivo", archivo);
 
         try {
-
             await fetch(
                 "http://localhost:8000/api/tutorias/upload",
                 {
@@ -37,39 +35,28 @@ export default function Tesis() {
                     body: formData
                 }
             );
-
             alert("Archivo subido correctamente");
-
             obtenerArchivos();
-
         } catch (error) {
-
             console.error(error);
 
         }
     };
 
+    // Funcion para obtener todos los documentos
     const obtenerArchivos = async () => {
-
         try {
-
             const res = await fetch(
                 "http://localhost:8000/api/tutorias/archivos"
             );
-
             const data = await res.json();
-
             setReportes(data);
-
         } catch (error) {
-
             console.error(error);
-
         }
     };
 
     useEffect(() => {
-
         obtenerArchivos();
 
     }, []);

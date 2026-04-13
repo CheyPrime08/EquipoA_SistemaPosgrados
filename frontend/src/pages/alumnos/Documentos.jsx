@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 export default function Documentos() {
     const navigate = useNavigate();
 
-    // estados para cada tipo de archivo
+    // Estados para cada tipo de archivo
     const [archivoAcademico, setArchivoAcademico] = useState(null);
     const [archivoPersonal, setArchivoPersonal] = useState(null);
     const [documentos, setDocumentos] = useState([]);
@@ -15,11 +15,11 @@ export default function Documentos() {
     const inputAcademicoRef = useRef(null);
     const inputPersonalRef = useRef(null);
 
-    // funciones de selección
+    // Funciones de selección
     const seleccionarArchivoAcademico = (e) => setArchivoAcademico(e.target.files[0]);
     const seleccionarArchivoPersonal = (e) => setArchivoPersonal(e.target.files[0]);
 
-    // Funcin general para subir archivo (recibe el tipo como parámetro)
+    // Funcion general para subir archivo (recibe el tipo como parámetro)
     const subirArchivo = async (tipo) => {
         const archivo = tipo === 'Academico' ? archivoAcademico : archivoPersonal;
 
@@ -66,7 +66,7 @@ export default function Documentos() {
         obtenerDocumentos();
     }, []);
 
-    // Separamos los documentos por tipo para mostrarlos en sus respectivos cuadritos blancos (opcional)
+    // Separamos los documentos por tipo para mostrarlos en sus respectivos cuadritos blancos
     const docsAcademicos = documentos.filter(doc => doc.tipo === 'Academico');
     const docsPersonales = documentos.filter(doc => doc.tipo === 'Personal');
 

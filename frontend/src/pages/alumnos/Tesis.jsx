@@ -6,19 +6,18 @@ import { useNavigate } from "react-router-dom";
 export default function Tutorias() { 
     const navigate = useNavigate();
     
-    // --- NUEVOS ESTADOS ---
+    // Estados para cada tipo de archivo
     const [archivoSeleccionado, setArchivoSeleccionado] = useState(null);
     const [listaArchivos, setListaArchivos] = useState([]);
     const [mensaje, setMensaje] = useState("");
 
-    // --- CARGAR ARCHIVOS AL ENTRAR A LA PÁGINA ---
+    // Cargar archivos al entrar a la página
     useEffect(() => {
         obtenerArchivos();
     }, []);
 
     const obtenerArchivos = async () => {
         try {
-            // Asegúrate de que este puerto coincida con tu backend (ej. 8000)
             const respuesta = await fetch("http://127.0.0.1:8000/api/tesis/archivos");
             const data = await respuesta.json();
             setListaArchivos(data);
@@ -27,7 +26,7 @@ export default function Tutorias() {
         }
     };
 
-    // --- MANEJAR SELECCIÓN DE ARCHIVO ---
+    // Función de selección
     const handleSeleccionArchivo = (event) => {
         const file = event.target.files[0];
         if (file && file.type === "application/pdf") {
@@ -39,7 +38,7 @@ export default function Tutorias() {
         }
     };
 
-    // --- SUBIR EL ARCHIVO AL BACKEND ---
+    // Subir el archivo al backend 
     const handleSubirAvance = async () => {
         if (!archivoSeleccionado) {
             setMensaje("Primero debes seleccionar un archivo.");
@@ -70,7 +69,6 @@ export default function Tutorias() {
 
     return (
         <div className="flex h-screen bg-[#F2EDE4] text-stone-800 font-sans">
-            {/* Sidebar se mantiene igual */}
             <aside className="w-64 border-r border-stone-200 flex flex-col justify-between py-8 px-6 bg-[#F2EDE4]">
                 <div>
                     <img src={leonLogo} className="w-20 h-20 mb-12" alt="Logo" />
