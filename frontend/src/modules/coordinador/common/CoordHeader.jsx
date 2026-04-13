@@ -1,4 +1,4 @@
-import { AppHeader } from "@/components/shared/AppHeader";
+import { AppHeader } from "@/components/common/AppHeader";
 import { coordRoutes } from "@/routes/coordRoutes";
 
 export function CoordHeader() {

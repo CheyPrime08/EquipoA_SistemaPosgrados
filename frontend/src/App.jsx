@@ -1,32 +1,16 @@
-import { Routes, Route, useNavigate } from "react-router-dom";
-import { Button } from "@/components/ui/button";
-import RevAlumnos from "./pages/coordinacion/alumnos/RevAlumnos";
-import HomeCoord from "./pages/coordinacion/agenda/HomeCoord";
-
-function Home() {
-  const navigate = useNavigate();
-
-  return (
-    <>
-      <div>
-        <p className="text-black">Hola mundo</p>
-      </div>
-      <div>
-        <Button>prueba</Button>
-      </div>
-      <div>
-        <Button onClick={() => navigate("/rev-alumnos")}>Alumnos</Button>
-      </div>
-    </>
-  );
-}
+import { Routes, Route } from "react-router-dom";
+import InicioCoord from "@/pages/coordinador/inicio/InicioCoord";
+import ArchivoCoord from "@/pages/coordinador/archivo/ArchivoCoord";
+import RevAlumnos from "@/modules/coordinador/alumnos/RevAlumnos";
 
 function App() {
   return (
     <Routes>
-      <Route path="/" element={<Home />} />
+      <Route path="/" element={<InicioCoord />} />
+      <Route path="/agenda" element={<InicioCoord />} />
+      <Route path="/pendientes" element={<InicioCoord />} />
+      <Route path="/archivo" element={<ArchivoCoord />} />
       <Route path="/rev-alumnos" element={<RevAlumnos />} />
-      <Route path="/coord-home" element={<HomeCoord />} />
     </Routes>
   );
 }
