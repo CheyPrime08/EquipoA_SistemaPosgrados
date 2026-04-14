@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { LayoutCoordinacion } from "@/modules/coordinador/common/LayoutCoordinacion";
+import { CoordLayout } from "@/components/coordinacion/shared/CoordLayout";
 import {
     Search,
     MoreHorizontal,
@@ -28,7 +28,7 @@ const TesisManager = () => {
     };
 
     return (
-        <LayoutCoordinacion>
+        <CoordLayout>
             <div className="h-full flex flex-col overflow-hidden">
                 
                 <div className="flex justify-between items-end mb-6 shrink-0">
@@ -77,7 +77,7 @@ const TesisManager = () => {
                 </div>
 
             </div>
-        </LayoutCoordinacion>
+        </CoordLayout>
     );
 };
 

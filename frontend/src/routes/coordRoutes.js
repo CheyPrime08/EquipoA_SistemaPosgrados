@@ -1,28 +1,22 @@
 import {
+  Home,
   Calendar,
   ListTodo,
-  Users,
-  Folder,
-  BookMarked,
-  MessageCircleQuestion,
   SquareUserRound,
+  Archive,
+  Settings,
 } from "lucide-react";
 
 export const coordRoutes = [
-  { title: "Agenda", url: "/", icon: Calendar },
-  { title: "Pendientes", url: "/pendientes", icon: ListTodo },
   {
-    title: "Alumnos",
-    icon: Users,
-    subItems: [
-      { title: "Expedientes", url: "/alumnos/expedientes", icon: Folder },
-      { title: "Tesis", url: "/alumnos/tesis", icon: BookMarked },
-      {
-        title: "Tutorías",
-        url: "/alumnos/tutorias",
-        icon: MessageCircleQuestion,
-      },
+    label: "Panel Principal",
+    items: [
+      { title: "Inicio", url: "/", icon: Home },
+      { title: "Agenda", url: "/agenda", icon: Calendar },
+      { title: "Pendientes", url: "/pendientes", icon: ListTodo },
+      { title: "Aspirantes", url: "/aspirantes", icon: SquareUserRound },
+      { title: "Archivo", url: "/archivo", icon: Archive },
+      { title: "Ajustes", url: "/ajustes", icon: Settings },
     ],
   },
-  { title: "Aspirantes", url: "/aspirantes", icon: SquareUserRound },
 ];

@@ -1,4 +1,4 @@
-import { AppSidebar } from "@/components/shared/AppSidebar";
+import { AppSidebar } from "@/components/common/AppSidebar";
 import { coordRoutes } from "@/routes/coordRoutes";
 
 export function CoordSidebar() {
