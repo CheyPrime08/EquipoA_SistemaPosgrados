@@ -1,9 +1,11 @@
+import { useNavigate } from "react-router-dom";
 import { LayoutCoordinacion } from "@/modules/coordinador/common/LayoutCoordinacion";
 import { CardCiclo } from "@/modules/coordinador/common/card/CardCiclo";
 import { CardConvocatoria } from "@/modules/coordinador/common/card/CardConvocatoria";
 import { AddConvoc } from "@/modules/coordinador/inicio/AddConvoc";
 
 const InicioCoord = () => {
+  const navigate = useNavigate();
   return (
     <LayoutCoordinacion
       complementosFlotantes={
@@ -19,6 +21,7 @@ const InicioCoord = () => {
           descripcion="Próxima entrega: Protocolo de investigación"
           color="#534AB7"
           onClick={() => {}}
+          onContact={() => navigate('/alumnos')}
         />
         <CardCiclo
           label="Ciclo"
@@ -26,6 +29,7 @@ const InicioCoord = () => {
           descripcion="Próxima entrega: Protocolo de investigación"
           color="#534AB7"
           onClick={() => {}}
+          onContact={() => navigate('/alumnos')}
         />
         <CardCiclo
           label="Ciclo"
@@ -33,6 +37,7 @@ const InicioCoord = () => {
           descripcion="Próxima entrega: Protocolo de investigación"
           color="#534AB7"
           onClick={() => {}}
+          onContact={() => navigate('/alumnos')}
         />
         <CardConvocatoria
           label="Convocatoria"

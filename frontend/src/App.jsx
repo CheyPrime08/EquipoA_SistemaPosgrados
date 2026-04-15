@@ -1,7 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 import InicioCoord from "@/pages/coordinador/inicio/InicioCoord";
 import ArchivoCoord from "@/pages/coordinador/archivo/ArchivoCoord";
-import RevAlumnos from "@/modules/coordinador/alumnos/RevAlumnos";
+import RevAlumnos from "@/pages/coordinador/alumnos/RevAlumnos";
 
 function App() {
   return (
@@ -10,7 +10,7 @@ function App() {
       <Route path="/agenda" element={<InicioCoord />} />
       <Route path="/pendientes" element={<InicioCoord />} />
       <Route path="/archivo" element={<ArchivoCoord />} />
-      <Route path="/rev-alumnos" element={<RevAlumnos />} />
+      <Route path="/alumnos" element={<RevAlumnos />} />
     </Routes>
   );
 }
