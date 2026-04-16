@@ -1,5 +1,4 @@
-export function PanelHeader({ seccion, onSeccion }) {
-  const tabs = ["Egresados", "Aspirantes"];
+export function PanelHeader({ seccion, onSeccion, tabs = ["Egresados", "Aspirantes"] }) {
   return (
     <div className="flex gap-6 mb-6">
       {tabs.map((tab) => (

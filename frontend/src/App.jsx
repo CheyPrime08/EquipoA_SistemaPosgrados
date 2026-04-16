@@ -3,6 +3,7 @@ import InicioCoord from "@/pages/coordinador/inicio/InicioCoord";
 import ArchivoCoord from "@/pages/coordinador/archivo/ArchivoCoord";
 import RevAlumnos from "@/pages/coordinador/alumnos/RevAlumnos";
 import Prerregistro from "./context/Prerregistro";
+import CicloCoord from "@/pages/coordinador/ciclo/CicloCoord";
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <Route path="/agenda" element={<InicioCoord />} />
       <Route path="/pendientes" element={<InicioCoord />} />
       <Route path="/archivo" element={<ArchivoCoord />} />
+      <Route path="/ciclo/:cicloId" element={<CicloCoord />} />
       <Route path="/alumnos" element={<RevAlumnos />} />
       <Route path="/home-coord" element={<InicioCoord />} />
       <Route path="/rev-alumnos" element={<RevAlumnos />} />
