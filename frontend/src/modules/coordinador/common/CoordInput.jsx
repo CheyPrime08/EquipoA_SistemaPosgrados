@@ -1,6 +1,6 @@
-import * as React from "react"
-import { Input } from "@/components/ui/input"
-import { cn } from "@/lib/utils"
+import * as React from "react";
+import { Input } from "@/components/ui/input";
+import { cn } from "@/lib/utils";
 
 export function CoordInput({ label, id, className, ...props }) {
   return (
@@ -15,5 +15,5 @@ export function CoordInput({ label, id, className, ...props }) {
       )}
       <Input id={id} {...props} />
     </div>
-  )
+  );
 }

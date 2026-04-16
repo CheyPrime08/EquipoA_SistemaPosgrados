@@ -32,7 +32,7 @@ export function ModalAddConvoc({ children }) {
           <DialogClose asChild>
             <button
               type="button"
-              className="rounded-full border border-border bg-background/10 px-4 py-1.5 text-sm tracking-tight font-semibold text-white transition hover:bg-primary hover:border-border cursor-pointer min-w-[120px] backdrop-blur-md"
+              className="rounded-full border border-border bg-background/10 px-4 py-2 text-sm tracking-tight text-white transition hover:bg-primary/30 hover:border-border cursor-pointer min-w-[120px] backdrop-blur-xs"
             >
               Cancelar
             </button>
@@ -40,7 +40,7 @@ export function ModalAddConvoc({ children }) {
           <button
             form="add-convoc-form"
             type="submit"
-            className="rounded-full border border-border bg-background/10 px-6 py-1.5 text-sm tracking-tight font-semibold text-white transition hover:bg-primary hover:border-border cursor-pointer min-w-[120px] backdrop-blur-md"
+            className="rounded-full border border-border bg-background/10 px-6 py-2 text-sm tracking-tight text-white transition hover:bg-primary/20 hover:border-border cursor-pointer min-w-[120px] backdrop-blur-xs"
           >
             Añadir
           </button>
@@ -71,7 +71,7 @@ export function ModalAddConvoc({ children }) {
               id="fecha_inicio"
               name="fecha_inicio"
               label="Fecha de Inicio"
-              className="h-11 text-base"
+              className="h-11 text-sm"
               type="date"
               required
             />
@@ -79,12 +79,12 @@ export function ModalAddConvoc({ children }) {
               id="fecha_fin"
               name="fecha_fin"
               label="Fecha de Fin"
-              className="h-11 text-base"
+              className="h-11 text-sm"
               type="date"
               required
             />
           </div>
-          <div className="text-sm text-muted-foreground bg-muted/50 px-4 py-3 mb-3 rounded-xl border border-border/50 mt-auto">
+          <div className="text-sm text-muted-foreground bg-muted/20 px-4 py-3 mb-3 rounded-xl border border-border/50 mt-auto">
             Confirma el ciclo escolar y el periodo de vigencia para la nueva
             convocatoria de posgrado.
           </div>
