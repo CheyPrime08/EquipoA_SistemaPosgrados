@@ -51,40 +51,38 @@ export default function RevAlumnos() {
     ];
 
     return (
-        <main className="flex-1 flex flex-col h-full overflow-hidden relative">
-            <div className="flex-1 flex overflow-hidden">
-                <section className="flex-1 flex flex-col overflow-hidden p-6">
-                    <CoordSearch 
-                        value={searchQuery} 
-                        onChange={setSearchQuery} 
-                        containerClassName="mb-6"
-                    />
+        <div className="flex h-full overflow-hidden">
+            <section className="flex-1 flex flex-col overflow-hidden">
+                <CoordSearch 
+                    value={searchQuery} 
+                    onChange={setSearchQuery} 
+                    containerClassName="mb-6"
+                />
 
-                    <CoordTable headers={headers}>
-                        {filteredStudents.length > 0 ? (
-                            filteredStudents.map((student) => (
-                                <TableRow
-                                    key={student.code}
-                                    code={student.code}
-                                    name={student.name}
-                                    prog={student.prog}
-                                    status={student.status}
-                                    statusColor={student.statusColor}
-                                    onClick={() => setSelectedStudent(student)}
-                                />
-                            ))
-                        ) : (
-                            <tr>
-                                <td colSpan="5" className="py-8 text-center text-sm text-stone-500">
-                                    No se encontraron alumnos con esos criterios.
-                                </td>
-                            </tr>
-                        )}
-                    </CoordTable>
-                </section>
+                <CoordTable headers={headers}>
+                    {filteredStudents.length > 0 ? (
+                        filteredStudents.map((student) => (
+                            <TableRow
+                                key={student.code}
+                                code={student.code}
+                                name={student.name}
+                                prog={student.prog}
+                                status={student.status}
+                                statusColor={student.statusColor}
+                                onClick={() => setSelectedStudent(student)}
+                            />
+                        ))
+                    ) : (
+                        <tr>
+                            <td colSpan="5" className="py-8 text-center text-sm text-stone-500">
+                                No se encontraron alumnos con esos criterios.
+                            </td>
+                        </tr>
+                    )}
+                </CoordTable>
+            </section>
 
-                <StudentPanel student={selectedStudent} onClose={() => setSelectedStudent(null)} />
-            </div>
-        </main>
+            <StudentPanel student={selectedStudent} onClose={() => setSelectedStudent(null)} />
+        </div>
     );
 }
