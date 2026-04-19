@@ -4,6 +4,7 @@ import ArchivoCoord from "@/pages/coordinador/archivo/ArchivoCoord";
 import RevAlumnos from "@/pages/coordinador/alumnos/RevAlumnos";
 import Prerregistro from "./context/Prerregistro";
 import CicloCoord from "@/pages/coordinador/ciclo/CicloCoord";
+import TesisManger from "@/pages/coordinacion/tesis/TesisManger";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
       <Route path="/home-coord" element={<InicioCoord />} />
       <Route path="/rev-alumnos" element={<RevAlumnos />} />
       <Route path="/prerregistro" element={<Prerregistro />} />
+      <Route path="/tesis" element={<CicloCoord />} />
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
   );

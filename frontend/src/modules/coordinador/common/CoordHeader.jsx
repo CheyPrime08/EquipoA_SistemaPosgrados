@@ -1,6 +1,6 @@
 import { AppHeader } from "@/components/common/AppHeader";
-import { coordRoutes } from "@/routes/coordRoutes";
+import { allRoutes } from "@/routes/coordRoutes";
 
 export function CoordHeader() {
-  return <AppHeader rutas={coordRoutes} />;
+  return <AppHeader rutas={allRoutes} />;
 }

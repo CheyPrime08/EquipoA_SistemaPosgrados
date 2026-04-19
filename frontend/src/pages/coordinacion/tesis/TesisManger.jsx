@@ -31,8 +31,7 @@ const TesisManager = () => {
         <LayoutCoordinacion>
             <div className="h-full flex flex-col overflow-hidden">
                 
-                <div className="flex justify-between items-end mb-6 shrink-0">
-                    <h1 className="text-[28px] font-medium text-stone-800">Tesis</h1>
+                <div className="flex justify-end items-end mb-6 shrink-0">
                     
                     {/* Fecha limite */}
                     <div className="flex flex-col items-end">

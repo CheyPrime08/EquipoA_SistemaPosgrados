@@ -52,8 +52,6 @@ export default function RevisionAlumnado() {
 
                 {/* Tabla */}
                 <section className="flex-1 px-8 py-6 flex flex-col overflow-hidden">
-                    <h1 className="text-[28px] font-medium mb-6 text-stone-800">Revisión del Alumnado</h1>
-
                     {/* Barra de búsqueda */}
                     <div className="flex items-center w-80 px-4 py-2.5 mb-6 bg-white border border-[#EBE3D5] rounded-xl shadow-sm shrink-0">
                         <Search size={18} className="text-stone-400 mr-2 shrink-0" />
