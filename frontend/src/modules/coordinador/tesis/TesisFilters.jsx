@@ -1,7 +1,8 @@
 import React from 'react';
-import { Search, CalendarDays } from 'lucide-react';
+import { CalendarDays } from 'lucide-react';
+import { CoordSearch } from '../common/CoordSearch';
 
-export const TesisFilters = () => {
+export const TesisFilters = ({ onSearch }) => {
     return (
         <>
             <div className="flex justify-end items-end mb-6 shrink-0">
@@ -16,14 +17,7 @@ export const TesisFilters = () => {
             </div>
 
             {/* Barra de búsqueda */}
-            <div className="flex items-center w-80 px-4 py-2.5 mb-6 bg-white border border-[#EBE3D5] rounded-xl shadow-sm shrink-0">
-                <Search size={18} className="text-stone-400 mr-2 shrink-0" />
-                <input 
-                    type="text" 
-                    placeholder="Buscar alumno..." 
-                    className="bg-transparent border-none outline-none text-sm w-full placeholder:text-stone-400 text-stone-700" 
-                />
-            </div>
+            <CoordSearch onChange={onSearch} containerClassName="mb-6" />
         </>
     );
 };

@@ -1,5 +1,6 @@
 import React from 'react';
-import { Search, Download } from 'lucide-react';
+import { Download } from 'lucide-react';
+import { CoordSearch } from '../common/CoordSearch';
 
 const FilterSelect = ({ label, placeholder }) => {
   return (
@@ -16,15 +17,7 @@ export const PrerregistroFilters = ({ onSearch, onExport }) => {
   return (
     <div className="flex flex-wrap items-center gap-4 mb-6">
       {/* Barra de búsqueda */}
-      <div className="flex items-center w-80 px-4 py-2.5 bg-white border border-[#EBE3D5] rounded-xl shadow-sm shrink-0">
-        <Search size={18} className="text-stone-400 mr-2 shrink-0" />
-        <input 
-          type="text" 
-          placeholder="Buscar por nombre o código..." 
-          className="bg-transparent border-none outline-none text-sm w-full placeholder:text-stone-400" 
-          onChange={(e) => onSearch && onSearch(e.target.value)}
-        />
-      </div>
+      <CoordSearch onChange={onSearch} />
       
       <FilterSelect label="Programa" placeholder="Todos los Programas" />
       <FilterSelect label="Estado" placeholder="En Revisión" />

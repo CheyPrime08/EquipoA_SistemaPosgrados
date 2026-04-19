@@ -1,9 +1,9 @@
 import React from 'react';
-import { Search } from 'lucide-react';
 import { StudentPanel } from "./StudentPanel";
-import { Th, TableRow } from "./StudentTableElements";
+import { TableRow } from "./StudentTableElements";
+import { CoordTable } from "../common/CoordTable";
+import { CoordSearch } from "../common/CoordSearch";
 
-{/* Datos de prueba */}
 export const initialStudents = [
     { code: "ALU1234", name: "Ana García", prog: "Maestría en IA", status: "En Revisión", statusColor: "bg-[#D8C4B6]" },
     { code: "ALU5678", name: "Pedro López", prog: "Doctorado en Ciencias", status: "Aceptado", statusColor: "bg-[#DBD3C8]" },
@@ -42,61 +42,48 @@ export default function RevisionAlumnado() {
         return result;
     }, [searchQuery, sortConfig]);
 
+    const headers = [
+        { label: "Código Alumno", onClick: () => handleSort('code') },
+        { label: "Nombre Completo", onClick: () => handleSort('name') },
+        { label: "Programa", onClick: () => handleSort('prog') },
+        { label: "Estado Tesis", onClick: () => handleSort('status') },
+        { label: "Acciones", sortable: false }
+    ];
+
     return (
         <main className="flex-1 flex flex-col h-full overflow-hidden relative">
-
-
-
-            {/* Listado */}
             <div className="flex-1 flex overflow-hidden">
+                <section className="flex-1 flex flex-col overflow-hidden p-6">
+                    <CoordSearch 
+                        value={searchQuery} 
+                        onChange={setSearchQuery} 
+                        containerClassName="mb-6"
+                    />
 
-                {/* Tabla */}
-                <section className="flex-1 flex flex-col overflow-hidden">
-                    {/* Barra de búsqueda */}
-                    <div className="flex items-center w-80 px-4 py-2.5 mb-6 bg-white border border-[#EBE3D5] rounded-xl shadow-sm shrink-0">
-                        <Search size={18} className="text-stone-400 mr-2 shrink-0" />
-                        <input type="text" value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} placeholder="Buscar alumno, código o programa..." className="bg-transparent border-none outline-none text-sm w-full placeholder:text-stone-400 text-stone-700" />
-                    </div>
-
-                    <div className="bg-[#FAF8F5] rounded-2xl border border-[#EBE3D5] overflow-auto flex-1">
-                        <table className="w-full text-left border-collapse whitespace-nowrap">
-                            <thead className="bg-[#EFE9E0] sticky top-0 z-10">
-                                <tr>
-                                    <Th onClick={() => handleSort('code')}>Código Alumno</Th>
-                                    <Th onClick={() => handleSort('name')}>Nombre Completo</Th>
-                                    <Th onClick={() => handleSort('prog')}>Programa</Th>
-                                    <Th onClick={() => handleSort('status')}>Estado Tesis</Th>
-                                    <Th sortable={false}>Acciones</Th>
-                                </tr>
-                            </thead>
-                            <tbody className="divide-y divide-[#EBE3D5]">
-                                {filteredStudents.length > 0 ? (
-                                    filteredStudents.map((student) => (
-                                        <TableRow
-                                            key={student.code}
-                                            code={student.code}
-                                            name={student.name}
-                                            prog={student.prog}
-                                            status={student.status}
-                                            statusColor={student.statusColor}
-                                            onClick={() => setSelectedStudent(student)}
-                                        />
-                                    ))
-                                ) : (
-                                    <tr>
-                                        <td colSpan="5" className="py-8 text-center text-sm text-stone-500">
-                                            No se encontraron alumnos con esos criterios.
-                                        </td>
-                                    </tr>
-                                )}
-                            </tbody>
-                        </table>
-                    </div>
+                    <CoordTable headers={headers}>
+                        {filteredStudents.length > 0 ? (
+                            filteredStudents.map((student) => (
+                                <TableRow
+                                    key={student.code}
+                                    code={student.code}
+                                    name={student.name}
+                                    prog={student.prog}
+                                    status={student.status}
+                                    statusColor={student.statusColor}
+                                    onClick={() => setSelectedStudent(student)}
+                                />
+                            ))
+                        ) : (
+                            <tr>
+                                <td colSpan="5" className="py-8 text-center text-sm text-stone-500">
+                                    No se encontraron alumnos con esos criterios.
+                                </td>
+                            </tr>
+                        )}
+                    </CoordTable>
                 </section>
 
-                {/* Panel de Expedientes */}
                 <StudentPanel student={selectedStudent} onClose={() => setSelectedStudent(null)} />
-
             </div>
         </main>
     );

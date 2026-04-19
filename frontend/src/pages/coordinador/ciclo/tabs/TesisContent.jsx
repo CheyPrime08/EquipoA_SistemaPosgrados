@@ -1,10 +1,10 @@
 import { useState } from "react";
 import {
-  Search,
   MoreHorizontal,
-  ChevronsUpDown,
   CalendarDays,
 } from "lucide-react";
+import { CoordTable } from "@/modules/coordinador/common/CoordTable";
+import { CoordSearch } from "@/modules/coordinador/common/CoordSearch";
 
 const TesisContent = ({ cicloId }) => {
   const [theses, setTheses] = useState([
@@ -22,18 +22,18 @@ const TesisContent = ({ cicloId }) => {
     );
   };
 
+  const headers = [
+    { label: "", sortable: false },
+    { label: "Alumno" },
+    { label: "Título de Tesis" },
+    { label: "Revisión" },
+    { label: "Acciones", sortable: false, className: "text-right" }
+  ];
+
   return (
     <div className="flex flex-col gap-6">
-      {/* Fecha límite + búsqueda */}
       <div className="flex justify-between items-end shrink-0">
-        <div className="flex items-center w-80 px-4 py-2.5 bg-white border border-[#EBE3D5] rounded-xl shadow-sm">
-          <Search size={18} className="text-stone-400 mr-2 shrink-0" />
-          <input
-            type="text"
-            placeholder="Buscar alumno..."
-            className="bg-transparent border-none outline-none text-sm w-full placeholder:text-stone-400 text-stone-700"
-          />
-        </div>
+        <CoordSearch />
         <div className="flex flex-col items-end">
           <label className="text-xs text-stone-500 mb-1">Fecha límite</label>
           <div className="bg-white rounded-xl px-4 py-2 flex items-center gap-3 border border-[#EBE3D5] shadow-sm">
@@ -43,45 +43,16 @@ const TesisContent = ({ cicloId }) => {
         </div>
       </div>
 
-      {/* Tabla */}
-      <div className="bg-[#FAF8F5] rounded-2xl border border-[#EBE3D5] overflow-auto flex-1 shadow-[0_4px_24px_rgba(0,0,0,0.02)]">
-        <table className="w-full text-left border-collapse whitespace-nowrap">
-          <thead className="bg-[#EFE9E0] sticky top-0 z-10">
-            <tr>
-              <Th sortable={false}></Th>
-              <Th>Alumno</Th>
-              <Th>Título de Tesis</Th>
-              <Th>Revisión</Th>
-              <th className="py-4 px-6 font-medium text-sm text-stone-600 text-right">
-                Acciones
-              </th>
-            </tr>
-          </thead>
-          <tbody className="divide-y divide-[#EBE3D5]">
-            {theses.map((thesis) => (
-              <TesisRow key={thesis.id} thesis={thesis} onToggle={handleToggleStatus} />
-            ))}
-          </tbody>
-        </table>
-      </div>
+      <CoordTable headers={headers}>
+        {theses.map((thesis) => (
+          <TesisRow key={thesis.id} thesis={thesis} onToggle={handleToggleStatus} />
+        ))}
+      </CoordTable>
     </div>
   );
 };
 
 export default TesisContent;
-
-// --- Subcomponentes ---
-
-function Th({ children, sortable = true }) {
-  return (
-    <th className="py-4 px-6 font-medium text-sm text-stone-600">
-      <div className="flex items-center gap-2">
-        {children}
-        {sortable && <ChevronsUpDown size={14} className="text-stone-400" />}
-      </div>
-    </th>
-  );
-}
 
 function TesisRow({ thesis, onToggle }) {
   return (

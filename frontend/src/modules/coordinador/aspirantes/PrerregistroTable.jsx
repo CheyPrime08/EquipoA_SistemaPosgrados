@@ -1,16 +1,6 @@
 import React from 'react';
-import { Edit2, MoreHorizontal, ChevronsUpDown } from 'lucide-react';
-
-const Th = ({ children, sortable = true }) => {
-    return (
-        <th className="py-4 px-6 font-medium text-sm text-stone-600">
-            <div className="flex items-center gap-2">
-                {children}
-                {sortable && <ChevronsUpDown size={14} className="text-stone-400" />}
-            </div>
-        </th>
-    );
-};
+import { Edit2, MoreHorizontal } from 'lucide-react';
+import { CoordTable } from '../common/CoordTable';
 
 const TableRow = ({ code, name, program, date, status, statusColor }) => {
     return (
@@ -35,34 +25,26 @@ const TableRow = ({ code, name, program, date, status, statusColor }) => {
 };
 
 export const PrerregistroTable = ({ data = [] }) => {
+  const headers = [
+    { label: "Código Aspirante" },
+    { label: "Nombre Completo" },
+    { label: "Programa" },
+    { label: "Fecha Solicitud" },
+    { label: "Estado" },
+    { label: "Acciones", sortable: false }
+  ];
+
   return (
-    <div className="bg-[#FAF8F5] rounded-2xl border border-[#EBE3D5] overflow-auto flex-1">
-      <table className="w-full text-left border-collapse whitespace-nowrap">
-        <thead className="bg-[#EFE9E0] sticky top-0 z-10">
-          <tr>
-            <Th>Código Aspirante</Th>
-            <Th>Nombre Completo</Th>
-            <Th>Programa</Th>
-            <Th>Fecha Solicitud</Th>
-            <Th>Estado</Th>
-            <Th sortable={false}>Acciones</Th>
-          </tr>
-        </thead>
-        <tbody className="divide-y divide-[#EBE3D5]">
-          {data.map((row, index) => (
-            <TableRow key={index} {...row} />
-          ))}
-          {data.length === 0 && (
-             <TableRow code="ASP1234" name="Juan Gutierrez" program="Maestría en IA" date="15 Mar 2026" status="En Revisión" statusColor="bg-[#FADE70]" />
-          )}
-          {data.length === 0 && (
-             <TableRow code="ASP5678" name="Vivi Navarro" program="Doctorado en Ciencias computacionales" date="10 Mar 2026" status="Aceptado" statusColor="bg-[#ACFA91]" />
-          )}
-          {data.length === 0 && (
-             <TableRow code="ASP9012" name="Diego Josuan" program="Maestría en IA" date="18 Mar 2026" status="Pendiente" statusColor="bg-[#F58971]" />
-          )}
-        </tbody>
-      </table>
-    </div>
+    <CoordTable headers={headers}>
+      {data.length > 0 ? (
+        data.map((row, index) => <TableRow key={index} {...row} />)
+      ) : (
+        <>
+          <TableRow code="ASP1234" name="Juan Gutierrez" program="Maestría en IA" date="15 Mar 2026" status="En Revisión" statusColor="bg-[#FADE70]" />
+          <TableRow code="ASP5678" name="Vivi Navarro" program="Doctorado en Ciencias computacionales" date="10 Mar 2026" status="Aceptado" statusColor="bg-[#ACFA91]" />
+          <TableRow code="ASP9012" name="Diego Josuan" program="Maestría en IA" date="18 Mar 2026" status="Pendiente" statusColor="bg-[#F58971]" />
+        </>
+      )}
+    </CoordTable>
   );
 };
