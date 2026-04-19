@@ -84,11 +84,11 @@ export default function Login() {
                   alt=""
                 />
               </div>
-              <a href="" className="text-center group">
+              <Link to="/recuPasswotd" className="text-center group">
                 <p className="italic font-extrabold text-[#89754fc2] text-sm hover:underline hover:text-[#7a6442]">
                   ¿Has olvidado tu Contraseña?
                 </p>
-              </a>
+              </Link>
               <div className="hidden md:block">
                 <img
                   className="flex-1 w-24 lg:w-auto"
