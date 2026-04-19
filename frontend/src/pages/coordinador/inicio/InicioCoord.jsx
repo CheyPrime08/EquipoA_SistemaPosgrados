@@ -18,29 +18,29 @@ const InicioCoord = () => {
           label="Ciclo"
           ciclo="2025-B"
           descripcion="Próxima entrega: Protocolo de investigación"
-          onClick={() => navigate("/tesis")}
-          onContact={() => navigate("/tesis?tab=Alumnos")}
+          onClick={() => navigate("/ciclo")}
+          onContact={() => navigate("/ciclo?tab=Alumnos")}
         />
         <CoordCard
           label="Ciclo"
           ciclo="2026-A"
           descripcion="Próxima entrega: Protocolo de investigación"
-          onClick={() => navigate("/tesis")}
-          onContact={() => navigate("/tesis?tab=Alumnos")}
+          onClick={() => navigate("/ciclo")}
+          onContact={() => navigate("/ciclo?tab=Alumnos")}
         />
         <CoordCard
           label="Ciclo"
           ciclo="2026-B"
           descripcion="Próxima entrega: Protocolo de investigación"
-          onClick={() => navigate("/tesis")}
-          onContact={() => navigate("/tesis?tab=Alumnos")}
+          onClick={() => navigate("/ciclo")}
+          onContact={() => navigate("/ciclo?tab=Alumnos")}
         />
         <CoordCard
           variant="convocatoria"
           label="Convocatoria"
           ciclo="2027-A"
           descripcion="Próxima entrega: Protocolo de investigación"
-          onClick={() => navigate("/tesis")}
+          onClick={() => navigate("/convocatoria")}
         />
       </div>
     </LayoutCoordinacion>

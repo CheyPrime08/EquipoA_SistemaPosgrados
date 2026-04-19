@@ -24,15 +24,13 @@ const TesisManager = () => {
     };
 
     return (
-        <LayoutCoordinacion>
-            <div className="h-full flex flex-col overflow-hidden">
-                <TesisFilters />
-                <TesisTable 
-                    theses={theses} 
-                    onToggleStatus={handleToggleStatus} 
-                />
-            </div>
-        </LayoutCoordinacion>
+        <div className="h-full flex flex-col overflow-hidden">
+            <TesisFilters />
+            <TesisTable 
+                theses={theses} 
+                onToggleStatus={handleToggleStatus} 
+            />
+        </div>
     );
 };
 

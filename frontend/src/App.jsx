@@ -1,24 +1,22 @@
 import { Routes, Route, Navigate } from "react-router-dom";
 import InicioCoord from "@/pages/coordinador/inicio/InicioCoord";
 import ArchivoCoord from "@/pages/coordinador/archivo/ArchivoCoord";
-import RevAlumnos from "@/pages/coordinador/alumnos/RevAlumnos";
-import Prerregistro from "@/pages/coordinador/aspirante/Prerregistro";
+import ConvocatoriaCoord from "@/pages/coordinador/aspirante/ConvocatoriaCoord";
 import CicloCoord from "@/pages/coordinador/ciclo/CicloCoord";
-import TesisManager from "@/modules/coordinador/tesis/TesisManager";
+import AgendaCoord from "@/pages/coordinador/agenda/AgendaCoord";
+import PendientesCoord from "@/pages/coordinador/inicio/PendientesCoord";
+import AjustesCoord from "@/pages/coordinador/inicio/AjustesCoord";
 
 function App() {
   return (
     <Routes>
       <Route path="/" element={<InicioCoord />} />
-      <Route path="/agenda" element={<InicioCoord />} />
-      <Route path="/pendientes" element={<InicioCoord />} />
+      <Route path="/agenda" element={<AgendaCoord />} />
+      <Route path="/pendientes" element={<PendientesCoord />} />
       <Route path="/archivo" element={<ArchivoCoord />} />
-      <Route path="/ciclo/:cicloId" element={<CicloCoord />} />
-      <Route path="/alumnos" element={<RevAlumnos />} />
-      <Route path="/home-coord" element={<InicioCoord />} />
-      <Route path="/rev-alumnos" element={<RevAlumnos />} />
-      <Route path="/prerregistro" element={<Prerregistro />} />
-      <Route path="/tesis" element={<CicloCoord />} />
+      <Route path="/ciclo" element={<CicloCoord />} />
+      <Route path="/convocatoria" element={<ConvocatoriaCoord />} />
+      <Route path="/ajustes" element={<AjustesCoord />} />
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
   );

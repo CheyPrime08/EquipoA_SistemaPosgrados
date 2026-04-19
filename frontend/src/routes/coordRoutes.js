@@ -22,12 +22,10 @@ export const sidebarRoutes = [
 export const allRoutes = [
   ...sidebarRoutes,
   {
-    label: "Ocultas",
+    label: "Gestión",
     items: [
-      { title: "Revisión del Alumnado", url: "/alumnos", icon: ListTodo },
-      { title: "Revisión del Alumnado", url: "/rev-alumnos", icon: ListTodo },
-      { title: "Tesis", url: "/tesis", icon: ListTodo },
-      { title: "Pre-Registro", url: "/prerregistro", icon: ListTodo },
+      { title: "Ciclo Escolar", url: "/ciclo" },
+      { title: "Convocatoria", url: "/convocatoria" },
     ],
   },
 ];

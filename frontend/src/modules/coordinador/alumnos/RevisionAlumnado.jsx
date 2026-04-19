@@ -51,7 +51,7 @@ export default function RevisionAlumnado() {
             <div className="flex-1 flex overflow-hidden">
 
                 {/* Tabla */}
-                <section className="flex-1 px-8 py-6 flex flex-col overflow-hidden">
+                <section className="flex-1 flex flex-col overflow-hidden">
                     {/* Barra de búsqueda */}
                     <div className="flex items-center w-80 px-4 py-2.5 mb-6 bg-white border border-[#EBE3D5] rounded-xl shadow-sm shrink-0">
                         <Search size={18} className="text-stone-400 mr-2 shrink-0" />
