@@ -4,7 +4,7 @@ import ArchivoCoord from "@/pages/coordinador/archivo/ArchivoCoord";
 import RevAlumnos from "@/pages/coordinador/alumnos/RevAlumnos";
 import Prerregistro from "@/pages/coordinador/aspirante/Prerregistro";
 import CicloCoord from "@/pages/coordinador/ciclo/CicloCoord";
-import TesisManger from "@/modules/coordinador/tesis/TesisManger";
+import TesisManager from "@/modules/coordinador/tesis/TesisManager";
 
 function App() {
   return (
