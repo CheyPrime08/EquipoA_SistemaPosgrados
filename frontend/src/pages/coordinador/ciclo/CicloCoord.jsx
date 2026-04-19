@@ -2,8 +2,8 @@ import { useState, useEffect } from "react";
 import { useParams, useSearchParams, useNavigate } from "react-router-dom";
 import { LayoutCoordinacion } from "@/modules/coordinador/common/LayoutCoordinacion";
 import { PanelHeader } from "@/components/common/PanelHeader";
-import TesisContent from "@/pages/coordinador/ciclo/tabs/TesisContent";
-import RevisionAlumnado from "@/modules/coordinador/alumnos/RevisionAlumnado";
+import TesisContent from "@/pages/coordinador/ciclo/TesisContent";
+import RevAlumnos from "@/pages/coordinador/alumnos/RevAlumnos";
 
 const tabs = ["Eventos", "Alumnos", "Tesis", "Tutorías"];
 
@@ -37,7 +37,7 @@ const CicloCoord = () => {
               <p className="text-lg">Sección de Eventos — próximamente</p>
             </div>
           )}
-          {seccion === "Alumnos" && <RevisionAlumnado />}
+          {seccion === "Alumnos" && <RevAlumnos />}
           {seccion === "Tesis" && <TesisContent cicloId={cicloId} />}
           {seccion === "Tutorías" && (
             <div className="flex items-center justify-center h-64 text-muted-foreground">
