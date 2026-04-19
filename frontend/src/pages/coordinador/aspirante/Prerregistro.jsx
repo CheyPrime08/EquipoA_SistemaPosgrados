@@ -2,9 +2,9 @@ import React from "react";
 import { LayoutCoordinacion } from "@/modules/coordinador/common/LayoutCoordinacion";
 
 // Atomic Components
-import { PrerregistroFilters } from "@/components/coordinacion/prerregistro/PrerregistroFilters";
-import { PrerregistroTable } from "@/components/coordinacion/prerregistro/PrerregistroTable";
-import { PrerregistroGanttPlaceholder } from "@/components/coordinacion/prerregistro/PrerregistroGanttPlaceholder";
+import { PrerregistroFilters } from "@/modules/coordinador/aspirantes/PrerregistroFilters";
+import { PrerregistroTable } from "@/modules/coordinador/aspirantes/PrerregistroTable";
+import { PrerregistroGanttPlaceholder } from "@/modules/coordinador/aspirantes/PrerregistroGanttPlaceholder";
 
 export default function Prerregistro() {
   return (

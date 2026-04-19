@@ -2,9 +2,9 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import InicioCoord from "@/pages/coordinador/inicio/InicioCoord";
 import ArchivoCoord from "@/pages/coordinador/archivo/ArchivoCoord";
 import RevAlumnos from "@/pages/coordinador/alumnos/RevAlumnos";
-import Prerregistro from "./context/Prerregistro";
+import Prerregistro from "@/pages/coordinador/aspirante/Prerregistro";
 import CicloCoord from "@/pages/coordinador/ciclo/CicloCoord";
-import TesisManger from "@/pages/coordinacion/tesis/TesisManger";
+import TesisManger from "@/modules/coordinador/tesis/TesisManger";
 
 function App() {
   return (
