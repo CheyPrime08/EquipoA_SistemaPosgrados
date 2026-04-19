@@ -3,7 +3,7 @@ import { PrerregistroFilters } from "@/modules/coordinador/aspirantes/Prerregist
 import { PrerregistroTable } from "@/modules/coordinador/aspirantes/PrerregistroTable";
 import { PrerregistroGanttPlaceholder } from "@/modules/coordinador/aspirantes/PrerregistroGanttPlaceholder";
 
-const Prerregistro = () => {
+export default function AspirantesPage() {
   return (
     <div className="h-full flex flex-col overflow-hidden">
       <PrerregistroFilters />
@@ -11,6 +11,4 @@ const Prerregistro = () => {
       <PrerregistroGanttPlaceholder />
     </div>
   );
-};
-
-export default Prerregistro;
+}

@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
-import { LayoutCoordinacion } from "@/modules/coordinador/common/LayoutCoordinacion";
 import { TesisFilters } from './TesisFilters';
 import { TesisTable } from './TesisTable';
 
-const TesisManager = () => {
+export default function TesisManager({ cicloId }) {
     const [theses, setTheses] = useState([
         { id: 1, student: 'Juan Carlos', code: '219583058', title: 'Inteligencia Artificial en Medicina', status: true },
         { id: 2, student: 'Gerardo', code: '000000000', title: 'Desarrollo web con React', status: false },
@@ -32,6 +31,4 @@ const TesisManager = () => {
             />
         </div>
     );
-};
-
-export default TesisManager;
+}

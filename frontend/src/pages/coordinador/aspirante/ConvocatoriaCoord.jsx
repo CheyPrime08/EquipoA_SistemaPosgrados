@@ -2,11 +2,11 @@ import { useState, useEffect } from "react";
 import { useSearchParams, useNavigate } from "react-router-dom";
 import { LayoutCoordinacion } from "@/modules/coordinador/common/LayoutCoordinacion";
 import { PanelHeader } from "@/components/common/PanelHeader";
-import PrerregistroContent from "@/pages/coordinador/aspirante/Prerregistro";
+import AspirantesPage from "@/pages/coordinador/aspirante/AspirantesPage";
 
 const tabs = ["Eventos", "Aspirantes"];
 
-const ConvocatoriaCoord = () => {
+export default function ConvocatoriaCoord() {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
   const [seccion, setSeccion] = useState("Eventos");
@@ -34,11 +34,9 @@ const ConvocatoriaCoord = () => {
               <p className="text-lg">Sección de Eventos — próximamente</p>
             </div>
           )}
-          {seccion === "Aspirantes" && <PrerregistroContent />}
+          {seccion === "Aspirantes" && <AspirantesPage />}
         </div>
       </div>
     </LayoutCoordinacion>
   );
-};
-
-export default ConvocatoriaCoord;
+}

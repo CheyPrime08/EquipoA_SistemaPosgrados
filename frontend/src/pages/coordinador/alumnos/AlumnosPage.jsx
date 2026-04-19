@@ -12,7 +12,7 @@ export const initialStudents = [
     { code: "ALU7890", name: "José Miguel", prog: "Doctorado en Ciencias", status: "Aceptado", statusColor: "bg-[#DBD3C8]" },
 ];
 
-export default function RevAlumnos() {
+export default function AlumnosPage() {
     const [selectedStudent, setSelectedStudent] = React.useState(null);
     const [searchQuery, setSearchQuery] = React.useState('');
     const [sortConfig, setSortConfig] = React.useState({ key: null, direction: 'asc' });
