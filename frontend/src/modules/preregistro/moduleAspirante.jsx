@@ -15,7 +15,10 @@ export default function ModuleAspirante() {
         <Sidebar
           collapsible="icon"
           variant="floating"
-          style={{ "--sidebar": "#EFE9E3" }}
+          style={{
+            "--sidebar": "#EFE9E3",
+            "--sidebar-border": "transparent",
+          }}
         >
           {/* #######################################################################################*/}
           {/* EL Componente del header del sidebar */}
