@@ -9,6 +9,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { AppTooltip } from "@/components/common/AppTooltip";
+import { Link } from "react-router-dom";
 
 export const BotonUsuario = () => {
   return (
@@ -21,12 +22,14 @@ export const BotonUsuario = () => {
         </AppTooltip>
 
         <DropdownMenuContent className="w-45 mt-1 mr-5 p-0 rounded-full shadow-md bg-transparent backdrop-blur-xs animate-in fade-in zoom-in-95 duration-200">
-          <div className="">
-            <DropdownMenuItem className="flex items-center justify-center gap-2 py-3.5 rounded-full cursor-pointer border border-border text-sidebar-foreground focus:bg-primary/30 focus:border focus:border-border">
-              <LogOut className="!h-4 !w-4" />
-              <span className="text-sm">Cerrar sesión</span>
-            </DropdownMenuItem>
-          </div>
+          <Link to="/">
+            <div className="">
+              <DropdownMenuItem className="flex items-center justify-center gap-2 py-3.5 rounded-full cursor-pointer border border-border text-sidebar-foreground focus:bg-primary/30 focus:border focus:border-border">
+                <LogOut className="!h-4 !w-4" />
+                <span className="text-sm">Cerrar sesión</span>
+              </DropdownMenuItem>
+            </div>
+          </Link>
         </DropdownMenuContent>
       </DropdownMenu>
     </div>

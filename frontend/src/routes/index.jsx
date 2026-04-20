@@ -31,27 +31,27 @@ const routesCoordinador = [
     element: <InicioCoord />,
   },
   {
-    path: "/archivoCoord",
+    path: "/archivo",
     element: <ArchivoCoord />,
   },
   {
-    path: "/convocatoriaCoord",
+    path: "/convocatoria",
     element: <ConvocatoriaCoord />,
   },
   {
-    path: "/cicloCoord",
+    path: "/ciclo",
     element: <CicloCoord />,
   },
   {
-    path: "/agendaCoord",
+    path: "/agenda",
     element: <AgendaCoord />,
   },
   {
-    path: "/pendientesCoord",
+    path: "/pendientes",
     element: <PendientesCoord />,
   },
   {
-    path: "/ajustesCoord",
+    path: "/ajustes",
     element: <AjustesCoord />,
   },
 ];
