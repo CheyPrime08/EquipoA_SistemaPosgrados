@@ -3,11 +3,12 @@ import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 
 export default function Fondo() {
   return (
-    <div className="h-screen w-full flex justify-center items-center">
+    <div className="h-48 sm:h-64 md:h-80 w-full max-w-lg mx-auto flex justify-center items-center">
       <DotLottieReact
-        src="https://lottie.host/755e2d07-4e93-4859-b37e-7700dec4fbfe/ekbszuLCt2.lottie"
+        src="https://lottie.host/c14eff85-5690-4991-86fb-94cb1eeb49e4/lgrAYDBTrU.lottie"
         loop
         autoplay
+        className="w-full h-full object-contain"
       />
     </div>
   );
