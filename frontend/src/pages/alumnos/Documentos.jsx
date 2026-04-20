@@ -1,203 +1,111 @@
 import React, { useState, useEffect, useRef } from 'react';
-import leonLogo from '@/components/ui/leon-logo.png';
 import { Users, ChevronDown, FileText, Search, Upload, GraduationCap, LogOut } from 'lucide-react';
 import { useNavigate } from "react-router-dom";
+import {
+    Sidebar, SidebarContent, SidebarFooter, SidebarHeader, SidebarMenu,
+    SidebarMenuButton, SidebarMenuItem, SidebarProvider, SidebarTrigger, SidebarInset
+} from "@/components/ui/sidebar";
 
 export default function Documentos() {
     const navigate = useNavigate();
-
-    // Estados para cada tipo de archivo
     const [archivoAcademico, setArchivoAcademico] = useState(null);
     const [archivoPersonal, setArchivoPersonal] = useState(null);
     const [documentos, setDocumentos] = useState([]);
-
-   
     const inputAcademicoRef = useRef(null);
     const inputPersonalRef = useRef(null);
 
-    // Funciones de selección
-    const seleccionarArchivoAcademico = (e) => setArchivoAcademico(e.target.files[0]);
-    const seleccionarArchivoPersonal = (e) => setArchivoPersonal(e.target.files[0]);
-
-    // Funcion general para subir archivo (recibe el tipo como parámetro)
-    const subirArchivo = async (tipo) => {
-        const archivo = tipo === 'Academico' ? archivoAcademico : archivoPersonal;
-
-        if (!archivo) {
-            alert(`Selecciona un documento ${tipo.toLowerCase()} primero`);
-            return;
-        }
-
-        const formData = new FormData();
-        formData.append("archivo", archivo);
-        formData.append("tipo", tipo); // Le decimos al backend qué tipo de doc es
-
-        try {
-            await fetch("http://localhost:8000/api/documentos/upload", {
-                method: "POST",
-                body: formData
-            });
-
-            alert(`Documento ${tipo.toLowerCase()} subido correctamente`);
-            
-            // Limpiamos el input
-            if (tipo === 'Academico') setArchivoAcademico(null);
-            else setArchivoPersonal(null);
-
-            obtenerDocumentos(); // Refrescamos la lista
-
-        } catch (error) {
-            console.error(error);
-        }
-    };
-
-    // Funcion para obtener todos los documentos
     const obtenerDocumentos = async () => {
         try {
             const res = await fetch("http://localhost:8000/api/documentos/archivos");
             const data = await res.json();
             setDocumentos(data);
-        } catch (error) {
-            console.error(error);
-        }
+        } catch (error) { console.error(error); }
     };
 
-    useEffect(() => {
-        obtenerDocumentos();
-    }, []);
+    useEffect(() => { obtenerDocumentos(); }, []);
 
-    // Separamos los documentos por tipo para mostrarlos en sus respectivos cuadritos blancos
-    const docsAcademicos = documentos.filter(doc => doc.tipo === 'Academico');
-    const docsPersonales = documentos.filter(doc => doc.tipo === 'Personal');
+    const subirArchivo = async (tipo) => {
+        const archivo = tipo === 'Academico' ? archivoAcademico : archivoPersonal;
+        if (!archivo) return;
+        const formData = new FormData();
+        formData.append("archivo", archivo);
+        formData.append("tipo", tipo);
+        try {
+            await fetch("http://localhost:8000/api/documentos/upload", { method: "POST", body: formData });
+            tipo === 'Academico' ? setArchivoAcademico(null) : setArchivoPersonal(null);
+            obtenerDocumentos();
+        } catch (error) { console.error(error); }
+    };
 
     return (
-        <div className="flex h-screen bg-[#F2EDE4] text-stone-800 font-sans">
-            {/* Sidebar */}
-            <aside className="w-64 border-r border-stone-200 flex flex-col justify-between py-8 px-6 bg-[#F2EDE4]">
-                <div>
-                    <img src={leonLogo} className="w-20 h-20 mb-12" alt="Logo" />
-                    <nav className="space-y-4">
-                        <NavItem icon={<GraduationCap size={20} />} label="Tesis" to="/tesis" />
-                        <NavItem icon={<FileText size={20} />} label="Documentos" active to="/documentos" />
-                        <NavItem icon={<Users size={18} />} label="Tutorías" to="/tutorias" />
-                    </nav>
-                </div>
-                <div>
-                    <NavItem icon={<LogOut size={18} />} label="Cerrar Sesión" to="/login" />
-                </div>
-            </aside>
+        <SidebarProvider>
+            <div className="flex h-screen w-full bg-[#F2EDE4] text-stone-800 font-sans">
+                <Sidebar collapsible="icon" className="border-r border-stone-200 bg-[#F2EDE4]">
+                    <SidebarHeader className="py-8 px-6">
+                        <div className="flex items-center gap-3">
+                            <span className="font-bold text-lg truncate group-data-[collapsible=icon]:hidden">POSGRADOS</span>
+                        </div>
+                    </SidebarHeader>
+                    <SidebarContent className="px-4">
+                        <SidebarMenu>
+                            <NavItem icon={<GraduationCap size={20} />} label="Tesis" to="/tesis" />
+                            <NavItem icon={<FileText size={20} />} label="Documentos" active to="/documentos" />
+                            <NavItem icon={<Users size={18} />} label="Tutorías" to="/tutorias" />
+                        </SidebarMenu>
+                    </SidebarContent>
+                    <SidebarFooter className="p-4">
+                        <SidebarMenu><NavItem icon={<LogOut size={18} />} label="Cerrar Sesión" to="/login" /></SidebarMenu>
+                    </SidebarFooter>
+                </Sidebar>
 
-            {/* Contenido Principal */}
-            <main className="flex-1 flex flex-col overflow-y-auto">
-                <header className="h-16 px-8 flex items-center justify-between relative border-b border-stone-200 flex-shrink-0">
-                    <span className="font-semibold text-stone-600 uppercase tracking-wider text-sm">
-                        Sistema Gestión Posgrados
-                    </span>
-                    <div className="absolute left-1/2 -translate-x-1/2 bg-white border border-stone-300 rounded-full px-4 py-1 flex items-center gap-2 text-sm shadow-sm">
-                        Ciclo Escolar 2026-A <ChevronDown size={14} />
-                    </div>
-                </header>
+                <SidebarInset className="bg-transparent flex flex-col overflow-hidden">
+                    <header className="h-16 px-8 flex items-center justify-between border-b border-stone-200 bg-[#F2EDE4]/50 backdrop-blur-sm">
+                        <div className="flex items-center gap-4">
+                            <SidebarTrigger className="text-stone-600" />
+                            <span className="font-semibold text-stone-600 uppercase tracking-wider text-sm">Sistema Gestión Posgrados</span>
+                        </div>
+                        <div className="hidden md:flex bg-white border border-stone-300 rounded-full px-4 py-1 items-center text-sm">Ciclo Escolar 2026-A <ChevronDown size={14} /></div>
+                    </header>
 
-                <div className="p-10 space-y-12">
-                    <h1 className="text-2xl font-bold text-stone-800">Documentos</h1>
-
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                        
-                        {/* Sección Documentos Académicos */}
-                        <div className="bg-[#EBE3D5] p-8 rounded-[40px] flex flex-col">
-                            <h2 className="text-xl font-semibold mb-4 text-stone-700">Documentos académicos</h2>
-                            
-                            <input type="file" ref={inputAcademicoRef} style={{ display: "none" }} onChange={seleccionarArchivoAcademico} />
-                            
-                            <div className="bg-white border border-stone-400 h-10 rounded-md mb-6 w-full flex items-center px-4 text-sm truncate">
-                                {archivoAcademico ? archivoAcademico.name : "Ningún archivo seleccionado"}
-                            </div>
-                            
-                            <div className="flex gap-4 mb-6">
-                                <button onClick={() => inputAcademicoRef.current.click()} className="flex items-center gap-2 px-4 py-2 bg-[#C9B29B] text-stone-800 rounded-xl text-sm font-medium shadow-sm hover:bg-[#bda58d]">
-                                    <Search size={16} /> Selección de archivos
-                                </button>
-                                <button onClick={() => subirArchivo('Academico')} className="flex items-center gap-2 px-4 py-2 bg-[#C9B29B] text-stone-800 rounded-xl text-sm font-medium shadow-sm hover:bg-[#bda58d]">
-                                    <Upload size={16} /> Subir archivo
-                                </button>
-                            </div>
-
-                            {/* Historial rápido */}
-                            <div className="bg-white rounded-[30px] h-40 border border-stone-300 p-4 overflow-y-auto flex gap-4 flex-wrap">
-                                {docsAcademicos.map((doc, idx) => (
-                                    <MiniFileIcon key={idx} label={doc.nombre_archivo} url={doc.url_descarga} />
-                                ))}
+                    <main className="flex-1 overflow-y-auto p-10 space-y-12">
+                        <h1 className="text-2xl font-bold text-stone-800">Documentos</h1>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                            <DocBox title="Documentos académicos" file={archivoAcademico} inputRef={inputAcademicoRef} onSelect={(e) => setArchivoAcademico(e.target.files[0])} onUpload={() => subirArchivo('Academico')} />
+                            <DocBox title="Documentos personales" file={archivoPersonal} inputRef={inputPersonalRef} onSelect={(e) => setArchivoPersonal(e.target.files[0])} onUpload={() => subirArchivo('Personal')} />
+                        </div>
+                        <div className="bg-[#EBE3D5] p-8 rounded-[40px] shadow-sm">
+                            <h2 className="text-xl font-semibold mb-6 text-stone-700 border-b border-stone-300 pb-2">Historial de Documentos</h2>
+                            <div className="bg-white/50 rounded-[30px] p-10 flex gap-12 justify-start items-center flex-wrap">
+                                {documentos.map((doc, i) => <FileIcon key={i} label={doc.nombre_archivo} url={doc.url_descarga} />)}
                             </div>
                         </div>
+                    </main>
+                </SidebarInset>
+            </div>
+        </SidebarProvider>
+    );
+}
 
-                        {/* Seccion Documentos Personales */}
-                        <div className="bg-[#EBE3D5] p-8 rounded-[40px] flex flex-col">
-                            <h2 className="text-xl font-semibold mb-4 text-stone-700">Documentos personales</h2>
-                            
-                            <input type="file" ref={inputPersonalRef} style={{ display: "none" }} onChange={seleccionarArchivoPersonal} />
-                            
-                            <div className="bg-white border border-stone-400 h-10 rounded-md mb-6 w-full flex items-center px-4 text-sm truncate">
-                                {archivoPersonal ? archivoPersonal.name : "Ningún archivo seleccionado"}
-                            </div>
-                            
-                            <div className="flex gap-4 mb-6">
-                                <button onClick={() => inputPersonalRef.current.click()} className="flex items-center gap-2 px-4 py-2 bg-[#C9B29B] text-stone-800 rounded-xl text-sm font-medium shadow-sm hover:bg-[#bda58d]">
-                                    <Search size={16} /> Selección de archivos
-                                </button>
-                                <button onClick={() => subirArchivo('Personal')} className="flex items-center gap-2 px-4 py-2 bg-[#C9B29B] text-stone-800 rounded-xl text-sm font-medium shadow-sm hover:bg-[#bda58d]">
-                                    <Upload size={16} /> Subir archivo
-                                </button>
-                            </div>
-
-                            {/* Historial rápido (Opcional) */}
-                            <div className="bg-white rounded-[30px] h-40 border border-stone-300 p-4 overflow-y-auto flex gap-4 flex-wrap">
-                                {docsPersonales.map((doc, idx) => (
-                                    <MiniFileIcon key={idx} label={doc.nombre_archivo} url={doc.url_descarga} />
-                                ))}
-                            </div>
-                        </div>
-                    </div>
-
-                    {/* Sección inferior de historial completo */}
-                    <div className="bg-[#EBE3D5] p-8 rounded-[40px]">
-                        <h2 className="text-xl font-semibold mb-6 text-stone-700">Todos los Archivos de Documentos</h2>
-                        <div className="bg-white rounded-[30px] p-8 flex gap-10 justify-start items-center flex-wrap">
-                            {documentos.length > 0 ? (
-                                documentos.map((archivo, index) => (
-                                    <FileIcon key={index} label={archivo.nombre_archivo} url={archivo.url_descarga} tipo={archivo.tipo} />
-                                ))
-                            ) : (
-                                <p className="text-sm text-stone-500">Aún no hay documentos subidos.</p>
-                            )}
-                        </div>
-                    </div>
-                </div>
-            </main>
+function DocBox({ title, file, inputRef, onSelect, onUpload }) {
+    return (
+        <div className="bg-[#EBE3D5] p-8 rounded-[40px] shadow-sm">
+            <h2 className="text-xl font-semibold mb-4 text-stone-700">{title}</h2>
+            <input type="file" ref={inputRef} className="hidden" onChange={onSelect} />
+            <div className="bg-white border border-stone-400 h-10 rounded-xl mb-6 flex items-center px-4 text-sm text-stone-600">{file ? file.name : "Ningún archivo seleccionado"}</div>
+            <div className="flex gap-4">
+                <button onClick={() => inputRef.current.click()} className="flex-1 py-2.5 bg-[#C9B29B] rounded-xl text-sm font-semibold shadow-sm hover:bg-[#bda58d]"><Search size={18} className="inline mr-2"/>Seleccionar</button>
+                <button onClick={onUpload} className="flex-1 py-2.5 bg-stone-800 text-white rounded-xl text-sm font-semibold shadow-md hover:bg-stone-700"><Upload size={18} className="inline mr-2"/>Subir</button>
+            </div>
         </div>
     );
 }
 
-// Icono Grande 
 function FileIcon({ label, url, tipo }) {
     return (
-        <a href={url} target="_blank" rel="noopener noreferrer" className="flex flex-col items-center gap-2 w-28 flex-shrink-0 hover:scale-105 transition-transform">
-            <div className="text-stone-700">
-                <FileText size={60} strokeWidth={1.5} />
-            </div>
-            <span className="text-[10px] font-bold text-center uppercase leading-tight whitespace-normal break-all">{label}</span>
-            <span className="text-[9px] bg-stone-200 px-2 py-0.5 rounded-full text-stone-600">{tipo}</span>
-        </a>
-    );
-}
-
-// Icono Pequeño 
-function MiniFileIcon({ label, url }) {
-    return (
-        <a href={url} target="_blank" rel="noopener noreferrer" className="flex flex-col items-center gap-1 w-16 hover:scale-105 transition-transform">
-            <div className="text-stone-600">
-                <FileText size={30} strokeWidth={1.5} />
-            </div>
-            <span className="text-[8px] font-medium text-center leading-tight truncate w-full" title={label}>{label}</span>
+        <a href={url} target="_blank" rel="noopener noreferrer" className="flex flex-col items-center gap-2 w-28 hover:scale-105 transition-transform">
+            <FileText size={50} className="text-stone-700" strokeWidth={1.5} />
+            <span className="text-[10px] font-bold text-center uppercase break-all">{label}</span>
+            <span className="text-[8px] bg-stone-200 px-2 py-0.5 rounded-full text-stone-600">{tipo}</span>
         </a>
     );
 }
@@ -205,13 +113,12 @@ function MiniFileIcon({ label, url }) {
 function NavItem({ icon, label, active, to }) {
     const navigate = useNavigate();
     return (
-        <div
-            onClick={() => to && navigate(to)}
-            className={`flex items-center gap-3 px-4 py-2 rounded-xl cursor-pointer transition-all
-            ${active ? 'bg-[#EBE3D5] shadow-sm text-stone-900 font-bold' : 'text-stone-600 hover:bg-[#EBE3D5]/50'}`}
-        >
-            {icon}
-            <span className="text-sm">{label}</span>
-        </div>
+        <SidebarMenuItem>
+            <SidebarMenuButton onClick={() => navigate(to)} isActive={active}
+                className={`w-full flex items-center gap-3 px-4 py-6 rounded-xl transition-all
+                ${active ? 'bg-[#EBE3D5] text-stone-900 font-bold shadow-sm' : 'text-stone-600 hover:bg-[#EBE3D5]/50'}`}>
+                {icon} <span className="text-sm font-medium">{label}</span>
+            </SidebarMenuButton>
+        </SidebarMenuItem>
     );
 }
