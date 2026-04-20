@@ -36,8 +36,7 @@
   --sidebar-ring: oklch(0 0 0);
 }
 
-.dark {
-}
+.dark {}
 
 @theme inline {
   --font-sans: "Geist Variable", sans-serif;
@@ -85,9 +84,11 @@
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
     @apply bg-sidebar text-foreground;
   }
+
   html {
     @apply font-sans;
   }
