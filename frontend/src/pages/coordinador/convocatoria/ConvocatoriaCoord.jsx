@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useSearchParams, useNavigate } from "react-router-dom";
 import { LayoutCoordinacion } from "@/modules/coordinador/common/LayoutCoordinacion";
 import { PanelHeader } from "@/components/common/PanelHeader";
-import AspirantesPage from "@/pages/coordinador/aspirante/AspirantesPage";
+import AspirantesPage from "./AspirantesPage";
 
 const tabs = ["Eventos", "Aspirantes"];
 

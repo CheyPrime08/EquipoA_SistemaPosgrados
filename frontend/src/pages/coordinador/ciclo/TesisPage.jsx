@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { TesisFilters } from './TesisFilters';
-import { TesisTable } from './TesisTable';
+import { TesisFilters } from '@/modules/coordinador/tesis/TesisFilters';
+import { TesisTable } from '@/modules/coordinador/tesis/TesisTable';
 
-export default function TesisManager({ cicloId }) {
+export default function TesisPage({ cicloId }) {
     const [theses, setTheses] = useState([
         { id: 1, student: 'Juan Carlos', code: '219583058', title: 'Inteligencia Artificial en Medicina', status: true },
         { id: 2, student: 'Gerardo', code: '000000000', title: 'Desarrollo web con React', status: false },
