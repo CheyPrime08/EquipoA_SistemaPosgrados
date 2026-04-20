@@ -1,9 +1,9 @@
 import { Routes, Route, Navigate } from "react-router-dom";
 import InicioCoord from "@/pages/coordinador/inicio/InicioCoord";
-import ArchivoCoord from "@/pages/coordinador/archivo/ArchivoCoord";
-import ConvocatoriaCoord from "@/pages/coordinador/aspirante/ConvocatoriaCoord";
+import ArchivoCoord from "@/pages/coordinador/inicio/ArchivoCoord";
+import ConvocatoriaCoord from "@/pages/coordinador/convocatoria/ConvocatoriaCoord";
 import CicloCoord from "@/pages/coordinador/ciclo/CicloCoord";
-import AgendaCoord from "@/pages/coordinador/agenda/AgendaCoord";
+import AgendaCoord from "@/pages/coordinador/inicio/AgendaCoord";
 import PendientesCoord from "@/pages/coordinador/inicio/PendientesCoord";
 import AjustesCoord from "@/pages/coordinador/inicio/AjustesCoord";
 

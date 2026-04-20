@@ -2,8 +2,8 @@ import { useState, useEffect } from "react";
 import { useParams, useSearchParams, useNavigate } from "react-router-dom";
 import { LayoutCoordinacion } from "@/modules/coordinador/common/LayoutCoordinacion";
 import { PanelHeader } from "@/components/common/PanelHeader";
-import AlumnosPage from "@/pages/coordinador/alumnos/AlumnosPage";
-import TesisManager from "@/modules/coordinador/tesis/TesisManager";
+import AlumnosPage from "./AlumnosPage";
+import TesisPage from "./TesisPage";
 
 const tabs = ["Eventos", "Alumnos", "Tesis", "Tutorías"];
 
@@ -37,7 +37,7 @@ export default function CicloCoord() {
             </div>
           )}
           {seccion === "Alumnos" && <AlumnosPage />}
-          {seccion === "Tesis" && <TesisManager cicloId={cicloId} />}
+          {seccion === "Tesis" && <TesisPage cicloId={cicloId} />}
           {seccion === "Tutorías" && (
             <div className="flex items-center justify-center h-64 text-muted-foreground">
               <p className="text-lg">Sección de Tutorías — próximamente</p>
