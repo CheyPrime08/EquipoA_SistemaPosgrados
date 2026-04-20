@@ -12,7 +12,6 @@ export default function ModuleAspirante() {
   return (
     <SidebarProvider>
       <div className="flex min-h-screen w-full p-2 bg-[#F9F8F6] items-stretch">
-        {/* Contenedor opcional para layout */}
         <Sidebar
           collapsible="icon"
           variant="floating"

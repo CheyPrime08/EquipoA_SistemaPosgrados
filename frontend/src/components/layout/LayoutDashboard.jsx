@@ -1,7 +1,13 @@
 import { SidebarProvider, SidebarInset } from "@/components/ui/sidebar";
 import { TooltipProvider } from "@/components/ui/tooltip";
 
-export function LayoutDashboard({ children, complementosFlotantes }) {
+export function LayoutDashboard({
+  Header: HeaderComponent,
+  Sidebar: SidebarComponent,
+  Panel: PanelComponent,
+  children,
+  complementosFlotantes,
+}) {
   return (
     <TooltipProvider delayDuration={200}>
       <SidebarProvider className="flex-col h-screen overflow-hidden">
