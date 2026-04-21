@@ -122,7 +122,7 @@ export default function Tesis() {
                                     <Search size={18} /> Seleccionar
                                     <input type="file" accept=".pdf" className="hidden" onChange={handleSeleccionArchivo} />
                                 </label>
-                                <button onClick={handleSubirAvance} className="flex items-center gap-2 px-5 py-2.5 bg-stone-800 text-white rounded-xl text-sm font-semibold shadow-md hover:bg-stone-700 transition-colors">
+                                <button onClick={handleSubirAvance} className="flex items-center gap-2 px-5 py-2.5 bg-[#C9B29B] text-stone-800 rounded-xl text-sm font-semibold shadow-md hover:bg-stone-700 transition-colors">
                                     <Upload size={18} /> Subir
                                 </button>
                             </div>

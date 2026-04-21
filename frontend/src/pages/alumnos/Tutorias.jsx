@@ -132,13 +132,13 @@ export default function Tutorias() {
                                     onClick={() => inputFileRef.current.click()}
                                     className="flex items-center gap-2 px-5 py-2.5 bg-[#C9B29B] text-stone-800 rounded-xl text-sm font-semibold shadow-sm hover:bg-[#bda58d]"
                                 >
-                                    <Search size={18} /> Explorar
+                                    <Search size={18} /> Seleccionar
                                 </button>
                                 <button
                                     onClick={subirArchivo}
-                                    className="flex items-center gap-2 px-5 py-2.5 bg-stone-800 text-white rounded-xl text-sm font-semibold shadow-md hover:bg-stone-700 transition-colors"
+                                    className="flex items-center gap-2 px-5 py-2.5 bg-[#C9B29B] text-stone-800 rounded-xl text-sm font-semibold shadow-md hover:bg-stone-700 transition-colors"
                                 >
-                                    <Upload size={18} /> Subir reporte
+                                    <Upload size={18} /> Subir 
                                 </button>
                             </div>
                         </div>

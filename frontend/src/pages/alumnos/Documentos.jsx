@@ -94,7 +94,7 @@ function DocBox({ title, file, inputRef, onSelect, onUpload }) {
             <div className="bg-white border border-stone-400 h-10 rounded-xl mb-6 flex items-center px-4 text-sm text-stone-600">{file ? file.name : "Ningún archivo seleccionado"}</div>
             <div className="flex gap-4">
                 <button onClick={() => inputRef.current.click()} className="flex-1 py-2.5 bg-[#C9B29B] rounded-xl text-sm font-semibold shadow-sm hover:bg-[#bda58d]"><Search size={18} className="inline mr-2"/>Seleccionar</button>
-                <button onClick={onUpload} className="flex-1 py-2.5 bg-stone-800 text-white rounded-xl text-sm font-semibold shadow-md hover:bg-stone-700"><Upload size={18} className="inline mr-2"/>Subir</button>
+                <button onClick={onUpload} className="flex-1 py-2.5 bg-[#C9B29B] text-stone-800 rounded-xl text-sm font-semibold shadow-md hover:bg-stone-700"><Upload size={18} className="inline mr-2"/>Subir</button>
             </div>
         </div>
     );
