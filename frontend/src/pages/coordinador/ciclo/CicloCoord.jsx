@@ -44,7 +44,7 @@ export default function CicloCoord() {
           )}
           {seccion === "Alumnos" && <AlumnosPage />}
           {seccion === "Tesis" && <TesisPage cicloId={cicloId} />}
-          {seccion === "Tutorías" && <TutoriasPage cicloId={cicloId} />}
+          {seccion === "Tutorías" && <TutoriasPage />}
         </div>
       </div>
     </LayoutCoordinacion>
