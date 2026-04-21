@@ -1,30 +1,11 @@
-import { Link } from "react-router-dom";
+import { LayoutAdmin } from "@/modules/admin/LayoutAdmin";
 import { Button } from "@/components/ui/button";
-import grupitoA from "../../components/ui/personas.png";
-import grupitoM from "../../components/ui/personas.png";
-import leonLogo from "../../components/ui/leon-logo.png";
+import InputsAdmin from "@/modules/admin/components/inputs/inputs";
 
 const Modificar = () => {
   return (
-    <div className="flex min-h-screen bg-background text-foreground">
-      <aside className="w-56 min-h-screen bg-sidebar flex flex-col gap-6 p-6">
-        <img src={leonLogo} alt="Logo León" className="w-32 mx-auto mb-8" />
-        <div className="flex items-center gap-2">
-          <img src={grupitoA} alt="Grupito A" className="w-6 h-6" />
-          <Link to="/agregar" className="hover:text-primary">Agregar</Link>
-        </div>
-        <div className="flex items-center gap-2">
-          <img src={grupitoM} alt="Grupito M" className="w-6 h-6" />
-          <Link to="/modificar" className="hover:text-primary">Modificar</Link>
-        </div>
-      </aside>
-
-      <main className="flex-1 flex flex-col">
-        {/* Header / Banner */}
-        <div className="w-full h-32 bg-muted flex flex-col justify-center px-10">
-          <h1 className="text-4xl font-bold">SISTEMA GESTIÓN POSGRADOS</h1>
-        </div>
-
+    <LayoutAdmin>
+    
         {/* Contenido */}
         <div className="flex-1 p-10">
          <div className="w-full text-right"><h2 className="text-3xl text-muted-foreground">Administrar Posgrados</h2></div>
@@ -34,7 +15,7 @@ const Modificar = () => {
               <div className="w-full text-right"><h3 className="text-2xl text-muted-foreground">Modificar Posgrado</h3></div> 
               {/* Búsqueda */}
               <div className="flex gap-4 items-center">
-                <input
+                <InputsAdmin
                   type="text"
                   placeholder="Nombre del Posgrado a Modificar"
                   className="flex-1 rounded-lg border border-border bg-card p-2"
@@ -44,15 +25,15 @@ const Modificar = () => {
                 </Button>
               </div>
 
-              <input type="text" placeholder="Nombre del Posgrado"
+              <InputsAdmin type="text" placeholder="Nombre del Posgrado"
                 className="w-full rounded-lg border border-border bg-card p-2" />
-              <input type="text" placeholder="Nombre del Coordinador"
+              <InputsAdmin type="text" placeholder="Nombre del Coordinador"
                 className="w-full rounded-lg border border-border bg-card p-2" />
-              <input type="text" placeholder="Código"
+              <InputsAdmin type="text" placeholder="Código"
                 className="w-full rounded-lg border border-border bg-card p-2" />
-              <input type="email" placeholder="Correo"
+              <InputsAdmin type="email" placeholder="Correo"
                 className="w-full rounded-lg border border-border bg-card p-2" />
-              <input type="tel" placeholder="Teléfono"
+              <InputsAdmin type="tel" placeholder="Teléfono"
                 className="w-full rounded-lg border border-border bg-card p-2" />
 
               <div className="flex justify-end mt-4">
@@ -63,8 +44,7 @@ const Modificar = () => {
             </div>
           </div>
         </div>
-      </main>
-    </div>
+    </LayoutAdmin>
   );
 };
 

@@ -9,6 +9,7 @@ import CicloCoord from "@/pages/coordinador/ciclo/CicloCoord";
 import AgendaCoord from "@/pages/coordinador/inicio/AgendaCoord";
 import PendientesCoord from "@/pages/coordinador/inicio/PendientesCoord";
 import AjustesCoord from "@/pages/coordinador/inicio/AjustesCoord";
+import Agregar from "@/pages/admin/agregar";
 
 const routesLogin = [
   {
@@ -17,7 +18,7 @@ const routesLogin = [
   },
   {
     path: "/",
-    element: <Login />,
+    element: <Agregar/>,
   },
   {
     path: "/recuPasswotd",
