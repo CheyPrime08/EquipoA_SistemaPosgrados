@@ -3,7 +3,6 @@ import {
   Calendar,
   ListTodo,
   Archive,
-  Settings,
 } from "lucide-react";
 
 export const sidebarRoutes = [
@@ -14,7 +13,6 @@ export const sidebarRoutes = [
       { title: "Agenda", url: "/agenda", icon: Calendar },
       { title: "Pendientes", url: "/pendientes", icon: ListTodo },
       { title: "Archivo", url: "/archivo", icon: Archive },
-      { title: "Ajustes", url: "/ajustes", icon: Settings },
     ],
   },
 ];
