@@ -5,6 +5,7 @@ import { LayoutCoordinacion } from "@/modules/coordinador/common/LayoutCoordinac
 import { PanelHeader } from "@/components/common/PanelHeader";
 import AlumnosPage from "./AlumnosPage";
 import TesisPage from "./TesisPage";
+import TutoriasPage from "./TutoriasPage";
 
 const tabs = ["Eventos", "Alumnos", "Tesis", "Tutorías"];
 
@@ -43,11 +44,7 @@ export default function CicloCoord() {
           )}
           {seccion === "Alumnos" && <AlumnosPage />}
           {seccion === "Tesis" && <TesisPage cicloId={cicloId} />}
-          {seccion === "Tutorías" && (
-            <div className="flex items-center justify-center h-64 text-muted-foreground">
-              <p className="text-lg">Sección de Tutorías — próximamente</p>
-            </div>
-          )}
+          {seccion === "Tutorías" && <TutoriasPage cicloId={cicloId} />}
         </div>
       </div>
     </LayoutCoordinacion>
