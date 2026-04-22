@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/set-state-in-effect */
 import { useState, useEffect } from "react";
 import { useParams, useSearchParams, useNavigate } from "react-router-dom";
 import { LayoutCoordinacion } from "@/modules/coordinador/common/LayoutCoordinacion";
@@ -28,7 +29,11 @@ export default function CicloCoord() {
   return (
     <LayoutCoordinacion>
       <div className="h-full flex flex-col overflow-hidden">
-        <PanelHeader seccion={seccion} onSeccion={handleTabChange} tabs={tabs} />
+        <PanelHeader
+          seccion={seccion}
+          onSeccion={handleTabChange}
+          tabs={tabs}
+        />
 
         <div className="flex-1 overflow-auto">
           {seccion === "Eventos" && (

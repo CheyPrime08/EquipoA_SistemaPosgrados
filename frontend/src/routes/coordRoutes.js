@@ -9,7 +9,7 @@ export const sidebarRoutes = [
   {
     label: "Panel Principal",
     items: [
-      { title: "Inicio", url: "/", icon: Home },
+      { title: "Inicio", url: "/inicioCoord", icon: Home },
       { title: "Agenda", url: "/agenda", icon: Calendar },
       { title: "Pendientes", url: "/pendientes", icon: ListTodo },
       { title: "Archivo", url: "/archivo", icon: Archive },
