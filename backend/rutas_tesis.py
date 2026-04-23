@@ -1,33 +1,18 @@
-from fastapi import FastAPI, UploadFile, File, HTTPException
-from fastapi.middleware.cors import CORSMiddleware
+from fastapi import APIRouter, UploadFile, File, HTTPException
 import shutil
 import os
 from datetime import datetime
-from db.conexion import db 
+from db.conexion import db
 
-app = FastAPI()
+app = APIRouter()
 
-# Configuración de CORS para que React se pueda comunicar
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=[
-        "http://localhost:5174",
-        "http://127.0.0.1:5174",
-        "http://localhost:5173", 
-        "http://127.0.0.1:5173"
-    ],
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
-
-# Seleccionamos (o creamos automáticamente) la colección para módulo de tesis
 tesis_collection = db["archivos_tesis"]
 
-# Carpeta física donde se guardarán los PDFs localmente
+# Carpeta Física para guardar los archivos de tesis
 UPLOAD_DIR = "uploads/tesis"
 os.makedirs(UPLOAD_DIR, exist_ok=True)
 
+# ----- Rutas -----
 @app.post("/api/tesis/upload")
 async def subir_avance_tesis(archivo: UploadFile = File(...)):
     # Validar que sea PDF
@@ -36,11 +21,11 @@ async def subir_avance_tesis(archivo: UploadFile = File(...)):
     
     file_path = os.path.join(UPLOAD_DIR, archivo.filename)
     
-    # Guardar archivo físicamente en tu PC
+    # Guardar archivo físicamente en PC
     with open(file_path, "wb") as buffer:
         shutil.copyfileobj(archivo.file, buffer)
         
-    # Guardar el registro en MongoDB usando la conexión de tu equipo
+    # Guardar el registro en MongoDB usando la conexión de mi equipo
     nuevo_documento = {
         "nombre_archivo": archivo.filename,
         "ruta": file_path,

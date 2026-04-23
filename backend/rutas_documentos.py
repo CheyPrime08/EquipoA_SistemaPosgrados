@@ -1,29 +1,17 @@
-from fastapi import FastAPI, APIRouter, UploadFile, File, Form, HTTPException
-from fastapi.middleware.cors import CORSMiddleware
-from fastapi.staticfiles import StaticFiles
+from fastapi import APIRouter, UploadFile, File, Form, HTTPException
 import shutil
 import os
 from datetime import datetime
-from db.conexion import db 
+from db.conexion import db
 
-app = FastAPI()
+app = APIRouter()
 
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["*"], 
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
-
+# Directorio físico
 UPLOAD_DIR = "uploads/documentos"
 os.makedirs(UPLOAD_DIR, exist_ok=True)
-app.mount("/static_documentos", StaticFiles(directory=UPLOAD_DIR), name="static_documentos")
 
 # Colección para los documentos
 documentos_collection = db["reportes_documentos"]
-
-# --- aqu ponemos las rutas ---
 
 @app.get("/api/documentos/archivos")
 async def obtener_documentos():
@@ -34,14 +22,14 @@ async def obtener_documentos():
         raise HTTPException(status_code=500, detail="Error al conectar con la base de datos")
 
 @app.post("/api/documentos/upload")
-#Agrego el parámetro 'tipo' que nos envia el frontend
+
 async def subir_documento(archivo: UploadFile = File(...), tipo: str = Form(...)): 
     
     if not archivo:
         raise HTTPException(status_code=400, detail="No se envió ningún archivo")
 
     extension = os.path.splitext(archivo.filename)[1].lower()
-    if extension not in ['.pdf', '.doc', '.docx', '.png', '.jpg', '.jpeg']: # Agrega imagenes por si se necesitan
+    if extension not in ['.pdf', '.doc', '.docx', '.png', '.jpg', '.jpeg']:
         raise HTTPException(status_code=400, detail="Formato no soportado")
 
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")

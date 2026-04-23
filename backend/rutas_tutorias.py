@@ -1,28 +1,16 @@
-from fastapi import FastAPI, UploadFile, File, HTTPException
-from fastapi.middleware.cors import CORSMiddleware
-from fastapi.staticfiles import StaticFiles
+from fastapi import APIRouter, UploadFile, File, HTTPException
 import shutil
 import os
 from datetime import datetime
-from db.conexion import db 
+from db.conexion import db
 
-app = FastAPI()
+app = APIRouter()
 
-# 1. CORRECCIÓN DE CORS (Crucial para que los botones no se bloqueen)
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["*"],  # Cambia esto a tu URL de Vite si vas a producción
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
-
-# 2. DIRECTORIOS Y ARCHIVOS ESTÁTICOS
+# DIRECTORIOS FÍSICOS
 UPLOAD_DIR = "uploads/tutorias"
 os.makedirs(UPLOAD_DIR, exist_ok=True)
-# Esto permite que el front pueda "ver" los archivos en la sección blanca de abajo
-app.mount("/static_tutorias", StaticFiles(directory=UPLOAD_DIR), name="static_tutorias")
 
+# Colección de la Base de Datos
 tutorias_collection = db["reportes_tutorias"]
 
 # --- RUTAS ---
@@ -37,7 +25,7 @@ async def obtener_reportes():
         raise HTTPException(status_code=500, detail="Error al conectar con la base de datos")
 
 @app.post("/api/tutorias/upload")
-async def subir_reporte_tutoria(archivo: UploadFile = File(...)): # El nombre 'archivo' debe ser igual en el FormData del front
+async def subir_reporte_tutoria(archivo: UploadFile = File(...)):
     
     # Validación de seguridad
     if not archivo:
