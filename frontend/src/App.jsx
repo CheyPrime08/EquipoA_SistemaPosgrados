@@ -1,9 +1,15 @@
-import Rutas from "./routes";
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
 
 function App() {
   return (
     <>
-      <Rutas />
+      <div>
+        <p class="text-black">Hola mundo</p>
+      </div>
+      <div>
+        <Button>prueba</Button>
+      </div>
     </>
   );
 }
