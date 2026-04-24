@@ -37,7 +37,9 @@ export default function TutoriasModule() {
             {/* Sección de Carga */}
             <div className="bg-[#EBE3D5] p-8 rounded-[40px] max-w-3xl shadow-sm border border-stone-200">
                 <h2 className="text-xl font-semibold mb-4 text-stone-700">Avance de Tutorías</h2>
-                <input type="file" ref={inputFileRef} className="hidden" onChange={(e) => setArchivo(e.target.files[0])} />
+                
+                
+                <input type="file" accept=".pdf" ref={inputFileRef} className="hidden" onChange={(e) => setArchivo(e.target.files[0])} />
                 
                 <div className="bg-white border border-stone-300 h-10 rounded-xl mb-6 flex items-center px-4 text-sm text-stone-600 shadow-inner">
                     {archivo ? archivo.name : "Ningún archivo seleccionado"}
@@ -80,5 +82,7 @@ function FileIcon({ label, url }) {
             <FileText size={60} className="text-stone-600 group-hover:text-amber-700" strokeWidth={1.5} />
             <span className="text-[10px] font-bold text-center uppercase text-stone-500">{displayName}</span>
         </a>
+    );
+}
     );
 }
