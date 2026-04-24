@@ -74,7 +74,10 @@ function DocBox({ title, file, inputRef, onSelect, onUpload }) {
     return (
         <div className="bg-[#EBE3D5] p-8 rounded-[40px] shadow-sm">
             <h2 className="text-xl font-semibold mb-4 text-stone-700">{title}</h2>
-            <input type="file" ref={inputRef} className="hidden" onChange={onSelect} />
+            
+    
+            <input type="file" accept=".pdf" ref={inputRef} className="hidden" onChange={onSelect} />
+            
             <div className="bg-white border border-stone-400 h-10 rounded-xl mb-6 flex items-center px-4 text-sm text-stone-600">
                 {file ? file.name : "Ningún archivo seleccionado"}
             </div>
