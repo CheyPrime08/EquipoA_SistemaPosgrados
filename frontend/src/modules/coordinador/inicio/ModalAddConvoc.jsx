@@ -60,7 +60,7 @@ export function ModalAddConvoc({ children }) {
           <CoordInput
             id="ciclo"
             name="ciclo"
-            label="Ciclo Escolar"
+            label="Ciclo escolar"
             className="h-11 text-base"
             defaultValue={cicloSugerido}
             placeholder="Ej. 2026-B"
@@ -70,7 +70,7 @@ export function ModalAddConvoc({ children }) {
             <CoordInput
               id="fecha_inicio"
               name="fecha_inicio"
-              label="Fecha de Inicio"
+              label="Fecha de inicio"
               className="h-11 text-sm"
               type="date"
               required
@@ -78,7 +78,7 @@ export function ModalAddConvoc({ children }) {
             <CoordInput
               id="fecha_fin"
               name="fecha_fin"
-              label="Fecha de Fin"
+              label="Fecha de fin"
               className="h-11 text-sm"
               type="date"
               required

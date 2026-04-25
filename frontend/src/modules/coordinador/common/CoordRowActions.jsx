@@ -1,19 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Pencil, Eye, Trash2 } from 'lucide-react';
 
-/**
- * Componente reutilizable de acciones por fila.
- * Muestra un ícono de lápiz que, al hacer clic, despliega 3 íconos de acción:
- *   - 👁 Ver   (onView)
- *   - ✏️ Editar (onEdit)
- *   - 🗑 Eliminar (onDelete)
- *
- * Props:
- *   onView   — callback al hacer clic en "Ver"
- *   onEdit   — callback al hacer clic en "Editar"
- *   onDelete — callback al hacer clic en "Eliminar"
- *   showView, showEdit, showDelete — booleanos para mostrar/ocultar cada acción (default true)
- */
 export function CoordRowActions({
     onView,
     onEdit,

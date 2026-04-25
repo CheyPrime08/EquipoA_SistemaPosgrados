@@ -9,6 +9,7 @@ import CicloCoord from "@/pages/coordinador/ciclo/CicloCoord";
 import AgendaCoord from "@/pages/coordinador/inicio/AgendaCoord";
 import PendientesCoord from "@/pages/coordinador/inicio/PendientesCoord";
 import AjustesCoord from "@/pages/coordinador/inicio/AjustesCoord";
+import TesisGlobalCoord from "@/pages/coordinador/tesis/TesisGlobalCoord";
 
 const routesLogin = [
   {
@@ -53,6 +54,10 @@ const routesCoordinador = [
   {
     path: "/ajustes",
     element: <AjustesCoord />,
+  },
+  {
+    path: "/tesis-global",
+    element: <TesisGlobalCoord />,
   },
 ];
 
