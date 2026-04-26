@@ -16,11 +16,11 @@ documentos_collection = db["reportes_documentos"]
 @app.get("/api/documentos/archivos")
 async def obtener_documentos():
     try:
-        archivos = list(documentos_collection.find({}, {"_id": 0}))
+        archivos = list(documentos_collection.find({}, {"_id": 0}).sort("fecha_subida", -1))
         return archivos
     except Exception as e:
         raise HTTPException(status_code=500, detail="Error al conectar con la base de datos")
-
+    
 @app.post("/api/documentos/upload")
 
 async def subir_documento(archivo: UploadFile = File(...), tipo: str = Form(...)): 

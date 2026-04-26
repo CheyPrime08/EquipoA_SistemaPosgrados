@@ -84,5 +84,3 @@ function FileIcon({ label, url }) {
         </a>
     );
 }
-    );
-}

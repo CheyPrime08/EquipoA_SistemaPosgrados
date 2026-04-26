@@ -18,8 +18,7 @@ tutorias_collection = db["reportes_tutorias"]
 @app.get("/api/tutorias/archivos")
 async def obtener_reportes():
     try:
-        # Convertimos cursor de Mongo a lista y manejamos posibles errores de conexión
-        archivos = list(tutorias_collection.find({}, {"_id": 0}))
+        archivos = list(tutorias_collection.find({}, {"_id": 0}).sort("fecha_subida", -1))
         return archivos
     except Exception as e:
         raise HTTPException(status_code=500, detail="Error al conectar con la base de datos")
