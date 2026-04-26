@@ -14,7 +14,12 @@ import { useState } from "react";
 import Inputs from "../../modules/preregistro/components/inputs/inputs";
 //######################################
 // aqui los Imports de constantes
-import { COORDINADOR_ROL, ADMIN_ROL, RUTAS } from "../../constants/login/roles";
+import {
+  COORDINADOR_ROL,
+  ADMIN_ROL,
+  ALUMNO_ROL,
+  RUTAS,
+} from "../../constants/login/roles";
 //######################################
 
 export default function Login() {
@@ -46,6 +51,13 @@ export default function Login() {
     if (codigo === ADMIN_ROL.CODIGO && password === ADMIN_ROL.PASSWORD) {
       setResultado("Acceso permitido como Administrador");
       navigate(RUTAS.ADMIN_ROL);
+      return;
+    }
+
+    //  aqui valida el alumno
+    if (codigo === ALUMNO_ROL.CODIGO && password === ALUMNO_ROL.PASSWORD) {
+      setResultado("Acceso permitido como Alumno");
+      navigate(RUTAS.ALUMNO_ROL);
       return;
     }
 

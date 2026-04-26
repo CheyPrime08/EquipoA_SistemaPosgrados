@@ -14,6 +14,9 @@ import ContentTelefono from "@/modules/login/components/content/contenttelefono"
 import Agregar from "@/pages/admin/agregar";
 import Modificar from "@/pages/admin/Modificar";
 import Mostrar from "@/pages/admin/Mostrar";
+import Tesis from "@/pages/alumno/Tesis";
+import Documentos from "@/pages/alumno/Documentos";
+import Tutorias from "@/pages/alumno/Tutorias";
 
 const routesAdmin = [
   {
@@ -84,6 +87,21 @@ const routesCoordinador = [
   },
 ];
 
+const routesAlumno = [
+  {
+    path: "/tesis",
+    element: <Tesis />,
+  },
+  {
+    path: "/documentos",
+    element: <Documentos />,
+  },
+  {
+    path: "/tutorias",
+    element: <Tutorias />,
+  },
+];
+
 export default function Rutas() {
   return (
     <Routes>
@@ -94,6 +112,9 @@ export default function Rutas() {
         <Route key={index} path={route.path} element={route.element} />
       ))}
       {routesCoordinador.map((route, index) => (
+        <Route key={index} path={route.path} element={route.element} />
+      ))}
+      {routesAlumno.map((route, index) => (
         <Route key={index} path={route.path} element={route.element} />
       ))}
     </Routes>

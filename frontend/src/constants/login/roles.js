@@ -8,7 +8,13 @@ export const ADMIN_ROL = {
     PASSWORD: "admin",
 };
 
+export const ALUMNO_ROL = {
+    CODIGO: "user",
+    PASSWORD: "123",
+};
+
 export const RUTAS = {
     COORDINADOR_ROL: "/inicioCoord",
     ADMIN_ROL: "/agregar",
+    ALUMNO_ROL: "/tesis",
 };

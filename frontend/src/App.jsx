@@ -1,7 +1,4 @@
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import Tesis from "./pages/alumno/Tesis";
-import Documentos from "./pages/alumno/Documentos";
-import Tutorias from "./pages/alumno/Tutorias";
+import Rutas from "./routes";
 
 function App() {
   return <Rutas />;

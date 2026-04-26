@@ -3,18 +3,18 @@ import { isValidPhoneNumber } from "react-phone-number-input";
 
 export const validacionContraseña = z.object({
     password: z.string()
-        .min(1, "La contraseña es obligatoria")
+        .min(1, "test")
 });
 
 export const validacionCorreo = z.object({
     email: z.string()
-        .min(1, "El correo es obligatorio")
+        .min(1, "test")
 });
 
 export const validacionTelefono = z.object({
     telefono: z.string()
-        .min(1, "El telefono es obligatorio")
+        .min(1, "test")
         .refine((val) => isValidPhoneNumber(val || ""), {
-            message: "El número no coincide con los dígitos del país seleccionado",
+            message: "test",
         })
 });
