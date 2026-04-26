@@ -12,6 +12,23 @@ import AjustesCoord from "@/pages/coordinador/inicio/AjustesCoord";
 import ContentCorreo from "@/modules/login/components/content/contentcorreo";
 import ContentTelefono from "@/modules/login/components/content/contenttelefono";
 import Agregar from "@/pages/admin/agregar";
+import Modificar from "@/pages/admin/Modificar";
+import Mostrar from "@/pages/admin/Mostrar";
+
+const routesAdmin = [
+  {
+    path: "/agregar",
+    element: <Agregar />,
+  },
+  {
+    path: "/modificar",
+    element: <Modificar />,
+  },
+  {
+    path: "/mostrar",
+    element: <Mostrar />,
+  },
+];
 
 const routesLogin = [
   {
@@ -20,7 +37,7 @@ const routesLogin = [
   },
   {
     path: "/",
-    element: <Agregar />,
+    element: <Login />,
   },
   {
     path: "/recuPasswotd",
@@ -70,6 +87,9 @@ const routesCoordinador = [
 export default function Rutas() {
   return (
     <Routes>
+      {routesAdmin.map((route, index) => (
+        <Route key={index} path={route.path} element={route.element} />
+      ))}
       {routesLogin.map((route, index) => (
         <Route key={index} path={route.path} element={route.element} />
       ))}

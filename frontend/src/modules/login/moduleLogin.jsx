@@ -14,7 +14,7 @@ import { useState } from "react";
 import Inputs from "../../modules/preregistro/components/inputs/inputs";
 //######################################
 // aqui los Imports de constantes
-import { COORDINADOR_ROL, RUTAS } from "../../constants/login/roles";
+import { COORDINADOR_ROL, ADMIN_ROL, RUTAS } from "../../constants/login/roles";
 //######################################
 
 export default function Login() {
@@ -39,6 +39,13 @@ export default function Login() {
     ) {
       setResultado("Acceso permitido como Coordinador");
       navigate(RUTAS.COORDINADOR_ROL);
+      return;
+    }
+
+    //  aqui valida el administrador
+    if (codigo === ADMIN_ROL.CODIGO && password === ADMIN_ROL.PASSWORD) {
+      setResultado("Acceso permitido como Administrador");
+      navigate(RUTAS.ADMIN_ROL);
       return;
     }
 

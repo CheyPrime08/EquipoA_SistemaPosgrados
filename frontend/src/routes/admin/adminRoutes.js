@@ -8,9 +8,9 @@ export const sidebarRoutes = [
   {
     label: "Panel Principal",
     items: [
-      { title: "Agregar", url: "/", icon: Plus },
+      { title: "Agregar", url: "/agregar", icon: Plus },
       { title: "Modificar", url: "/modificar", icon: PenSquare },
-      {title: "Mostra", url: "/mostrar", icon: GalleryVerticalEnd },
+      { title: "Mostra", url: "/mostrar", icon: GalleryVerticalEnd },
     ],
   },
 ];
