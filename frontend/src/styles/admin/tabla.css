@@ -1,0 +1,118 @@
+/* Estilos para la tabla del módulo admin */
+
+.tabla-container {
+  width: 100%;
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+thead {
+  background-color: var(--muted);
+  border-bottom: 2px solid var(--border);
+}
+
+th {
+  padding: 16px;
+  text-align: left;
+  font-weight: 600;
+  color: var(--muted-foreground);
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-right: 1px solid var(--border);
+}
+
+th:last-child {
+  border-right: none;
+}
+
+tbody tr {
+  border-bottom: 1px solid var(--border);
+  transition: background-color 0.2s ease;
+}
+
+tbody tr:hover {
+  background-color: var(--muted);
+}
+
+tbody tr:last-child {
+  border-bottom: none;
+}
+
+td {
+  padding: 14px 16px;
+  color: var(--foreground);
+  font-size: 0.9375rem;
+  border-right: 1px solid var(--border);
+}
+
+td:last-child {
+  border-right: none;
+}
+
+tfoot {
+  background-color: var(--muted);
+  border-top: 2px solid var(--border);
+}
+
+tfoot th {
+  padding: 16px;
+  color: var(--muted-foreground);
+  font-weight: 600;
+}
+
+/* Estilos para el combo box de preregistro */
+.preregistro-select {
+  width: 100%;
+  padding: 8px 12px;
+  border: 2px solid var(--border);
+  border-radius: 6px;
+  background-color: var(--card);
+  color: var(--foreground);
+  font-size: 0.9375rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: inherit;
+}
+
+.preregistro-select:hover {
+  border-color: var(--primary);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.preregistro-select:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.1);
+}
+
+.preregistro-select option {
+  background-color: var(--card);
+  color: var(--foreground);
+  padding: 8px;
+}
+
+/* Responsive para pantallas pequeñas */
+@media (max-width: 768px) {
+  table {
+    font-size: 0.875rem;
+  }
+
+  th,
+  td {
+    padding: 10px 12px;
+  }
+
+  th {
+    font-size: 0.75rem;
+  }
+}
