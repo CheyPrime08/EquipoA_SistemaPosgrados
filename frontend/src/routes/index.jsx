@@ -9,6 +9,8 @@ import CicloCoord from "@/pages/coordinador/ciclo/CicloCoord";
 import AgendaCoord from "@/pages/coordinador/inicio/AgendaCoord";
 import PendientesCoord from "@/pages/coordinador/inicio/PendientesCoord";
 import AjustesCoord from "@/pages/coordinador/inicio/AjustesCoord";
+import ContentCorreo from "@/modules/login/components/content/contentcorreo";
+import ContentTelefono from "@/modules/login/components/content/contenttelefono";
 
 const routesLogin = [
   {
@@ -22,6 +24,14 @@ const routesLogin = [
   {
     path: "/recuPasswotd",
     element: <RecuPasswotd />,
+  },
+  {
+    path: "/correo",
+    element: <ContentCorreo />,
+  },
+  {
+    path: "/telefono",
+    element: <ContentTelefono />,
   },
 ];
 

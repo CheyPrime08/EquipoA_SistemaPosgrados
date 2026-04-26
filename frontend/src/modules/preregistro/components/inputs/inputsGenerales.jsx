@@ -7,7 +7,7 @@ function NombreInputs({ p, placeholder, type, name }) {
         <p className="text-[16px] italic font-semibold text-gray-700">{p}</p>
         <input
           className="bg-[#EFE9E3] w-52.75 h-13.75 px-3 rounded-lg mt-2 text-[16px] 
-          shadow-[0_6px_12px_rgba(60,40,20,0.15),0_12px_30px_rgba(60,40,20,0.08)]"
+          shadow-[0_6px_12px_rgba(60,40,20,0.15),0_12px_30px_rgba(60,40,20,0.08)] outline-none"
           type={type}
           placeholder={placeholder}
           name={name}
@@ -28,7 +28,7 @@ export function InputText({ p, placeholder, type, name, value, onChange }) {
           {p} <span className="text-destructive">*</span>
         </p>
         <input
-          className="text-[15px] bg-[#f7f8f9] h-14 w-full rounded-[5px] px-4 "
+          className="text-[15px] bg-[#f7f8f9] h-14 w-full rounded-[5px] px-4 outline-none"
           style={{
             boxShadow:
               "inset 5px 5px 15px #D9DADE, inset -5px -5px 6px #FFFFFF",
@@ -54,7 +54,7 @@ export function TextArea({ p, placeholder, type, name, value, onChange }) {
           {p} <span className="text-destructive">*</span>
         </p>
         <textarea
-          className="text-[15px] bg-[#f7f8f9] h-14 w-full rounded-[5px] px-4 py-4"
+          className="text-[15px] bg-[#f7f8f9] h-14 w-full rounded-[5px] px-4 py-4 outline-none"
           style={{
             boxShadow:
               "inset 5px 5px 15px #D9DADE, inset -5px -5px 6px #FFFFFF",
@@ -70,7 +70,14 @@ export function TextArea({ p, placeholder, type, name, value, onChange }) {
   );
 }
 
-export function ElegirPosgrado({ p, placeholder, type, name, value, onChange }) {
+export function ElegirPosgrado({
+  p,
+  placeholder,
+  type,
+  name,
+  value,
+  onChange,
+}) {
   return (
     <>
       <div className="mt-4">
@@ -78,7 +85,7 @@ export function ElegirPosgrado({ p, placeholder, type, name, value, onChange }) 
           {p} <span className="text-destructive">*</span>
         </p>
         <select
-          className="text-[15px] bg-[#f7f8f9] h-14 w-full rounded-[5px] px-4 py-4"
+          className="text-[15px] bg-[#f7f8f9] h-14 w-full rounded-[5px] px-4 py-4 outline-none"
           style={{
             boxShadow:
               "inset 5px 5px 15px #D9DADE, inset -5px -5px 6px #FFFFFF",
