@@ -1,22 +1,58 @@
 import { useReactTable, getCoreRowModel, flexRender } from "@tanstack/react-table";
-import { useState } from "react";
+import { useState, useMemo, useCallback, useEffect } from "react";
 import "../../../styles/admin/tabla.css";
 
 function Tabla(){
-  // Datos de ejemplo
-  const [data, setData] = useState([
-    { posgrado: "Maestría en Computación", cordinador: "Dr. Pérez", codigo: "MC01", preregistro: "Abierto" },
-    { posgrado: "Doctorado en Sistemas", cordinador: "Dra. López", codigo: "DS02", preregistro: "Cerrado" },
-  ]);
+  // Clave para localStorage
+  const STORAGE_KEY = "tabla_posgrados_data";
 
-  // Función para manejar cambios en el preregistro
-  const handlePreregistroChange = (rowIndex, newValue) => {
-    const newData = [...data];
-    newData[rowIndex].preregistro = newValue;
-    setData(newData);
+  // Cargar datos de localStorage o usar datos por defecto
+  const datosIniciales = () => {
+    const datosGuardados = localStorage.getItem(STORAGE_KEY);
+    if (datosGuardados) {
+      return JSON.parse(datosGuardados);
+    }
+    return [
+      { posgrado: "Maestría en Computación", cordinador: "Dr. Pérez", codigo: "MC01", preregistro: "Abierto" },
+      { posgrado: "Doctorado en Sistemas", cordinador: "Dra. López", codigo: "DS02", preregistro: "Cerrado" },
+    ];
   };
 
-  const columns = [
+  // Datos de ejemplo
+  const [data, setData] = useState(datosIniciales());
+
+  // Estado para la búsqueda
+  const [busqueda, setBusqueda] = useState("");
+
+  // Guardar datos en localStorage cuando cambian
+  useEffect(() => {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+  }, [data]);
+
+  // Función para manejar cambios en el preregistro
+  const handlePreregistroChange = useCallback((rowData, newValue) => {
+    setData(prevData => {
+      const newData = [...prevData];
+      const rowIndex = newData.findIndex(item => item.codigo === rowData.codigo);
+      if (rowIndex !== -1) {
+        newData[rowIndex].preregistro = newValue;
+      }
+      return newData;
+    });
+  }, []);
+
+  // Función para filtrar los datos según la búsqueda (memoizada)
+  const datosFiltr = useMemo(() =>
+    data.filter(row =>
+      row.posgrado.toLowerCase().includes(busqueda.toLowerCase()) ||
+      row.cordinador.toLowerCase().includes(busqueda.toLowerCase()) ||
+      row.codigo.toLowerCase().includes(busqueda.toLowerCase()) ||
+      row.preregistro.toLowerCase().includes(busqueda.toLowerCase())
+    ), [data, busqueda]
+  );
+
+  // Columnas memoizadas
+  const columns = useMemo(() => [
     {
       header: "Posgrado",
       accessorKey: "posgrado"
@@ -35,7 +71,7 @@ function Tabla(){
       cell: ({ row }) => (
         <select
           value={row.original.preregistro}
-          onChange={(e) => handlePreregistroChange(row.index, e.target.value)}
+          onChange={(e) => handlePreregistroChange(row.original, e.target.value)}
           className="preregistro-select"
         >
           <option value="Abierto">Abierto</option>
@@ -43,10 +79,19 @@ function Tabla(){
         </select>
       )
     }
-  ]
-   const table = useReactTable({data, columns, getCoreRowModel: getCoreRowModel()})
+  ], [handlePreregistroChange]);
+   const table = useReactTable({data: datosFiltr, columns, getCoreRowModel: getCoreRowModel()})
     return(
         <div className="tabla-container">
+            <div className="busqueda-container">
+              <input
+                type="text"
+                placeholder="🔍 Buscar posgrado, coordinador, código o estado..."
+                value={busqueda}
+                onChange={(e) => setBusqueda(e.target.value)}
+                className="busqueda-input"
+              />
+            </div>
             <table>
                 <thead>
                     {
