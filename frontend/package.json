@@ -13,6 +13,7 @@
     "@fontsource-variable/geist": "^5.2.8",
     "@hookform/resolvers": "^5.2.2",
     "@lottiefiles/dotlottie-react": "^0.18.10",
+    "@tanstack/react-table": "^8.21.3",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "lucide-react": "^0.577.0",
@@ -38,7 +39,7 @@
     "eslint-plugin-react-hooks": "^7.0.1",
     "eslint-plugin-react-refresh": "^0.4.24",
     "globals": "^16.5.0",
-    "tailwindcss": "^4.2.1",
+    "tailwindcss": "^4.2.2",
     "vite": "^8.0.0-beta.13"
   },
   "overrides": {

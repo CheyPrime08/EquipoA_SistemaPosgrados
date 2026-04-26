@@ -11,6 +11,7 @@ import PendientesCoord from "@/pages/coordinador/inicio/PendientesCoord";
 import AjustesCoord from "@/pages/coordinador/inicio/AjustesCoord";
 import ContentCorreo from "@/modules/login/components/content/contentcorreo";
 import ContentTelefono from "@/modules/login/components/content/contenttelefono";
+import Agregar from "@/pages/admin/agregar";
 
 const routesLogin = [
   {
@@ -19,7 +20,7 @@ const routesLogin = [
   },
   {
     path: "/",
-    element: <Login />,
+    element: <Agregar />,
   },
   {
     path: "/recuPasswotd",
