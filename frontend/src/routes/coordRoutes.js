@@ -13,9 +13,8 @@ export const sidebarRoutes = [
     items: [
       { title: "Inicio", url: "/inicioCoord", icon: Home },
       { title: "Agenda", url: "/agenda", icon: Calendar },
-      { title: "Pendientes", url: "/pendientes", icon: ListTodo },
+      { title: "Tesis", url: "/tesis-global", icon: ListTodo },
       { title: "Archivo", url: "/archivo", icon: Archive },
-      { title: "Tesis", url: "/tesis-global", icon: FileText },
       { title: "Ajustes", url: "/ajustes", icon: Settings },
     ],
   },
