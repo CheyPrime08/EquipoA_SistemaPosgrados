@@ -18,11 +18,11 @@ export function CoordModal({
     <DialogPrimitive.Root open={isOpen} onOpenChange={(open) => !open && onClose()}>
       <DialogPrimitive.Portal>
         <DialogPrimitive.Overlay 
-          className="fixed inset-0 z-50 bg-zinc-950/60 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0" 
+          className="fixed inset-0 z-50 bg-zinc-950/60" 
         />
         <DialogPrimitive.Content 
           className={cn(
-            "fixed left-[50%] top-[50%] z-50 flex flex-col w-full max-h-[90vh] bg-white rounded-2xl shadow-2xl duration-200 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 overflow-hidden border-none outline-none",
+            "fixed left-[50%] top-[50%] z-50 flex flex-col w-full max-h-[90vh] bg-white rounded-2xl shadow-2xl overflow-hidden border-none outline-none",
             className
           )}
           style={{ transform: 'translate(-50%, -50%)', maxWidth: maxWidth }}
@@ -34,9 +34,6 @@ export function CoordModal({
                 {title}
               </DialogPrimitive.Title>
             </div>
-            <DialogPrimitive.Close className="text-stone-400 hover:text-stone-700 transition-colors outline-none shrink-0">
-              <X size={18} />
-            </DialogPrimitive.Close>
           </div>
 
           <div className={cn("flex-1 overflow-y-auto p-6", contentClassName)}>
