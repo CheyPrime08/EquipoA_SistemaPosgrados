@@ -17,10 +17,10 @@ function ContextMenu({ onEdit, onEmail, onClose }) {
     return (
         <div ref={menuRef} className="absolute right-8 top-12 z-40 bg-white border border-[#EBE3D5] rounded-xl shadow-lg py-1 w-52 text-sm">
             <button onClick={onEdit} className="w-full flex items-center gap-3 px-4 py-2.5 hover:bg-[#FAF8F5] text-stone-700 transition-colors">
-                <Pencil size={14} className="text-stone-400" /> Editar Datos Generales
+                <Pencil size={14} className="text-stone-400" /> Editar datos generales
             </button>
             <button onClick={onEmail} className="w-full flex items-center gap-3 px-4 py-2.5 hover:bg-[#FAF8F5] text-stone-700 transition-colors">
-                <Mail size={14} className="text-stone-400" /> Enviar Correo
+                <Mail size={14} className="text-stone-400" /> Enviar correo
             </button>
         </div>
     );
@@ -28,14 +28,14 @@ function ContextMenu({ onEdit, onEmail, onClose }) {
 
 // ── Datos iniciales de documentos por pestaña ────────────────────────────────
 const INITIAL_DOCS = {
-    'Documentos Académicos': ['Título de Licenciatura', 'Certificado de Calificaciones', 'Propuesta de Tesis'],
-    'Documentos Personales': ['Identificación Oficial (INE)', 'Comprobante de Domicilio', 'Acta de Nacimiento'],
+    'Documentos académicos': ['Título de Licenciatura', 'Certificado de Calificaciones', 'Propuesta de Tesis'],
+    'Documentos personales': ['Identificación Oficial (INE)', 'Comprobante de Domicilio', 'Acta de Nacimiento'],
     'Constancias': ['Constancia de Estudios', 'Constancia de No Adeudo'],
 };
 
 // ── Panel principal ──────────────────────────────────────────────────────────
 export function StudentPanel({ student, onClose }) {
-    const [activeTab, setActiveTab] = useState('Documentos Académicos');
+    const [activeTab, setActiveTab] = useState('Documentos académicos');
     const [docs, setDocs] = useState(INITIAL_DOCS);
     const [showUpload, setShowUpload] = useState(false);
     const [showMenu, setShowMenu] = useState(false);
@@ -102,7 +102,7 @@ export function StudentPanel({ student, onClose }) {
 
                         {showMenu && (
                             <ContextMenu
-                                onEdit={() => { setActiveTab('Datos Generales'); setShowMenu(false); }}
+                                onEdit={() => { setActiveTab('Datos generales'); setShowMenu(false); }}
                                 onEmail={() => { window.open(`mailto:alumno@posgrado.edu.mx`); setShowMenu(false); }}
                                 onClose={() => setShowMenu(false)}
                             />
@@ -111,20 +111,20 @@ export function StudentPanel({ student, onClose }) {
 
                     {/* Pestañas */}
                     <div className="flex gap-6 border-b border-[#EBE3D5] mb-2 text-sm overflow-x-auto whitespace-nowrap scrollbar-hide">
-                        {renderTabButton("Datos Generales")}
-                        {renderTabButton("Documentos Personales")}
+                        {renderTabButton("Datos generales")}
+                        {renderTabButton("Documentos personales")}
                     </div>
                     <div className="flex gap-6 border-b border-[#EBE3D5] mb-6 text-sm overflow-x-auto whitespace-nowrap scrollbar-hide">
-                        {renderTabButton("Documentos Académicos")}
+                        {renderTabButton("Documentos académicos")}
                         {renderTabButton("Constancias")}
                     </div>
 
                     <div className="space-y-4 mb-10">
-                        {activeTab === 'Datos Generales' ? (
+                        {activeTab === 'Datos generales' ? (
                             <div className="space-y-3 text-sm">
-                                <div className="flex flex-col"><span className="text-stone-500 text-xs">Correo Electrónico</span><span className="text-stone-800">alumno@posgrado.edu.mx</span></div>
+                                <div className="flex flex-col"><span className="text-stone-500 text-xs">Correo electrónico</span><span className="text-stone-800">alumno@posgrado.edu.mx</span></div>
                                 <div className="flex flex-col"><span className="text-stone-500 text-xs">Teléfono</span><span className="text-stone-800">+52 33 1234 5678</span></div>
-                                <div className="flex flex-col"><span className="text-stone-500 text-xs">Fecha de Nacimiento</span><span className="text-stone-800">15 de Mayo, 1995</span></div>
+                                <div className="flex flex-col"><span className="text-stone-500 text-xs">Fecha de nacimiento</span><span className="text-stone-800">15 de Mayo, 1995</span></div>
                                 <div className="flex flex-col"><span className="text-stone-500 text-xs">Dirección</span><span className="text-stone-800">Av. Siempre Viva 123, Zapopan</span></div>
                             </div>
                         ) : currentDocs.length > 0 ? (
@@ -137,13 +137,13 @@ export function StudentPanel({ student, onClose }) {
                     </div>
 
                     {/* Botón de subida — solo en pestañas de documentos */}
-                    {activeTab !== 'Datos Generales' && (
+                    {activeTab !== 'Datos generales' && (
                         <div className="mt-auto">
                             <CoordButton
                                 onClick={() => setShowUpload(true)}
                                 className="w-full py-3 rounded-2xl"
                             >
-                                <Plus size={16} /> Subir Nuevo Documento
+                                <Plus size={16} /> Subir nuevo documento
                             </CoordButton>
                         </div>
                     )}
@@ -154,7 +154,7 @@ export function StudentPanel({ student, onClose }) {
             <CoordModal
                 isOpen={showUpload}
                 onClose={() => setShowUpload(false)}
-                title="Subir Nuevo Documento"
+                title="Subir nuevo documento"
                 footer={
                     <>
                         <CoordButton variant="secondary" onClick={() => setShowUpload(false)}>Cancelar</CoordButton>

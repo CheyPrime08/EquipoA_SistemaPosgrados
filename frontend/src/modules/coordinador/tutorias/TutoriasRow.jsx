@@ -2,11 +2,12 @@ import React, { useState } from 'react';
 import { CoordRowActions } from '../common/CoordRowActions';
 import { CoordModal } from '../common/CoordModal';
 import { CoordButton } from '../common/CoordButton';
-import { Pencil } from 'lucide-react';
+import { Pencil, FileText, Eye } from 'lucide-react';
 
 export const TutoriasRow = ({ tutoria, onSave, onDelete }) => {
     const [showEdit, setShowEdit] = useState(false);
     const [showView, setShowView] = useState(false);
+    const [showReporte, setShowReporte] = useState(null);
     const [editData, setEditData] = useState({ ...tutoria });
 
     const handleOpenEdit = () => {
@@ -18,6 +19,8 @@ export const TutoriasRow = ({ tutoria, onSave, onDelete }) => {
         onSave?.(editData);
         setShowEdit(false);
     };
+
+    const reportes = tutoria.reportes || [];
 
     const inputClass = "w-full border border-[#EBE3D5] rounded-xl px-4 py-2.5 text-sm text-stone-800 outline-none focus:border-[#C9B29B] transition-colors bg-[#FAF8F5]";
 
@@ -54,18 +57,20 @@ export const TutoriasRow = ({ tutoria, onSave, onDelete }) => {
                 </td>
             </tr>
 
-            {/* Modal: Ver detalles */}
+            {/* Modal: Ver detalles + Reportes */}
             <CoordModal
                 isOpen={showView}
                 onClose={() => setShowView(false)}
                 title="Detalles de Tutoría"
-                maxWidth="480px"
+                icon={<FileText size={18} className="text-[#C9B29B]" />}
+                maxWidth="560px"
                 footer={
                     <CoordButton onClick={() => setShowView(false)}>Cerrar</CoordButton>
                 }
             >
-                <div className="flex flex-col gap-4">
-                    <div className="flex items-center gap-4 mb-2">
+                <div className="flex flex-col gap-5">
+                    {/* Info del alumno */}
+                    <div className="flex items-center gap-4 mb-1">
                         <div className="w-12 h-12 rounded-full bg-[#EFE9E0] flex items-center justify-center border border-[#EBE3D5] text-[#C9B29B]">
                             <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
                                 <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd" />
@@ -76,14 +81,70 @@ export const TutoriasRow = ({ tutoria, onSave, onDelete }) => {
                             <span className="text-stone-500 text-xs">{tutoria.code}</span>
                         </div>
                     </div>
+
+                    {/* Posgrado */}
                     <div className="flex flex-col gap-1.5">
                         <label className="text-[10px] font-bold text-stone-400 uppercase tracking-widest">Posgrado</label>
                         <p className="text-sm text-stone-800 bg-[#FAF8F5] rounded-xl px-4 py-3 border border-[#EBE3D5]">{tutoria.posgrado}</p>
                     </div>
+
+                    {/* Tutor */}
                     <div className="flex flex-col gap-1.5">
                         <label className="text-[10px] font-bold text-stone-400 uppercase tracking-widest">Tutor Asignado</label>
                         <p className="text-sm text-stone-800 bg-[#FAF8F5] rounded-xl px-4 py-3 border border-[#EBE3D5]">{tutoria.tutor}</p>
                     </div>
+
+                    {/* Reportes / Archivos de Tutoría */}
+                    <div className="flex flex-col gap-2">
+                        <label className="text-[10px] font-bold text-stone-400 uppercase tracking-widest">Reportes de Tutoría</label>
+                        {reportes.length > 0 ? (
+                            <div className="space-y-2">
+                                {reportes.map((reporte, idx) => (
+                                    <div
+                                        key={idx}
+                                        className="flex items-center justify-between bg-[#FAF8F5] rounded-xl px-4 py-3 border border-[#EBE3D5] group/doc"
+                                    >
+                                        <div className="flex items-center gap-3">
+                                            <FileText size={18} className="text-[#D8C4B6] shrink-0" />
+                                            <span className="text-sm text-stone-800 font-medium">{reporte}</span>
+                                        </div>
+                                        <button
+                                            title="Ver reporte"
+                                            onClick={() => setShowReporte(reporte)}
+                                            className="text-stone-400 hover:text-[#C9B29B] transition-colors"
+                                        >
+                                            <Eye size={16} />
+                                        </button>
+                                    </div>
+                                ))}
+                            </div>
+                        ) : (
+                            <p className="text-sm text-stone-400 bg-[#FAF8F5] rounded-xl px-4 py-3 border border-[#EBE3D5]">
+                                No hay reportes subidos aún.
+                            </p>
+                        )}
+                    </div>
+                </div>
+            </CoordModal>
+
+            {/* Modal: Vista previa de un reporte individual */}
+            <CoordModal
+                isOpen={showReporte !== null}
+                onClose={() => setShowReporte(null)}
+                title={showReporte || ''}
+                icon={<FileText size={18} className="text-[#C9B29B]" />}
+                maxWidth="560px"
+                contentClassName="bg-[#FAF8F5] p-10"
+                footer={
+                    <CoordButton onClick={() => setShowReporte(null)}>Cerrar</CoordButton>
+                }
+            >
+                <div className="flex flex-col items-center justify-center gap-4">
+                    <div className="w-48 h-60 bg-white border border-[#EBE3D5] rounded-xl shadow-sm flex flex-col items-center justify-center gap-3">
+                        <FileText size={40} className="text-[#D8C4B6]" />
+                        <span className="text-xs text-stone-400 text-center px-4 leading-tight">{showReporte}</span>
+                    </div>
+                    <p className="text-xs text-stone-400">Vista previa del reporte</p>
                 </div>
             </CoordModal>
 

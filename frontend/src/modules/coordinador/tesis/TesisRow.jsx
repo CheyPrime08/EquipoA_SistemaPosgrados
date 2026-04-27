@@ -3,7 +3,7 @@ import { Eye, FileText } from 'lucide-react';
 import { CoordModal } from '../common/CoordModal';
 import { CoordButton } from '../common/CoordButton';
 
-export const TesisRow = ({ thesis, onToggle }) => {
+export const TesisRow = ({ thesis, onToggle, showGeneration }) => {
     const [showModal, setShowModal] = useState(false);
 
     return (
@@ -27,6 +27,13 @@ export const TesisRow = ({ thesis, onToggle }) => {
                         {thesis.title}
                     </div>
                 </td>
+                {showGeneration && (
+                    <td className="py-4 px-6 text-sm">
+                        <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium bg-[#EFE9E0] text-[#C9B29B] border border-[#EBE3D5]">
+                            {thesis.year || "N/A"}
+                        </span>
+                    </td>
+                )}
                 <td className="py-4 px-6">
                     <div className="flex items-center gap-3">
                         <div className="flex flex-col">
@@ -61,7 +68,7 @@ export const TesisRow = ({ thesis, onToggle }) => {
             <CoordModal
                 isOpen={showModal}
                 onClose={() => setShowModal(false)}
-                title="Detalles de Tesis"
+                title="Detalles de tesis"
                 icon={<FileText size={18} className="text-[#C9B29B]" />}
                 maxWidth="560px"
                 footer={
@@ -84,15 +91,24 @@ export const TesisRow = ({ thesis, onToggle }) => {
 
                     {/* Título de la tesis */}
                     <div className="flex flex-col gap-1.5">
-                        <label className="text-[10px] font-bold text-stone-400 uppercase tracking-widest">Título de Tesis</label>
+                        <label className="text-[10px] font-bold text-stone-400 uppercase tracking-widest">Título de tesis</label>
                         <p className="text-sm text-stone-800 font-medium bg-[#FAF8F5] rounded-xl px-4 py-3 border border-[#EBE3D5]">
                             {thesis.title}
                         </p>
                     </div>
 
+                    {showGeneration && thesis.year && (
+                        <div className="flex flex-col gap-1.5">
+                            <label className="text-[10px] font-bold text-stone-400 uppercase tracking-widest">Generación</label>
+                            <p className="text-sm text-stone-800 font-medium">
+                                {thesis.year}
+                            </p>
+                        </div>
+                    )}
+
                     {/* Estado de revisión */}
                     <div className="flex flex-col gap-1.5">
-                        <label className="text-[10px] font-bold text-stone-400 uppercase tracking-widest">Estado de Revisión</label>
+                        <label className="text-[10px] font-bold text-stone-400 uppercase tracking-widest">Estado de revisión</label>
                         <div className="flex items-center gap-2">
                             <span className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium ${
                                 thesis.status
@@ -107,7 +123,7 @@ export const TesisRow = ({ thesis, onToggle }) => {
 
                     {/* Vista previa del documento de tesis */}
                     <div className="flex flex-col gap-1.5">
-                        <label className="text-[10px] font-bold text-stone-400 uppercase tracking-widest">Documento de Tesis</label>
+                        <label className="text-[10px] font-bold text-stone-400 uppercase tracking-widest">Documento de tesis</label>
                         <div className="bg-[#FAF8F5] rounded-xl border border-[#EBE3D5] p-6 flex flex-col items-center gap-3">
                             <div className="w-36 h-48 bg-white border border-[#EBE3D5] rounded-xl shadow-sm flex flex-col items-center justify-center gap-3">
                                 <FileText size={40} className="text-[#D8C4B6]" />
