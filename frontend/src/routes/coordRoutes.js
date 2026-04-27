@@ -9,7 +9,7 @@ import {
 
 export const sidebarRoutes = [
   {
-    label: "Panel principal",
+    label: "Panel Principal",
     items: [
       { title: "Inicio", url: "/inicioCoord", icon: Home },
       { title: "Agenda", url: "/agenda", icon: Calendar },
@@ -26,7 +26,7 @@ export const allRoutes = [
   {
     label: "Gestión",
     items: [
-      { title: "Ciclo escolar", url: "/ciclo" },
+      { title: "Ciclo Escolar", url: "/ciclo" },
       { title: "Convocatoria", url: "/convocatoria" },
     ],
   },

@@ -43,11 +43,10 @@ export default function AlumnosPage() {
     }, [searchQuery, sortConfig]);
 
     const headers = [
-        { label: "Código Alumno", onClick: () => handleSort('code') },
-        { label: "Nombre Completo", onClick: () => handleSort('name') },
+        { label: "", sortable: false },
+        { label: "Alumno", onClick: () => handleSort('name') },
         { label: "Programa", onClick: () => handleSort('prog') },
-        { label: "Estado Tesis", onClick: () => handleSort('status') },
-        { label: "Acciones", sortable: false }
+        { label: "Estado Tesis", onClick: () => handleSort('status') }
     ];
 
     return (
@@ -74,7 +73,7 @@ export default function AlumnosPage() {
                         ))
                     ) : (
                         <tr>
-                            <td colSpan="5" className="py-8 text-center text-sm text-stone-500">
+                            <td colSpan="4" className="py-8 text-center text-sm text-stone-500">
                                 No se encontraron alumnos con esos criterios.
                             </td>
                         </tr>

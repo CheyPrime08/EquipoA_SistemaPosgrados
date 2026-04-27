@@ -66,8 +66,9 @@ export function StudentPanel({ student, onClose }) {
         }, 900);
     };
 
-    const TabButton = ({ label }) => (
+    const renderTabButton = (label) => (
         <button
+            key={label}
             className={activeTab === label
                 ? "pb-3 text-stone-800 font-semibold border-b-2 border-[#C9B29B] transition-colors"
                 : "pb-3 text-stone-500 hover:text-stone-800 transition-colors"}
@@ -79,7 +80,7 @@ export function StudentPanel({ student, onClose }) {
 
     return (
         <>
-            <aside className="w-[420px] bg-white border-l border-[#EBE3D5] shadow-[-8px_0_30px_rgba(0,0,0,0.02)] flex flex-col shrink-0 overflow-y-auto relative">
+            <aside className="w-[420px] bg-white border border-[#EBE3D5] shadow-[0_8px_30px_rgba(0,0,0,0.04)] flex flex-col shrink-0 overflow-y-auto relative rounded-3xl m-4">
                 <div className="p-8">
                     {/* Header */}
                     <div className="flex justify-between items-start mb-6 relative">
@@ -110,12 +111,12 @@ export function StudentPanel({ student, onClose }) {
 
                     {/* Pestañas */}
                     <div className="flex gap-6 border-b border-[#EBE3D5] mb-2 text-sm overflow-x-auto whitespace-nowrap scrollbar-hide">
-                        <TabButton label="Datos generales" />
-                        <TabButton label="Documentos personales" />
+                        {renderTabButton("Datos generales")}
+                        {renderTabButton("Documentos personales")}
                     </div>
                     <div className="flex gap-6 border-b border-[#EBE3D5] mb-6 text-sm overflow-x-auto whitespace-nowrap scrollbar-hide">
-                        <TabButton label="Documentos académicos" />
-                        <TabButton label="Constancias" />
+                        {renderTabButton("Documentos académicos")}
+                        {renderTabButton("Constancias")}
                     </div>
 
                     <div className="space-y-4 mb-10">

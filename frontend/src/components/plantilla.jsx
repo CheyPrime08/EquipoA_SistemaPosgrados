@@ -1,5 +1,8 @@
 import React from 'react';
-import leonLogo from '@/components/ui/leon-logo.png';
+//NO ME ENCONTRE EL LOGO, despues lo pueden descomentar cuando lo agreguen
+// import leonLogo from '@/components/ui/leon-logo.png';
+//y este en linea 43
+//<img src={leonLogo} alt="Logo" className="w-24 h-24 object-contain absolute top-1 left-1" />
 import {
     Home,
     Users,
@@ -20,15 +23,25 @@ import {
     User2Icon,
     ContactRound
 } from 'lucide-react';
-
+import { useEffect, useState } from "react"; // ← agrega esto
+import { getAlumnos } from "@/api/alumnos.api"; 
 export default function RevAlumnos() {
+    const [alumnos, setAlumnos] = useState([]);
+
+    useEffect(() => {
+        const fetchAlumnos = async () => {
+            const data = await getAlumnos();
+            setAlumnos(data);
+        };
+        fetchAlumnos();
+    }, []);
+
     return (
         <div className="flex h-screen bg-[#FAF8F5] text-stone-800 font-sans antialiased">
             {/* Sidebar */}
             <aside className="w-64 border-r border-[#EBE3D5] flex flex-col justify-between py-8 px-6 shrink-0">
                 <div>
                     <div className="flex items-center gap-2 px-4 mb-20">
-                        <img src={leonLogo} alt="Logo" className="w-24 h-24 object-contain absolute top-1 left-1" />
                     </div>
                     <nav className="space-y-1 px-1 py-2 border-b border-[#EBE3D5]">
                         <NavItem icon={<Home size={18} />} label="Inicio" />
@@ -95,11 +108,16 @@ export default function RevAlumnos() {
                                     </tr>
                                 </thead>
                                 <tbody className="divide-y divide-[#EBE3D5]">
-                                    <TableRow code="ALU1234" name="Ana García" prog="Maestría en IA" status="En Revisión" statusColor="bg-[#D8C4B6]" />
-                                    <TableRow code="ALU5678" name="Pedro López" prog="Doctorado en Ciencias" status="Aceptado" statusColor="bg-[#DBD3C8]" />
-                                    <TableRow code="ALU9012" name="Carlos Ruiz" prog="Maestría en IA" status="Sin Tesis" statusColor="bg-[#E6D5C5]" />
-                                    <TableRow code="ALU1234" name="Ana García" prog="Maestría en IA" status="Aceptado" statusColor="bg-[#DBD3C8]" />
-                                    <TableRow code="ALU5678" name="Pedro López" prog="Doctorado en Ciencias" status="Aceptado" statusColor="bg-[#DBD3C8]" />
+                                    {alumnos.map((alumno, i) => (
+                                    <TableRow
+                                        key={i}
+                                        code={alumno.codigo}
+                                        name={alumno.nombre}
+                                        prog={alumno.programa}
+                                        status={alumno.estadoTesis}
+                                        statusColor="bg-[#DBD3C8]"
+                                        />
+                                    ))}
                                 </tbody>
                             </table>
                         </div>
