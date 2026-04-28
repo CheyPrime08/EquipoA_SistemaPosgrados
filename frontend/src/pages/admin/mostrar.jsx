@@ -1,7 +1,6 @@
 import Tabla from "@/modules/admin/components/Tabla";
 import { LayoutAdmin } from "@/modules/admin/LayoutAdmin"
 
-
 function Agregar() {
   return (
 

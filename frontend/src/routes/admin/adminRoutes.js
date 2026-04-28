@@ -10,7 +10,7 @@ export const sidebarRoutes = [
     items: [
       { title: "Agregar", url: "/", icon: Plus },
       { title: "Modificar", url: "/modificar", icon: PenSquare },
-      {title: "Mostra", url: "/mostrar", icon: GalleryVerticalEnd },
+      {title: "Mostrar", url: "/mostrar", icon: GalleryVerticalEnd },
     ],
   },
 ];
