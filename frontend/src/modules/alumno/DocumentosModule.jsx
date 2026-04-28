@@ -53,11 +53,11 @@ export default function DocumentosModule() {
 
             <div className="bg-[#EBE3D5] p-8 rounded-[40px] shadow-sm">
                 <h2 className="text-xl font-semibold mb-6 text-stone-700 border-b border-stone-300 pb-2">
-                    Historial de Documentos
+                    Historial de documentos
                 </h2>
                 <div className="bg-white/50 rounded-[30px] p-10 flex gap-12 justify-start items-center flex-wrap">
                     {documentos.length === 0 ? (
-                        <p className="text-stone-500 italic text-sm">No hay documentos cargados.</p>
+                        <p className="text-stone-500 italic text-sm">No hay reportes registrados.</p>
                     ) : (
                         documentos.map((doc, i) => (
                             <FileIcon key={i} label={doc.nombre_archivo} url={doc.url_descarga} />
