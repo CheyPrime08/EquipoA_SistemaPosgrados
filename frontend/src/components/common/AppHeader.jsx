@@ -2,7 +2,7 @@ import { Menu } from "lucide-react";
 import { useSidebar } from "@/components/ui/sidebar";
 import { HeaderButton } from "@/components/common/header/HeaderButton";
 import { TituloRuta } from "@/components/common/header/TituloRuta";
-import { UserButton } from "@/components/common/header/UserButton";
+import { BotonUsuario } from "@/components/common/header/BotonUsuario";
 
 export function AppHeader({ rutas }) {
   const { toggleSidebar } = useSidebar();

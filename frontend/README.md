@@ -21,8 +21,8 @@
 │   ├── 📁 lib            # Utilidades y funciones de ayuda (utils.js)
 │   ├── 📁 modules        # Lógica de negocio y componentes específicos por funcionalidad
 │   │   ├── 📁 admin      # Gestión de administrador
-│   │   ├── 📁 alumnado   # Procesos relativos al alumno
-│   │   ├── 📁 coordinacion # Gestión completa (agenda, alumnos, aspirantes, tesis)
+│   │   ├── 📁 alumno   # Procesos relativos al alumno
+│   │   ├── 📁 coordinador # Gestión completa (agenda, alumnos, aspirantes, tesis)
 │   │   ├── 📁 login      # Lógica de autenticación
 │   │   └── 📁 preregistro # Flujo de registro inicial
 │   ├── 📁 pages          # Vistas principales vinculadas a las rutas (Admin, Alumno, Coord)
