@@ -25,7 +25,7 @@ export const UserButton = () => {
   }, []);
 
   return (
-    <div className="ml-auto mr-3">
+    <div className="flex items-center justify-center">
       <DropdownMenu>
         <AppTooltip etiqueta="Opciones de perfil" side="bottom" align="end">
           <DropdownMenuTrigger asChild>
