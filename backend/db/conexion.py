@@ -7,20 +7,18 @@ load_dotenv()
 
 # obtener datos de acceso del .env
 uri = os.getenv("MONGO_URL")
-#database_name = os.getenv("DATABASE_NAME")
+database_name = os.getenv("DATABASE_NAME")
 
 # conectar a MongoDB
 client = MongoClient(uri)
 
 # seleccionar base de datos
-#db = client[database_name]
+db = client[database_name]
 
-#si imprime esto es que funciona
+# si imprime esto es que funciona
 print("Conexión exitosa a MongoDB Atlas")
-#print(db.list_collection_names()) #debe imprimir []
-print(client.list_database_names()) #debe imprimir []
+print(db.list_collection_names())
 
 
-#para usar esta conexion en otros archivos (ejemplo)
-#from database.conexion import db
-#usuarios = db["usuarios"]
+# para usar esta conexion en otros archivos (ejemplo)
+# from backend.db.conexion import client, db

@@ -19,11 +19,12 @@ const handleBuscar = async () => {
     console.log("Buscando:", busqueda);
     const nombre_db = busqueda.trim().replace(/ /g, "_");
     const datos = await buscarPosgrado(nombre_db);
+    console.log("Datos recibidos:", datos);
     if (datos.error) {
       alert("Posgrado no encontrado");
       return;
     }
-    setNombreDb(nombre_db);
+    setNombreDb(datos.nombre_db);
     setForm({
       posgrado: datos.posgrado || "",
       cordinador: datos.cordinador || "",

@@ -1,13 +1,14 @@
-function InputsAdmin3({type, placeholder, name}){
-    return (
-              <input
-                type={type}
-                placeholder={placeholder}
-                className="w-1/3 rounded-lg border border-border bg-card p-2"
-              />
-
-    );
+function InputsAdmin3({ type, placeholder, name, value, onChange, className }) {
+  return (
+    <input
+      type={type}
+      placeholder={placeholder}
+      name={name}
+      value={value}
+      onChange={onChange}
+      className={className || "w-full rounded-lg border border-border bg-card p-2"}
+    />
+  );
 }
 
 export default InputsAdmin3;
-
