@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React, { useMemo, useState } from "react";
 import {
   Dialog,
   DialogContent,
@@ -10,8 +10,11 @@ import {
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { CoordInput } from "@/modules/coordinador/common/CoordInput";
+import { CheckboxPlantilla } from "./CheckboxPlantilla";
 
 export function ModalAddConvoc({ children }) {
+  const [useTemplate, setUseTemplate] = useState(false);
+
   const cicloSugerido = useMemo(() => {
     const now = new Date();
     const year = now.getFullYear();
@@ -22,12 +25,14 @@ export function ModalAddConvoc({ children }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
+    const data = Object.fromEntries(formData);
+    console.log("Form Data:", { ...data, useTemplate });
   };
 
   return (
     <Dialog>
       <DialogTrigger asChild>{children}</DialogTrigger>
-      <DialogContent className="rounded-xl overflow-visible h-[50vh] sm:max-w-[600px] py-10 px-14 flex flex-col shadow-none">
+      <DialogContent className="rounded-xl overflow-visible h-[60vh] sm:max-w-[600px] py-10 px-14 flex flex-col shadow-none">
         <div className="absolute -top-12 right-0 flex gap-3">
           <DialogClose asChild>
             <button
@@ -84,7 +89,10 @@ export function ModalAddConvoc({ children }) {
               required
             />
           </div>
-          <div className="text-sm text-muted-foreground bg-muted/20 px-4 py-3 mb-3 rounded-xl border border-border/50 mt-auto">
+
+          <CheckboxPlantilla checked={useTemplate} onChange={setUseTemplate} />
+
+          <div className="text-sm text-muted-foreground bg-muted/20 px-4 py-3 mb-3 rounded-xl border border-border/50 mb-auto">
             Confirma el ciclo escolar y el periodo de vigencia para la nueva
             convocatoria de posgrado.
           </div>
