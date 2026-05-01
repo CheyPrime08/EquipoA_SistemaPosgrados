@@ -15,22 +15,22 @@ const InicioCoord = () => {
     >
       <div className="flex gap-4">
         <CoordCard
-          label="Ciclo"
-          ciclo="2025-B"
+          label="generacion"
+          generacion="2025-B"
           descripcion="Próxima entrega: Protocolo de investigación"
           onClick={() => navigate("/ciclo")}
           onContact={() => navigate("/ciclo?tab=Alumnos")}
         />
         <CoordCard
-          label="Ciclo"
-          ciclo="2026-A"
+          label="generacion"
+          generacion="2026-A"
           descripcion="Próxima entrega: Protocolo de investigación"
           onClick={() => navigate("/ciclo")}
           onContact={() => navigate("/ciclo?tab=Alumnos")}
         />
         <CoordCard
-          label="Ciclo"
-          ciclo="2026-B"
+          label="generacion"
+          generacion="2026-B"
           descripcion="Próxima entrega: Protocolo de investigación"
           onClick={() => navigate("/ciclo")}
           onContact={() => navigate("/ciclo?tab=Alumnos")}
@@ -38,7 +38,7 @@ const InicioCoord = () => {
         <CoordCard
           variant="convocatoria"
           label="Convocatoria"
-          ciclo="2027-A"
+          generacion="2027-A"
           descripcion="Próxima entrega: Protocolo de investigación"
           onClick={() => navigate("/convocatoria")}
         />

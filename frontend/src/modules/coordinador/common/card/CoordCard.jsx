@@ -5,19 +5,19 @@ import { CardDescription } from "@/modules/coordinador/common/card/CardDescripti
 import { CardButton } from "@/modules/coordinador/common/card/CardButton";
 
 export function CoordCard({
-  variant = "ciclo",
+  variant = "generacion",
   isArchived = false,
   label,
-  ciclo,
+  generacion,
   descripcion,
   onClick,
   onContact,
   onOptions,
 }) {
   const { handlePress, isPressed } = usePressAnimation();
-  
+
   const isConvocatoria = variant === "convocatoria";
-  
+
   // Estilos condicionales basados en variante y estado
   const containerClasses = `
     text-left w-74 rounded-xl border border-border bg-background overflow-hidden 
@@ -25,18 +25,27 @@ export function CoordCard({
     ${isConvocatoria || isArchived ? "opacity-75 hover:opacity-90" : ""}
   `;
 
-  const titleClassName = (isConvocatoria || isArchived) ? "text-sidebar-foreground/70" : "text-sidebar-foreground";
-  const descClassName = (isConvocatoria || isArchived) ? "text-muted-foreground/60" : "text-muted-foreground";
-  const iconClassName = (isConvocatoria || isArchived) ? "text-sidebar-foreground/50" : "text-sidebar-foreground";
-  
+  const titleClassName =
+    isConvocatoria || isArchived
+      ? "text-sidebar-foreground/70"
+      : "text-sidebar-foreground";
+  const descClassName =
+    isConvocatoria || isArchived
+      ? "text-muted-foreground/60"
+      : "text-muted-foreground";
+  const iconClassName =
+    isConvocatoria || isArchived
+      ? "text-sidebar-foreground/50"
+      : "text-sidebar-foreground";
+
   const contactLabel = isConvocatoria ? "Aspirantes" : "Alumnos";
 
   return (
     <div onClick={onClick} className={containerClasses.trim()}>
       <CardTitle
         label={label}
-        ciclo={ciclo}
-        cicloClassName={titleClassName}
+        generacion={generacion}
+        generacionClassName={titleClassName}
       >
         {(isConvocatoria || isArchived) && (
           <div
@@ -47,12 +56,9 @@ export function CoordCard({
           />
         )}
       </CardTitle>
-      
-      <CardDescription
-        descripcion={descripcion}
-        className={descClassName}
-      />
-      
+
+      <CardDescription descripcion={descripcion} className={descClassName} />
+
       <div className="border-t border-border px-4 py-2 flex justify-between">
         <CardButton
           icon={Contact}

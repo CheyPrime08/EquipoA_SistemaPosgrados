@@ -1,4 +1,9 @@
-export function CardTitle({ label, ciclo, cicloClassName, children }) {
+export function CardTitle({
+  label,
+  generacion,
+  generacionClassName,
+  children,
+}) {
   return (
     <div className="h-26 p-4 flex flex-col justify-end bg-sidebar relative overflow-hidden">
       {children}
@@ -6,9 +11,9 @@ export function CardTitle({ label, ciclo, cicloClassName, children }) {
         {label}
       </span>
       <span
-        className={`text-2xl tracking-tight z-10 relative ${cicloClassName}`}
+        className={`text-2xl tracking-tight z-10 relative ${generacionClassName}`}
       >
-        {ciclo}
+        {generacion}
       </span>
     </div>
   );

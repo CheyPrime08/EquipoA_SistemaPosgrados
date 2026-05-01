@@ -25,7 +25,7 @@ export const allRoutes = [
   {
     label: "Gestión",
     items: [
-      { title: "Ciclo Escolar", url: "/ciclo" },
+      { title: "Generación", url: "/ciclo" },
       { title: "Convocatoria", url: "/convocatoria" },
     ],
   },
