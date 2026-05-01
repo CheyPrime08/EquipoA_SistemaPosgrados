@@ -1,10 +1,11 @@
 import { LayoutCoordinacion } from "@/modules/coordinador/common/LayoutCoordinacion";
+import { AgendaGantt } from "@/modules/coordinador/agenda/AgendaGantt";
 
 export default function AgendaCoord() {
   return (
     <LayoutCoordinacion>
-      <div className="flex items-center justify-center h-64 text-muted-foreground">
-        <p className="text-lg">Sección de Agenda — próximamente</p>
+      <div className="p-6 h-[calc(100vh-120px)]">
+        <AgendaGantt />
       </div>
     </LayoutCoordinacion>
   );

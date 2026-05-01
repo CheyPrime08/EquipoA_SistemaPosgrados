@@ -1,9 +1,4 @@
-import {
-  Home,
-  Calendar,
-  ListTodo,
-  Archive,
-} from "lucide-react";
+import { Home, Calendar, ListTodo, Archive } from "lucide-react";
 
 export const coordRoutes = [
   {
@@ -11,7 +6,6 @@ export const coordRoutes = [
     items: [
       { title: "Inicio", url: "/", icon: Home },
       { title: "Agenda", url: "/agenda", icon: Calendar },
-      { title: "Pendientes", url: "/pendientes", icon: ListTodo },
       { title: "Archivo", url: "/archivo", icon: Archive },
     ],
   },

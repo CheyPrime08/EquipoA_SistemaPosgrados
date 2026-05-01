@@ -36,7 +36,7 @@ export default function TutoriasModule() {
             
             {/* Sección de Carga */}
             <div className="bg-[#EBE3D5] p-8 rounded-[40px] max-w-3xl shadow-sm border border-stone-200">
-                <h2 className="text-xl font-semibold mb-4 text-stone-700">Avance de Tutorías</h2>
+                <h2 className="text-xl font-semibold mb-4 text-stone-700">Avance de tutorías</h2>
                 
                 
                 <input type="file" accept=".pdf" ref={inputFileRef} className="hidden" onChange={(e) => setArchivo(e.target.files[0])} />
@@ -57,7 +57,7 @@ export default function TutoriasModule() {
 
             {/* Historial de Reportes */}
             <div className="bg-[#EBE3D5] p-8 rounded-[40px] shadow-sm border border-stone-200">
-                <h2 className="text-xl font-semibold mb-6 text-stone-700 border-b border-stone-300 pb-2">Archivos de Reportes</h2>
+                <h2 className="text-xl font-semibold mb-6 text-stone-700 border-b border-stone-300 pb-2">Historial de reportes</h2>
                 <div className="bg-white/50 rounded-[30px] p-10 flex gap-12 justify-start items-center flex-wrap min-h-[200px]">
                     {cargando ? (
                         <p className="text-stone-500 animate-pulse">Cargando...</p>

@@ -40,7 +40,7 @@ export default function TesisModule() {
             
             {/* Cuadro de Carga */}
             <div className="bg-[#EBE3D5] p-8 rounded-[40px] max-w-3xl shadow-sm border border-stone-200">
-                <h2 className="text-xl font-semibold mb-4 text-stone-700">Avance de Tesis</h2>
+                <h2 className="text-xl font-semibold mb-4 text-stone-700">Avance de tesis</h2>
                 <div className="bg-white border border-stone-300 h-10 rounded-xl mb-6 w-full flex items-center px-4 text-sm text-stone-600">
                     {archivoSeleccionado ? archivoSeleccionado.name : "Ningún archivo seleccionado"}
                 </div>
@@ -57,7 +57,7 @@ export default function TesisModule() {
 
             {/* Historial */}
             <div className="bg-[#EBE3D5] p-8 rounded-[40px] shadow-sm border border-stone-200">
-                <h2 className="text-xl font-semibold mb-6 text-stone-700 border-b border-stone-300 pb-2">Historial de Tesis</h2>
+                <h2 className="text-xl font-semibold mb-6 text-stone-700 border-b border-stone-300 pb-2">Historial de tesis</h2>
                 <div className="bg-white/50 rounded-[30px] p-10 flex gap-12 justify-start items-center flex-wrap min-h-[200px]">
                     {cargando ? (
                         <p className="animate-pulse text-stone-500">Cargando archivos...</p>
