@@ -6,6 +6,7 @@ import { PanelHeader } from "@/components/common/PanelHeader";
 import AlumnosPage from "./AlumnosPage";
 import TesisPage from "./TesisPage";
 import TutoriasPage from "./TutoriasPage";
+import Eventos from "@/modules/coordinador/common/Eventos";
 
 const tabs = ["Eventos", "Alumnos", "Tesis", "Tutorías"];
 
@@ -37,11 +38,7 @@ export default function CicloCoord() {
         />
 
         <div className="flex-1 overflow-auto">
-          {seccion === "Eventos" && (
-            <div className="flex items-center justify-center h-64 text-muted-foreground">
-              <p className="text-lg">Sección de Eventos — próximamente</p>
-            </div>
-          )}
+          {seccion === "Eventos" && <Eventos />}
           {seccion === "Alumnos" && <AlumnosPage />}
           {seccion === "Tesis" && <TesisPage cicloId={cicloId} />}
           {seccion === "Tutorías" && <TutoriasPage />}

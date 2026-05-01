@@ -3,7 +3,7 @@ import { useSearchParams, useNavigate } from "react-router-dom";
 import { LayoutCoordinacion } from "@/modules/coordinador/common/LayoutCoordinacion";
 import { PanelHeader } from "@/components/common/PanelHeader";
 import AspirantesPage from "./AspirantesPage";
-import EventosConvocatoria from "@/modules/coordinador/tesis/EventosConvocatoria";
+import Eventos from "@/modules/coordinador/common/Eventos";
 
 const tabs = ["Eventos", "Aspirantes"];
 
@@ -27,10 +27,14 @@ export default function ConvocatoriaCoord() {
   return (
     <LayoutCoordinacion>
       <div className="h-full flex flex-col overflow-hidden">
-        <PanelHeader seccion={seccion} onSeccion={handleTabChange} tabs={tabs} />
+        <PanelHeader
+          seccion={seccion}
+          onSeccion={handleTabChange}
+          tabs={tabs}
+        />
 
         <div className="flex-1 overflow-auto">
-          {seccion === "Eventos" && <EventosConvocatoria />}
+          {seccion === "Eventos" && <Eventos />}
           {seccion === "Aspirantes" && <AspirantesPage />}
         </div>
       </div>

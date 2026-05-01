@@ -6,9 +6,9 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { CoordButton } from '../common/CoordButton';
+import { CoordButton } from './CoordButton';
 
-const EventosConvocatoria = () => {
+const Eventos = () => {
   const [formOpen, setFormOpen] = useState(false);
   const [tareaEnEdicion, setTareaEnEdicion] = useState(null);
   const [formData, setFormData] = useState({
@@ -254,4 +254,4 @@ const EventosConvocatoria = () => {
   );
 };
 
-export default EventosConvocatoria;
+export default Eventos;
