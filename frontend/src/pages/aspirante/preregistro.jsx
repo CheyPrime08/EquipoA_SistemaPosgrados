@@ -11,10 +11,17 @@ import {
   ElegirPosgrado,
   InputExplicar,
   InputEsUDG,
+<<<<<<< HEAD:frontend/src/pages/aspirante/preregistro.jsx
 } from "../../modules/preregistro/components/inputs/Eleccion";
 import { Link } from "react-router-dom";
+=======
+} from "../../components/preregistro/inputs/Eleccion";
+import { Link, useNavigate } from "react-router-dom";
+>>>>>>> FastAPI:frontend/src/pages/preregistro/preregistro.jsx
 
 function Preregistro() {
+  const navigate = useNavigate();
+
   const handleRegistro = async (e) => {
     e.preventDefault();
 
@@ -35,6 +42,8 @@ function Preregistro() {
 
       if (response.ok) {
         console.log("¡Registro exitoso!");
+        alert("Pre-registro generado correctamente. Redirigiendo a inicio de sesión...");
+        navigate("/");
       }
     } catch (error) {
       console.error("Error:", error);
