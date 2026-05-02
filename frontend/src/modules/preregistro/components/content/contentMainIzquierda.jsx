@@ -106,6 +106,7 @@ export function ColumnaIzquierda({
   prev,
   formData,
   handleInputChange,
+  handleFinalizar,
 }) {
   const titulos = [
     "DATOS PERSONALES",
@@ -171,7 +172,7 @@ export function ColumnaIzquierda({
           Anterior
         </button>
         <button
-          onClick={next}
+            onClick={currentStep === steps.length - 1 ? handleFinalizar : next}
           className="bg-[#BFAC94] w-full sm:w-32 text-white font-bold py-2 px-4 rounded-lg h-12 cursor-pointer
         hover:bg-[#f3f3f3] hover:text-[#847666a9] text-[14px] tracking-wider transition-all duration-300"
           style={{ boxShadow: "6px 6px 10px #D9D4CF, -6px -6px 10px #FFFEF7" }}

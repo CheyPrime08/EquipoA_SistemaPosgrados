@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import HeaderMain from "../components/header/headerMain";
 import { ColumnaIzquierda } from "../components/content/contentMainIzquierda";
 import { ColumnaDerecha } from "../components/content/contentMainDerecha";
+import { enviarPreregistro } from "@/api/preregistro.api";
 
 // Aqui hace la cosa de los pasos y lo renderiza, un componenten de esta area
 export default function ContentAspirante({ currentStep, setCurrentStep }) {
@@ -35,6 +36,15 @@ export default function ContentAspirante({ currentStep, setCurrentStep }) {
     }));
   };
 
+  const handleFinalizar = async () => {
+    const resultado = await enviarPreregistro(formData);
+    if (resultado.mensaje) {
+      alert("¡Preregistro enviado correctamente!");
+    } else {
+      alert("Error al enviar el preregistro");
+    }
+  };
+
   return (
     <div className="flex flex-col gap-6 w-full flex-1">
       <HeaderMain />
@@ -48,6 +58,7 @@ export default function ContentAspirante({ currentStep, setCurrentStep }) {
               prev={prev}
               formData={formData}
               handleInputChange={handleInputChange}
+              handleFinalizar={handleFinalizar}
             />
           </div>
           <div className="p-6 sm:p-8 h-full">

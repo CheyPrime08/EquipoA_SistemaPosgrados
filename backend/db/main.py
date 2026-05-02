@@ -86,3 +86,14 @@ def login(credenciales: dict = Body(...)):
     
     return {"ok": False, "error": "Credenciales incorrectas"}
 
+
+#ENDPOINT DE PREREGISTRO
+from datetime import datetime
+
+@app.post("/preregistro")
+def agregar_preregistro(datos: dict = Body(...)):
+    datos["estatus"] = "Pendiente"
+    datos["fecha_preregistro"] = datetime.now().isoformat()
+    datos["fecha_actualizacion"] = datetime.now().isoformat()
+    db["preregistro"].insert_one(datos)
+    return {"mensaje": "Preregistro enviado correctamente"}
