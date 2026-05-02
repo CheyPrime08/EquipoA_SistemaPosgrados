@@ -27,69 +27,39 @@ export default function Login() {
   const navigate = useNavigate();
 
   //######################################
-  //En teoria aqui maneja para mandar a la base de datos
-  const handleLogin = async (e) => {
+  //Manda a llamar a la base de datos para verificar credenciales
+const handleLogin = async (e) => {
     e.preventDefault();
-
-    // Aqui extraemos los datos del formulario automáticamente
     const formData = new FormData(e.target);
-    const credentials = Object.fromEntries(formData);
     const { codigo, password } = Object.fromEntries(formData);
 
-    //  aqui valida el coordinador
-    //Luego hay que modificar esto, deberia ir a la base de datos
-    if (
-      codigo === COORDINADOR_ROL.CODIGO &&
-      password === COORDINADOR_ROL.PASSWORD
-    ) {
-      setResultado("Acceso permitido como Coordinador");
-      navigate(RUTAS.COORDINADOR_ROL);
-      return;
-    }
-
-    //  aqui valida el administrador
-    if (codigo === ADMIN_ROL.CODIGO && password === ADMIN_ROL.PASSWORD) {
-      setResultado("Acceso permitido como Administrador");
-      navigate(RUTAS.ADMIN_ROL);
-      return;
-    }
-
-    //  aqui valida el alumno
-    if (codigo === ALUMNO_ROL.CODIGO && password === ALUMNO_ROL.PASSWORD) {
-      setResultado("Acceso permitido como Alumno");
-      navigate(RUTAS.ALUMNO_ROL);
-      return;
-    }
-
-    console.log("Enviando credenciales a Python:", credentials);
-
     try {
-      const response = await fetch("http://localhost:5000/api/login", {
+      const response = await fetch("http://localhost:8000/login", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        // enviar el jason
-        body: JSON.stringify(credentials),
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ codigo, password }),
       });
 
       const data = await response.json();
+      console.log("Respuesta del backend:", data); // linea prueba
 
-      if (response.ok) {
-        console.log("¡Inicio de sesión exitoso!", data);
-        // localStorage.setItem("token", data.token);
-        // Y rediriges al usuario a otra pantalla
+      if (data.ok) {
+        setResultado("Acceso permitido");
+        if (data.rol === "coordinador") navigate(RUTAS.COORDINADOR_ROL);
+        else if (data.rol === "admin") navigate(RUTAS.ADMIN_ROL);
+        else navigate(RUTAS.ALUMNO_ROL);
       } else {
-        console.error(
-          "Error devuelto por el servidor:",
-          data.error || "Credenciales incorrectas",
-        );
+        setResultado("Credenciales incorrectas");
       }
     } catch (error) {
-      console.error("Error de conexión (fetch):", error);
+      setResultado("Error de conexión");
+      console.error(error);
     }
   };
   //######################################
+
+
+
 
   return (
     <div className="bg-[#F9F8F6] relative min-h-screen">

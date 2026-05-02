@@ -1,4 +1,6 @@
 # instalar dependencias: pip install fastapi uvicorn pymongo python-dotenv
+#Correr backend en terminal 1 (al mismo tiempo que el front)
+#python -m uvicorn backend.db.main:app --reload
 from fastapi import Body, FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from backend.db.conexion import client, db
@@ -68,5 +70,19 @@ def modificar_posgrado(nombre_coleccion: str, datos: dict = Body(...)):
     db[nombre_coleccion].update_one({}, {"$set": datos})
     return {"mensaje": "Posgrado modificado correctamente"}
 
-#Correr backend en terminal 1 (al mismo tiempo que el front)
-#python -m uvicorn backend.db.main:app --reload
+#ENDPOINT USER
+@app.post("/login")
+def login(credenciales: dict = Body(...)):
+    codigo = credenciales.get("codigo")
+    password = credenciales.get("password")
+    
+    usuario = db["user"].find_one(
+        {"codigo": codigo, "password": password},
+        {"_id": 0}
+    )
+    
+    if usuario:
+        return {"ok": True, "rol": usuario.get("rol", "alumno")}
+    
+    return {"ok": False, "error": "Credenciales incorrectas"}
+
