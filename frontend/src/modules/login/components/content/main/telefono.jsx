@@ -9,6 +9,7 @@ import { Titulo } from "../titulo/titulos";
 import { Descripccion } from "../descripccion/descripcciones";
 import { PhoneField } from "../../inputs/inputs";
 import "@/styles/login/inputs.css";
+import { verificarTelefono } from "@/api/auth.api";
 
 export default function Telefono() {
   const {
@@ -19,10 +20,15 @@ export default function Telefono() {
 
   const [numerodetelefono, setPhoneNumber] = useState("");
 
-  const handleSendSms = (data) => {
-    console.log("Enviando SMS a:", data.telefono);
-    // enviar a bd
+const handleSendSms = async (data) => {
+    const resultado = await verificarTelefono(data.telefono);
+    if (resultado.ok) {
+      alert("Teléfono verificado correctamente");
+    } else {
+      alert(resultado.error);
+    }
   };
+
   return (
     <main className="flex flex-col items-center justify-center px-4 md:px-0">
       <Fondo src="https://lottie.host/7b8f664a-7865-4e5c-8d21-8b93142ba158/L3YYOiHOU3.lottie" />

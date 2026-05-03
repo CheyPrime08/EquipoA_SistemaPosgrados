@@ -7,6 +7,7 @@ import { Inputs } from "../../inputs/inputs";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { validacionCorreo } from "@/lib/validacionesInputs";
+import { verificarCorreo } from "@/api/auth.api";
 
 export default function Correo() {
   const {
@@ -15,9 +16,13 @@ export default function Correo() {
     formState: { errors },
   } = useForm({ resolver: zodResolver(validacionCorreo) });
 
-  const enviarCorreo = (data) => {
-    console.log("Enviando correo a:", data.email);
-    // enviar a bd
+const enviarCorreo = async (data) => {
+    const resultado = await verificarCorreo(data.email);
+    if (resultado.ok) {
+      alert("Correo verificado correctamente");
+    } else {
+      alert(resultado.error);
+    }
   };
 
   return (

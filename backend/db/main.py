@@ -97,3 +97,20 @@ def agregar_preregistro(datos: dict = Body(...)):
     datos["fecha_actualizacion"] = datetime.now().isoformat()
     db["preregistro"].insert_one(datos)
     return {"mensaje": "Preregistro enviado correctamente"}
+
+#ENDPOINTS recuperar contraseña correo/telefono
+@app.post("/verificar-correo")
+def verificar_correo(datos: dict = Body(...)):
+    correo = datos.get("correo")
+    usuario = db["user"].find_one({"correo": correo}, {"_id": 0})
+    if usuario:
+        return {"ok": True, "mensaje": "Correo encontrado"}
+    return {"ok": False, "error": "Correo no registrado en el sistema"}
+
+@app.post("/verificar-telefono")
+def verificar_telefono(datos: dict = Body(...)):
+    telefono = datos.get("telefono")
+    usuario = db["user"].find_one({"telefono": telefono}, {"_id": 0})
+    if usuario:
+        return {"ok": True, "mensaje": "Teléfono encontrado"}
+    return {"ok": False, "error": "Teléfono no registrado en el sistema"}
