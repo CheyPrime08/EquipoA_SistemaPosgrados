@@ -31,10 +31,6 @@ export default function Tesis() {
     const [mensaje, setMensaje] = useState("");
     const [cargando, setCargando] = useState(false);
 
-    useEffect(() => {
-        obtenerArchivos();
-    }, []);
-
     const obtenerArchivos = async () => {
         setCargando(true);
         try {
@@ -47,6 +43,10 @@ export default function Tesis() {
             setCargando(false);
         }
     };
+
+    useEffect(() => {
+        obtenerArchivos();
+    }, []);
 
     const handleSeleccionArchivo = (event) => {
         const file = event.target.files[0];
