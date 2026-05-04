@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { LayoutCoordinacion } from "@/modules/coordinador/common/LayoutCoordinacion";
-import { User, Bell, Shield } from "lucide-react";
+import { User, Bell, Shield, FileText } from "lucide-react";
 import { PerfilAjustes } from "@/modules/coordinador/ajustes/PerfilAjustes";
 import { NotificacionesAjustes } from "@/modules/coordinador/ajustes/NotificacionesAjustes";
 import { SeguridadAjustes } from "@/modules/coordinador/ajustes/SeguridadAjustes";
+import { PlantillasAjustes } from "@/modules/coordinador/ajustes/PlantillasAjustes";
 
 export default function AjustesCoord() {
     const [activeTab, setActiveTab] = useState("perfil");
@@ -11,6 +12,7 @@ export default function AjustesCoord() {
     const tabs = [
         { id: "perfil", label: "Perfil del Coordinador", icon: User },
         { id: "notificaciones", label: "Notificaciones", icon: Bell },
+        { id: "plantillas", label: "Plantillas de Eventos", icon: FileText },
         { id: "seguridad", label: "Seguridad y Accesos", icon: Shield },
     ];
 
@@ -46,6 +48,7 @@ export default function AjustesCoord() {
                         <div className="flex-1 bg-white border border-[#EBE3D5] rounded-[2rem] shadow-[0_8px_30px_rgba(0,0,0,0.03)] overflow-hidden w-full">
                             {activeTab === "perfil" && <PerfilAjustes />}
                             {activeTab === "notificaciones" && <NotificacionesAjustes />}
+                            {activeTab === "plantillas" && <PlantillasAjustes />}
                             {activeTab === "seguridad" && <SeguridadAjustes />}
                         </div>
                     </div>

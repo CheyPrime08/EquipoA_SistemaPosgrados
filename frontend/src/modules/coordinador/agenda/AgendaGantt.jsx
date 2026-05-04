@@ -64,7 +64,7 @@ const MOCK_EVENTS = [
     startDate: "2026-06-20",
     endDate: "2026-07-15",
     color: "bg-slate-100 border-slate-200 text-slate-700",
-    url: "/coordinador/ciclo",
+    url: "/generacion",
     category: "Administrativo"
   }
 ];

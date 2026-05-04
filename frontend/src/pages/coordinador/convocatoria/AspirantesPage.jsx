@@ -1,14 +1,12 @@
 import React from "react";
-import { PrerregistroFilters } from "@/modules/coordinador/aspirantes/PrerregistroFilters";
-import { PrerregistroTable } from "@/modules/coordinador/aspirantes/PrerregistroTable";
-import { PrerregistroGanttPlaceholder } from "@/modules/coordinador/aspirantes/PrerregistroGanttPlaceholder";
+import { AspirantesTable } from "@/modules/coordinador/aspirantes/AspirantesTable";
 
-export default function AspirantesPage() {
+const AspirantesPage = ({ search = "", estado = "all" }) => {
   return (
     <div className="h-full flex flex-col overflow-hidden">
-      <PrerregistroFilters />
-      <PrerregistroTable />
-      <PrerregistroGanttPlaceholder />
+      <AspirantesTable search={search} estado={estado} />
     </div>
   );
-}
+};
+
+export default AspirantesPage;

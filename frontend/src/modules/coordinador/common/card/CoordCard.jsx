@@ -44,7 +44,7 @@ export function CoordCard({
       ? "text-sidebar-foreground/50"
       : "text-sidebar-foreground";
 
-  const contactLabel = isConvocatoria ? "Aspirantes" : "Alumnos";
+  const contactLabel = isConvocatoria ? "Aspirantes" : "Revisión";
 
   return (
     <div onClick={onClick} className={containerClasses.trim()}>

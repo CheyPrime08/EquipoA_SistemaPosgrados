@@ -6,9 +6,10 @@ export function CheckboxPlantilla({ checked, onChange, label }) {
     <div className="flex items-center gap-3 py-2">
       <Checkbox
         id="use-template"
+        type="button"
         checked={checked}
-        onCheckedChange={onChange}
-        className="size-4 data-checked:bg-[#D8C4B6] data-checked:border-[#D8C4B6]"
+        onCheckedChange={(val) => onChange && onChange(!!val)}
+        className="size-4 border-[#C9B29B] data-[state=checked]:bg-[#C9B29B] data-[state=checked]:border-[#C9B29B]"
       />
       <label
         htmlFor="use-template"
