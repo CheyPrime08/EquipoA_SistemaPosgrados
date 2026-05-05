@@ -18,6 +18,7 @@ import Mostrar from "@/pages/admin/Mostrar";
 import Tesis from "@/pages/alumno/Tesis";
 import Documentos from "@/pages/alumno/Documentos";
 import Tutorias from "@/pages/alumno/Tutorias";
+import ModuleArchivos from "@/modules/preregistro/moduleArchivos";
 
 const routesAdmin = [
   {
@@ -38,6 +39,10 @@ const routesLogin = [
   {
     path: "/rediPreregistro",
     element: <RediPreregistro />,
+  },
+  {
+    path: "/aspirante-archivos",
+    element: <ModuleArchivos />,
   },
   {
     path: "/",

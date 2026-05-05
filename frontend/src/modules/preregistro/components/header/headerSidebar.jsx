@@ -2,7 +2,7 @@ import React from "react";
 import { SidebarHeader, SidebarTrigger } from "@/components/ui/sidebar";
 import { Separator } from "@/components/ui/separator";
 
-export default function headerSidebar() {
+export default function headerSidebar({ titulo }) {
   return (
     <SidebarHeader>
       <div className="flex flex-col gap-1 p-2 flex-1 group-data-[collapsible=icon]:items-center">
@@ -13,7 +13,7 @@ export default function headerSidebar() {
           <SidebarTrigger />
         </div>
         <div className="mt-4 flex flex-1 flex-col justify-center text-center group-data-[collapsible=icon]:hidden">
-          <h2 className="font-bold text-[25px] text-[#7d7162]">Pre-Registro</h2>
+          <h2 className="font-bold text-[25px] text-[#7d7162]">{titulo}</h2>
           <p className="font-semibold text-[17px] italic text-[#8f8272]">
             Panel Aspirante
           </p>

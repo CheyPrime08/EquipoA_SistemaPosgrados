@@ -1,7 +1,7 @@
 import React from "react";
 import ButtonIniciarSesion from "../buttons/headerMain/buttonIniciarSesion";
 
-export default function HeaderMain() {
+export default function HeaderMain({ titulo }) {
   return (
     <div className="col-span-full lg:col-span-2 bg-[#EFE9E3] min-h-[86px] rounded-lg flex items-center">
       <div className="grid grid-cols-2 grid-rows-2 gap-3 w-full h-full items-center">
@@ -12,7 +12,7 @@ export default function HeaderMain() {
                 Universidad de Guadalajara
               </p>
               <h2 className="text-base sm:text-lg font-bold tracking-wider text-[#74695a] leading-tight">
-                PORTAL DE PRE-REGISTRO
+                {titulo}
               </h2>
             </div>
           </div>

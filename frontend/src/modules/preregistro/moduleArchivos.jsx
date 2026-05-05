@@ -5,7 +5,7 @@ import ContentSidebar from "./components/content/contentSidebar";
 import FooterSidebar from "./components/footerSidebar/footerSidebar";
 import ContentAspirante from "./content/contentAspirante";
 
-export default function ModuleAspirante() {
+export default function ModuleArchivos() {
   // este es para cambiar de estado conectado a los switchs del sidebar
   const [currentStep, setCurrentStep] = useState(0);
 
@@ -22,7 +22,7 @@ export default function ModuleAspirante() {
         >
           {/* #######################################################################################*/}
           {/* EL Componente del header del sidebar */}
-          <HeaderSidebar titulo="Pre-Registro" />
+          <HeaderSidebar titulo="Documentos" />
           {/* EL Componente del contenido del sidebar */}
           <ContentSidebar
             currentStep={currentStep}

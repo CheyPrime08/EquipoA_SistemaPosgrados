@@ -37,7 +37,7 @@ export default function ContentAspirante({ currentStep, setCurrentStep }) {
 
   return (
     <div className="flex flex-col gap-6 w-full flex-1">
-      <HeaderMain />
+      <HeaderMain titulo="PORTAL DE ASPIRANTE" />
       <div className="flex-1 bg-[#EFE9E3] rounded-lg w-full">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 h-full">
           <div className="p-6 sm:p-8 h-full flex flex-col">
