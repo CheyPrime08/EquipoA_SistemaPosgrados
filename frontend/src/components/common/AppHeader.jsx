@@ -2,7 +2,8 @@ import { Menu } from "lucide-react";
 import { useSidebar } from "@/components/ui/sidebar";
 import { HeaderButton } from "@/components/common/header/HeaderButton";
 import { TituloRuta } from "@/components/common/header/TituloRuta";
-import { UserButton } from "@/components/common/header/UserButton";
+import { UdgHeader } from "@/components/common/header/UdgHeader";
+import logoUDG from "@/assets/logos/LogoUDG.svg";
 
 export function AppHeader({ rutas }) {
   const { toggleSidebar } = useSidebar();
@@ -17,7 +18,12 @@ export function AppHeader({ rutas }) {
         align="start"
       />
       <TituloRuta rutas={rutas} />
-      <UserButton />
+      <UdgHeader className="ml-auto" />
+      <img 
+        src={logoUDG} 
+        alt="Logo UDG" 
+        className="h-8 w-8 object-contain mr-3" 
+      />
     </header>
   );
 }

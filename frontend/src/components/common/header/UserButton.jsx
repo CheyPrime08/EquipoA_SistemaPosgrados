@@ -25,9 +25,9 @@ export const UserButton = () => {
   }, []);
 
   return (
-    <div className="ml-auto mr-3">
+    <div className="flex items-center justify-center">
       <DropdownMenu>
-        <AppTooltip etiqueta="Opciones de perfil" side="bottom" align="end">
+        <AppTooltip etiqueta="Más opciones" side="top" align="start">
           <DropdownMenuTrigger asChild>
             <div className="h-8 w-8 rounded-full border border-border bg-linear-to-tr from-[#EFE9E0] to-[#E6D5C5] cursor-pointer hover:ring-2 hover:ring-primary/30 transition-all duration-300 flex items-center justify-center overflow-hidden group">
               {profilePic ? (

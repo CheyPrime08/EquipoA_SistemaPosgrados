@@ -1,31 +1,32 @@
-import React from 'react';
+import React from "react";
 import * as DialogPrimitive from "@radix-ui/react-dialog";
 import { X } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-export function CoordModal({ 
-  isOpen, 
-  onClose, 
-  title, 
+export function CoordModal({
+  isOpen,
+  onClose,
+  title,
   icon,
-  children, 
+  children,
   footer,
   className,
   contentClassName,
-  maxWidth = "480px"
+  maxWidth = "480px",
 }) {
   return (
-    <DialogPrimitive.Root open={isOpen} onOpenChange={(open) => !open && onClose()}>
+    <DialogPrimitive.Root
+      open={isOpen}
+      onOpenChange={(open) => !open && onClose()}
+    >
       <DialogPrimitive.Portal>
-        <DialogPrimitive.Overlay 
-          className="fixed inset-0 z-50 bg-zinc-950/60" 
-        />
-        <DialogPrimitive.Content 
+        <DialogPrimitive.Overlay className="fixed inset-0 z-50 bg-zinc-950/60" />
+        <DialogPrimitive.Content
           className={cn(
             "fixed left-[50%] top-[50%] z-50 flex flex-col w-full max-h-[90vh] bg-white rounded-2xl shadow-2xl overflow-hidden border-none outline-none",
-            className
+            className,
           )}
-          style={{ transform: 'translate(-50%, -50%)', maxWidth: maxWidth }}
+          style={{ transform: "translate(-50%, -50%)", maxWidth: maxWidth }}
         >
           <div className="flex items-center justify-between px-6 py-5 border-b border-[#EBE3D5] shrink-0">
             <div className="flex items-center gap-3">

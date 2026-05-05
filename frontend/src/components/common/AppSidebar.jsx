@@ -5,6 +5,7 @@ import { usePressAnimation } from "@/hooks/usePressAnimation";
 import {
   Sidebar,
   SidebarContent,
+  SidebarFooter,
   SidebarGroup,
   SidebarMenu,
   SidebarMenuItem,
@@ -19,6 +20,8 @@ import {
   CollapsibleContent,
   CollapsibleTrigger,
 } from "@/components/ui/collapsible";
+import { UserButton } from "@/components/common/header/UserButton";
+import { UserInfo } from "@/components/common/UserInfo";
 
 export function AppSidebar({ rutas }) {
   const location = useLocation();
@@ -45,7 +48,7 @@ export function AppSidebar({ rutas }) {
       collapsible="icon"
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
-      className="top-18 border-none shadow-none items-center transition-[width] duration-300 ease-in-out"
+      className="top-18 pb-18 border-none shadow-none items-center transition-[width] duration-300 ease-in-out"
     >
       <SidebarContent className="pt-2">
         {rutas.map((grupo) => (
@@ -91,7 +94,9 @@ export function AppSidebar({ rutas }) {
                                     asChild
                                     isActive={location.pathname === subRuta.url}
                                     className="py-6 relative overflow-hidden"
-                                    onMouseDown={() => handlePress(subRuta.title)}
+                                    onMouseDown={() =>
+                                      handlePress(subRuta.title)
+                                    }
                                   >
                                     <Link
                                       to={subRuta.url}
@@ -148,6 +153,10 @@ export function AppSidebar({ rutas }) {
           </SidebarGroup>
         ))}
       </SidebarContent>
+      <SidebarFooter className="flex-row items-center gap-3 mb-6 pl-8">
+        <UserButton />
+        <UserInfo userType="Coordinador" hideOnCollapse />
+      </SidebarFooter>
     </Sidebar>
   );
 }
