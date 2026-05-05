@@ -2,8 +2,9 @@ import os
 from pymongo import MongoClient
 from dotenv import load_dotenv
 
-# cargar variables del archivo .env NO esta en github porque tiene credenciales de acceso
-load_dotenv()
+# Obtener la ruta absoluta a la raíz del proyecto para cargar el .env correctamente
+env_path = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))), '.env')
+load_dotenv(dotenv_path=env_path)
 
 # obtener datos de acceso del .env (con valores por defecto para simulación)
 uri = os.getenv("MONGO_URL", "mongodb://localhost:27017")
@@ -18,7 +19,7 @@ print(f"[BASE DE DATOS] Usando base de datos: {database_name}")
 
 # conectar a MongoDB
 try:
-    client = MongoClient(uri, serverSelectionTimeoutMS=5000)
+    client = MongoClient(uri, serverSelectionTimeoutMS=5000, tlsAllowInvalidCertificates=True)
     # Intentar verificar la conexión
     client.admin.command('ping')
     print("[✓] Conexión exitosa a MongoDB Atlas")

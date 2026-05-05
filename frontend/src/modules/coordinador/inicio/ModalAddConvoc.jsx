@@ -11,6 +11,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { CoordInput } from "@/modules/coordinador/common/CoordInput";
 import { CheckboxPlantilla } from "./CheckboxPlantilla";
+import { createConvocatoria } from "@/api/convocatorias.api";
 
 export function ModalAddConvoc({ children }) {
   const [useTemplate, setUseTemplate] = useState(false);
@@ -22,11 +23,21 @@ export function ModalAddConvoc({ children }) {
     return month < 6 ? `${year}-B` : `${year + 1}-A`;
   }, []);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
     const data = Object.fromEntries(formData);
-    console.log("Form Data:", { ...data, useTemplate });
+    const payload = { ...data, useTemplate };
+    console.log("Enviando al backend:", payload);
+    
+    try {
+      await createConvocatoria(payload);
+      alert("¡Convocatoria creada con éxito!");
+      window.location.reload(); // Recargar para actualizar la vista principal
+    } catch (error) {
+      console.error("Error al crear convocatoria:", error);
+      alert("Hubo un error al crear la convocatoria");
+    }
   };
 
   return (

@@ -9,5 +9,9 @@ echo "🚀 Iniciando servidor FastAPI..."
 echo "📍 Ubicación: $(pwd)"
 echo ""
 
+# Activar el entorno virtual
+source .venv/bin/activate
+cd backend
+
 # Ejecutar con uvicorn directamente
-/home/juanpablo/Programación\ para\ internet/EquipoA_SistemaPosgrados/.venv/bin/uvicorn backend.main:app --host 0.0.0.0 --port 5000 --reload
+uvicorn main:app --host 0.0.0.0 --port 8000 --reload

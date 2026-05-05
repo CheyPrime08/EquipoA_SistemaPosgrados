@@ -90,6 +90,9 @@ async def mock_login(req: Request):
 # Incluir las rutas de preregistro
 app.include_router(preregistro.router)
 
+from backend.rutas_convocatoria import app as rutas_convocatoria
+app.include_router(rutas_convocatoria)
+
 
 # RUTAS DE SALUD (Health Check)
 # =============================

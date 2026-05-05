@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { getConvocatorias, createConvocatoria } from '@/api/convocatorias.api';
 import { Plus, FileText, Calendar, MoreVertical, Pencil, Trash2, AlignLeft, Send, Users, Tag } from 'lucide-react';
 import {
   DropdownMenu,
@@ -19,11 +20,25 @@ const Eventos = () => {
     tema: 'Sin tema'
   });
 
-  const [tareas, setTareas] = useState([
-    { id: 1, titulo: 'Recepción de Documentos', fecha: '2026-04-21', estado: 'Asignada', instrucciones: '', para: 'Todos los alumnos', tema: 'Sin tema' },
-    { id: 2, titulo: 'Entrevistas con Aspirantes', fecha: '2026-04-25', estado: 'Borrador', instrucciones: '', para: 'Todos los alumnos', tema: 'Sin tema' },
-    { id: 3, titulo: 'Publicación de Resultados', fecha: '2026-04-28', estado: 'Programada', instrucciones: '', para: 'Todos los alumnos', tema: 'Sin tema' },
-  ]);
+  const [tareas, setTareas] = useState([]);
+
+  // Cargar datos reales de la BD al abrir la página
+  useEffect(() => {
+    const fetchConvocatorias = async () => {
+      try {
+        const data = await getConvocatorias();
+        // Mapear el _id de Mongo a id para el componente si es necesario
+        setTareas(data.map(item => ({ 
+          ...item, 
+          id: item.id || Math.random(),
+          fecha: item.entrega || '' // Para que la vista renderice la fecha correctamente
+        })));
+      } catch (error) {
+        console.error("Error al cargar convocatorias:", error);
+      }
+    };
+    fetchConvocatorias();
+  }, []);
 
   const statusBadgeStyle = "bg-[#f5f1ed] text-[#8a7a63] border border-[#c5b49a]/20";
 
@@ -49,22 +64,30 @@ const Eventos = () => {
     setFormOpen(false);
   };
 
-  const handleGuardar = () => {
+  const handleGuardar = async () => {
     if (!formData.titulo) return;
 
     if (tareaEnEdicion) {
       setTareas(tareas.map(t => t.id === tareaEnEdicion.id ? { ...t, ...formData, fecha: formData.entrega, titulo: formData.titulo } : t));
     } else {
       const nuevaTarea = {
-        id: Date.now(),
         titulo: formData.titulo,
-        fecha: formData.entrega,
+        entrega: formData.entrega,
         estado: formData.entrega ? 'Programada' : 'Borrador',
         instrucciones: formData.instrucciones,
         para: formData.para,
         tema: formData.tema
       };
-      setTareas([nuevaTarea, ...tareas]);
+      
+      try {
+        // Guardar en la Base de Datos
+        const res = await createConvocatoria(nuevaTarea);
+        
+        // Agregar a la vista actual
+        setTareas([ { ...nuevaTarea, id: Date.now(), fecha: nuevaTarea.entrega }, ...tareas]);
+      } catch (error) {
+        console.error("Error al guardar:", error);
+      }
     }
     resetForm();
   };
