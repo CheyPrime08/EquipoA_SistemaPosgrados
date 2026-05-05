@@ -5,11 +5,11 @@ import RediPreregistro from "@/pages/aspirante/rediPreregistro";
 import InicioCoord from "@/pages/coordinador/inicio/InicioCoord";
 import ArchivoCoord from "@/pages/coordinador/inicio/ArchivoCoord";
 import ConvocatoriaCoord from "@/pages/coordinador/convocatoria/ConvocatoriaCoord";
-import CicloCoord from "@/pages/coordinador/ciclo/CicloCoord";
+import GeneracionCoord from "@/pages/coordinador/generacion/GeneracionCoord";
 import AgendaCoord from "@/pages/coordinador/inicio/AgendaCoord";
 import PendientesCoord from "@/pages/coordinador/inicio/PendientesCoord";
 import AjustesCoord from "@/pages/coordinador/inicio/AjustesCoord";
-import TesisGlobalCoord from "@/pages/coordinador/tesis/TesisGlobalCoord";
+import RevisionGlobalPage from "@/pages/coordinador/revision/RevisionGlobalPage";
 import ContentCorreo from "@/modules/login/components/content/contentcorreo";
 import ContentTelefono from "@/modules/login/components/content/contenttelefono";
 import Agregar from "@/pages/admin/agregar";
@@ -71,8 +71,8 @@ const routesCoordinador = [
     element: <ConvocatoriaCoord />,
   },
   {
-    path: "/ciclo",
-    element: <CicloCoord />,
+    path: "/generacion",
+    element: <GeneracionCoord />,
   },
   {
     path: "/agenda",
@@ -87,8 +87,8 @@ const routesCoordinador = [
     element: <AjustesCoord />,
   },
   {
-    path: "/tesis-global",
-    element: <TesisGlobalCoord />,
+    path: "/revision-global",
+    element: <RevisionGlobalPage />,
   },
 ];
 

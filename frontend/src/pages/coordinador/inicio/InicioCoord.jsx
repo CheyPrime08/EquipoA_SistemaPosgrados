@@ -4,10 +4,17 @@ import { LayoutCoordinacion } from "@/modules/coordinador/common/LayoutCoordinac
 import { CoordCard } from "@/modules/coordinador/common/card/CoordCard";
 import { AddConvoc } from "@/modules/coordinador/inicio/AddConvoc";
 import { getConvocatorias } from "@/api/convocatorias.api";
+import { ModalArchivar } from "@/modules/coordinador/inicio/ModalArchivar";
+import { ModalCrearGen } from "@/modules/coordinador/inicio/ModalCrearGen";
 
 const InicioCoord = () => {
   const navigate = useNavigate();
+  const [modalArchivar, setModalArchivar] = useState({ isOpen: false, name: "" });
+  const [modalCrearGen, setModalCrearGen] = useState({ isOpen: false, name: "" });
   const [convocatorias, setConvocatorias] = useState([]);
+
+  const openArchivar = (name) => setModalArchivar({ isOpen: true, name });
+  const openCrearGen = (name) => setModalCrearGen({ isOpen: true, name });
 
   useEffect(() => {
     const fetchDatos = async () => {
@@ -23,21 +30,21 @@ const InicioCoord = () => {
 
   const getCardProps = (conv) => {
     const today = new Date();
-    // Convertir fecha de inicio (ej. "2026-08-10") a Date.
-    // Usamos split y Date() para evitar problemas de zona horaria con UTC.
-    const [year, month, day] = conv.fecha_inicio.split('-');
-    const fechaInicio = new Date(year, month - 1, day);
-    
-    // Si la fecha de inicio es en el futuro, es "Convocatoria", si ya pasó, es "Generación"
+    const [year, month, day] = (conv.fecha_inicio || "").split("-");
+    const fechaInicio =
+      year && month && day ? new Date(year, month - 1, day) : new Date();
     const esConvocatoriaFutura = fechaInicio > today;
 
     return {
-      variant: esConvocatoriaFutura ? "convocatoria" : undefined, // asume que sin variant usa el de "generacion"
+      variant: esConvocatoriaFutura ? "convocatoria" : "generacion",
       label: esConvocatoriaFutura ? "Convocatoria" : "Generación",
       generacion: conv.ciclo,
-      descripcion: `Inicia: ${conv.fecha_inicio}`, // Puedes ajustar la descripción según tu preferencia
-      onClick: () => navigate(esConvocatoriaFutura ? "/convocatoria" : "/ciclo"),
-      onContact: esConvocatoriaFutura ? undefined : () => navigate("/ciclo?tab=Alumnos")
+      descripcion: `Inicia: ${conv.fecha_inicio || "Por definir"}`,
+      onClick: () => navigate(esConvocatoriaFutura ? "/convocatoria" : "/generacion"),
+      onContact: () =>
+        navigate(esConvocatoriaFutura ? "/convocatoria?tab=Aspirantes" : "/generacion?tab=Revisión"),
+      onArchive: esConvocatoriaFutura ? undefined : () => openArchivar(conv.ciclo),
+      onCreateGeneration: esConvocatoriaFutura ? () => openCrearGen(conv.ciclo) : undefined,
     };
   };
 
@@ -58,6 +65,18 @@ const InicioCoord = () => {
           <p className="text-gray-400 mt-10">No hay convocatorias ni generaciones activas.</p>
         )}
       </div>
+
+      <ModalArchivar 
+        isOpen={modalArchivar.isOpen}
+        onClose={() => setModalArchivar({ ...modalArchivar, isOpen: false })}
+        generationName={modalArchivar.name}
+      />
+
+      <ModalCrearGen 
+        isOpen={modalCrearGen.isOpen}
+        onClose={() => setModalCrearGen({ ...modalCrearGen, isOpen: false })}
+        convocatoriaName={modalCrearGen.name}
+      />
     </LayoutCoordinacion>
   );
 };

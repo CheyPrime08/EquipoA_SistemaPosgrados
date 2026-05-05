@@ -7,6 +7,7 @@ export const coordRoutes = [
       { title: "Inicio", url: "/", icon: Home },
       { title: "Agenda", url: "/agenda", icon: Calendar },
       { title: "Archivo", url: "/archivo", icon: Archive },
+      { title: "Revisión", url: "/revision-global", icon: ListTodo },
     ],
   },
 ];

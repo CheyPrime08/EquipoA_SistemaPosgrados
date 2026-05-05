@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { Eye, Pencil, Trash2, FileText, Upload, CheckCircle } from 'lucide-react';
-import { CoordModal } from '../common/CoordModal';
-import { CoordButton } from '../common/CoordButton';
+import { CoordModal } from './CoordModal';
+import { CoordButton } from './CoordButton';
 
 export function DocumentCard({ title, onDelete }) {
     const [modal, setModal] = useState(null);
@@ -28,9 +28,9 @@ export function DocumentCard({ title, onDelete }) {
 
     return (
         <>
-            <div className="flex flex-col gap-2 py-4 border-b border-dashed border-[#EBE3D5] group">
-                <span className="text-sm text-stone-800 font-medium">{title}</span>
-                <div className="flex items-center gap-4 text-stone-400 mt-1">
+            <div className="flex items-center justify-between py-4 border-b border-[#EBE3D5] group">
+                <span className="text-sm text-stone-800 font-medium truncate pr-4">{title}</span>
+                <div className="flex items-center gap-4 text-stone-400 shrink-0">
                     <button title="Ver documento" onClick={() => setModal('view')} className="hover:text-stone-800 transition-colors"><Eye size={16} /></button>
                     <button title="Reemplazar documento" onClick={() => setModal('edit')} className="hover:text-stone-800 transition-colors"><Pencil size={16} /></button>
                     <button title="Eliminar documento" onClick={() => setModal('delete')} className="hover:text-red-500 transition-colors"><Trash2 size={16} /></button>

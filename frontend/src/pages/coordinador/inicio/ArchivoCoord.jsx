@@ -15,24 +15,24 @@ const ArchivoCoord = () => {
             <CoordCard
               isArchived
               variant="convocatoria"
-              label="Ciclo"
-              ciclo="2025-B"
+              label="generacion"
+              generacion="2025-B"
               descripcion="Próxima entrega: Protocolo de investigación"
               onClick={() => {}}
             />
             <CoordCard
               isArchived
               variant="convocatoria"
-              label="Ciclo"
-              ciclo="2026-A"
+              label="generacion"
+              generacion="2026-A"
               descripcion="Próxima entrega: Protocolo de investigación"
               onClick={() => {}}
             />
             <CoordCard
               isArchived
               variant="convocatoria"
-              label="Ciclo"
-              ciclo="2026-B"
+              label="generacion"
+              generacion="2026-B"
               descripcion="Próxima entrega: Protocolo de investigación"
               onClick={() => {}}
             />
@@ -43,7 +43,7 @@ const ArchivoCoord = () => {
               isArchived
               variant="convocatoria"
               label="Convocatoria"
-              ciclo="2027-A"
+              generacion="2027-A"
               descripcion="Próxima entrega: Protocolo de investigación"
               onClick={() => {}}
             />
@@ -51,7 +51,7 @@ const ArchivoCoord = () => {
               isArchived
               variant="convocatoria"
               label="Convocatoria"
-              ciclo="2027-B"
+              generacion="2027-B"
               descripcion="Próxima entrega: Protocolo de investigación"
               onClick={() => {}}
             />

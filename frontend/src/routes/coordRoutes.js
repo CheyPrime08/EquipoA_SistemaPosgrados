@@ -13,7 +13,7 @@ export const sidebarRoutes = [
     items: [
       { title: "Inicio", url: "/inicioCoord", icon: Home },
       { title: "Agenda", url: "/agenda", icon: Calendar },
-      { title: "Tesis", url: "/tesis-global", icon: ListTodo },
+      { title: "Pendientes", url: "/revision-global", icon: ListTodo },
       { title: "Archivo", url: "/archivo", icon: Archive },
       { title: "Ajustes", url: "/ajustes", icon: Settings },
     ],
@@ -25,7 +25,7 @@ export const allRoutes = [
   {
     label: "Gestión",
     items: [
-      { title: "Generación", url: "/ciclo" },
+      { title: "Generación", url: "/generacion" },
       { title: "Convocatoria", url: "/convocatoria" },
     ],
   },
