@@ -45,7 +45,7 @@ export default function Tutorias() {
         formData.append("archivo", archivo);
 
         try {
-            await fetch("http://localhost:8000/api/tutorias/upload", {
+            await fetch("http://localhost:5001/api/tutorias/upload", {
                 method: "POST",
                 body: formData
             });
@@ -60,9 +60,9 @@ export default function Tutorias() {
     const obtenerArchivos = async () => {
         setCargando(true);
         try {
-            const res = await fetch("http://localhost:8000/api/tutorias/archivos");
-            const data = await res.json();
-            setReportes(data);
+            const res = await fetch("http://localhost:5001/api/tutorias");
+            const json = await res.json();
+            setReportes(json.data || json);
         } catch (error) {
             console.error(error);
         } finally {

@@ -1,10 +1,11 @@
-const BASE_URL = "http://localhost:8000";
+const BASE_URL = "http://localhost:5001";
 
 // Obtener todas las convocatorias desde el backend
 export async function getConvocatorias() {
   const res = await fetch(`${BASE_URL}/api/convocatorias`);
   if (!res.ok) throw new Error("Error al obtener las convocatorias");
-  return res.json();
+  const json = await res.json();
+  return json.data || json;
 }
 
 // Crear una nueva convocatoria

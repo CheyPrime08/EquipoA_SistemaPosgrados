@@ -10,9 +10,9 @@ export default function DocumentosModule() {
 
     const obtenerDocumentos = async () => {
         try {
-            const res = await fetch("http://localhost:8000/api/documentos/archivos");
-            const data = await res.json();
-            setDocumentos(data);
+            const res = await fetch("http://localhost:5001/api/documentos");
+            const json = await res.json();
+            setDocumentos(json.data || json);
         } catch (error) { console.error(error); }
     };
 
@@ -25,7 +25,7 @@ export default function DocumentosModule() {
         formData.append("archivo", archivo);
         formData.append("tipo", tipo);
         try {
-            await fetch("http://localhost:8000/api/documentos/upload", { method: "POST", body: formData });
+            await fetch("http://localhost:5001/api/documentos/upload", { method: "POST", body: formData });
             tipo === 'Academico' ? setArchivoAcademico(null) : setArchivoPersonal(null);
             obtenerDocumentos();
         } catch (error) { console.error(error); }

@@ -15,8 +15,9 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
+from fastapi.staticfiles import StaticFiles
 import asyncio
-from backend.routes import preregistro
+from backend.routes import preregistro, convocatoria, documento, tesis, tutoria
 
 # Crear la aplicación FastAPI
 app = FastAPI(
@@ -27,6 +28,15 @@ app = FastAPI(
 
 # CONFIGURACIÓN DE MIDDLEWARES
 # ============================
+
+# Servir archivos estáticos (Subidas)
+os.makedirs("uploads/documentos", exist_ok=True)
+os.makedirs("uploads/tesis", exist_ok=True)
+os.makedirs("uploads/tutorias", exist_ok=True)
+
+app.mount("/static_documentos", StaticFiles(directory="uploads/documentos"), name="documentos")
+app.mount("/static_tesis", StaticFiles(directory="uploads/tesis"), name="tesis")
+app.mount("/static_tutorias", StaticFiles(directory="uploads/tutorias"), name="tutorias")
 
 # Middleware CORS - Permite que el frontend (React) se comunique con el backend
 app.add_middleware(
@@ -87,11 +97,12 @@ async def mock_login(req: Request):
 # REGISTRO DE RUTAS
 # =================
 
-# Incluir las rutas de preregistro
+# Incluir las rutas de los módulos
 app.include_router(preregistro.router)
-
-from backend.rutas_convocatoria import app as rutas_convocatoria
-app.include_router(rutas_convocatoria)
+app.include_router(convocatoria.router)
+app.include_router(documento.router)
+app.include_router(tesis.router)
+app.include_router(tutoria.router)
 
 
 # RUTAS DE SALUD (Health Check)
@@ -128,7 +139,7 @@ if __name__ == "__main__":
     import os
     
     # Obtener configuración del puerto
-    port = int(os.getenv("API_PORT", 5000))
+    port = int(os.getenv("API_PORT", 5001))
     host = os.getenv("API_HOST", "0.0.0.0")
     
     # El frontend hace llamadas a http://localhost:5000

@@ -10,31 +10,10 @@ from backend.schemas.preregistro_schema import (
     PreregistroCreate, PreregistroResponse, PreregistroUpdate, PreregistroFilter
 )
 from backend.services.preregistro_service import PreregistroService
+from backend.utils.auth import obtener_rol_usuario
 
 router = APIRouter(prefix="/api/preregistro", tags=["preregistro"])
 service = PreregistroService()
-
-
-def obtener_rol_usuario(authorization: Optional[str] = Header(None, alias="Authorization")) -> str:
-    """
-    Simula la obtención del rol del usuario desde el header de autorización.
-    En producción, se verificaría un JWT token.
-    
-    Args:
-        authorization: Header de autorización (Bearer token)
-        
-    Returns:
-        El rol del usuario: "alumno", "coordinador" o "admin"
-    """
-    # Por ahora retorna un rol simulado basado en el header
-    # En producción, esto verificaría un JWT token
-    
-    if authorization and "admin" in authorization.lower():
-        return "admin"
-    elif authorization and "coord" in authorization.lower():
-        return "coordinador"
-    else:
-        return "alumno"  # Por defecto
 
 
 @router.post("/", response_model=dict, summary="Crear nuevo preregistro")

@@ -24,12 +24,12 @@ if [ -d ".venv/bin" ]; then
 fi
 
 # Ejecutar servidor
-echo "Iniciando servidor en http://localhost:5000"
+echo "Iniciando servidor en http://localhost:5001"
 echo "Presiona CTRL+C para detener"
 echo ""
 echo "Documentación interactiva:"
-echo "  - Swagger UI: http://localhost:5000/docs"
-echo "  - ReDoc: http://localhost:5000/redoc"
+echo "  - Swagger UI: http://localhost:5001/docs"
+echo "  - ReDoc: http://localhost:5001/redoc"
 echo ""
 echo "=========================================="
 echo ""

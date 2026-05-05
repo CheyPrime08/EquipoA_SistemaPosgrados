@@ -27,7 +27,7 @@ function Preregistro() {
     console.log("Enviando a Python:", datosDelFormulario);
 
     try {
-      const response = await fetch("http://localhost:5000/api/preregistro", {
+      const response = await fetch("http://localhost:5001/api/preregistro", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(datosDelFormulario),
