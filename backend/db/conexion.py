@@ -16,8 +16,9 @@ client = MongoClient(uri)
 db = client[database_name]
 
 #si imprime esto es que funciona
-print("Conexión exitosa a MongoDB Atlas")
-print(db.list_collection_names()) #debe imprimir []
+if __name__ == "__main__":
+    print("Conexión exitosa a MongoDB Atlas")
+    print(db.list_collection_names()) #debe imprimir []
 
 
 #para usar esta conexion en otros archivos (ejemplo)

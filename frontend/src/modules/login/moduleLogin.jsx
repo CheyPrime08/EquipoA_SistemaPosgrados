@@ -27,49 +27,21 @@ export default function Login() {
   const navigate = useNavigate();
 
   //######################################
-  //En teoria aqui maneja para mandar a la base de datos
   const handleLogin = async (e) => {
     e.preventDefault();
 
     // Aqui extraemos los datos del formulario automáticamente
     const formData = new FormData(e.target);
     const credentials = Object.fromEntries(formData);
-    const { codigo, password } = Object.fromEntries(formData);
-
-    //  aqui valida el coordinador
-    //Luego hay que modificar esto, deberia ir a la base de datos
-    if (
-      codigo === COORDINADOR_ROL.CODIGO &&
-      password === COORDINADOR_ROL.PASSWORD
-    ) {
-      setResultado("Acceso permitido como Coordinador");
-      navigate(RUTAS.COORDINADOR_ROL);
-      return;
-    }
-
-    //  aqui valida el administrador
-    if (codigo === ADMIN_ROL.CODIGO && password === ADMIN_ROL.PASSWORD) {
-      setResultado("Acceso permitido como Administrador");
-      navigate(RUTAS.ADMIN_ROL);
-      return;
-    }
-
-    //  aqui valida el alumno
-    if (codigo === ALUMNO_ROL.CODIGO && password === ALUMNO_ROL.PASSWORD) {
-      setResultado("Acceso permitido como Alumno");
-      navigate(RUTAS.ALUMNO_ROL);
-      return;
-    }
 
     console.log("Enviando credenciales a Python:", credentials);
 
     try {
-      const response = await fetch("http://localhost:5000/api/login", {
+      const response = await fetch("http://localhost:8000/api/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        // enviar el jason
         body: JSON.stringify(credentials),
       });
 
@@ -77,16 +49,31 @@ export default function Login() {
 
       if (response.ok) {
         console.log("¡Inicio de sesión exitoso!", data);
-        // localStorage.setItem("token", data.token);
-        // Y rediriges al usuario a otra pantalla
+        setResultado(`Acceso permitido como ${data.rol}`);
+        
+        // Redirigir basado en el rol devuelto por el servidor
+        if (data.rol === "coordinador") {
+          navigate(RUTAS.COORDINADOR_ROL);
+        } else if (data.rol === "admin") {
+          navigate(RUTAS.ADMIN_ROL);
+        } else {
+          navigate(RUTAS.ALUMNO_ROL);
+        }
       } else {
-        console.error(
-          "Error devuelto por el servidor:",
-          data.error || "Credenciales incorrectas",
-        );
+        let errorMsg = "Credenciales incorrectas";
+        if (data.detail) {
+          if (Array.isArray(data.detail)) {
+            errorMsg = data.detail.map(err => `${err.loc[err.loc.length - 1]}: ${err.msg}`).join(", ");
+          } else {
+            errorMsg = data.detail;
+          }
+        }
+        console.error("Error devuelto por el servidor:", errorMsg);
+        setResultado(errorMsg);
       }
     } catch (error) {
       console.error("Error de conexión (fetch):", error);
+      setResultado("Error de conexión con el servidor");
     }
   };
   //######################################

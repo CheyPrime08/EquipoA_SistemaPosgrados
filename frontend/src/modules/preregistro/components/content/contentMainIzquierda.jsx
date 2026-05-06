@@ -34,16 +34,16 @@ const PasoDatosPersonales = ({ formData, handleInputChange }) => (
       p="Apellido Paterno"
       placeholder="Ingrese su Apellido Paterno..."
       type="text"
-      name="apellidoPaterno"
-      value={formData.apellidoPaterno}
+      name="apellido_paterno"
+      value={formData.apellido_paterno}
       onChange={handleInputChange}
     />
     <InputText
       p="Apellido Materno"
       placeholder="Ingrese su Apellido Materno..."
       type="text"
-      name="apellidoMaterno"
-      value={formData.apellidoMaterno}
+      name="apellido_materno"
+      value={formData.apellido_materno}
       onChange={handleInputChange}
     />
   </>
@@ -76,8 +76,8 @@ const PasoPosgrados = ({ formData, handleInputChange }) => (
       p="Nombre de tu Licenciatura"
       placeholder="ej. Ingeniería en Computación"
       type="text"
-      name="nombreLicenciatura"
-      value={formData.nombreLicenciatura}
+      name="licenciatura"
+      value={formData.licenciatura}
       onChange={handleInputChange}
     />
     <ElegirPosgrado
@@ -92,8 +92,8 @@ const PasoPosgrados = ({ formData, handleInputChange }) => (
       p="¿Por qué te interesa este posgrado?"
       placeholder="Escribe tus motivos..."
       type="text"
-      name="porQueTeInteresa"
-      value={formData.porQueTeInteresa}
+      name="interes"
+      value={formData.interes}
       onChange={handleInputChange}
     />
   </>
@@ -106,6 +106,8 @@ export function ColumnaIzquierda({
   prev,
   formData,
   handleInputChange,
+  handleSubmit,
+  isSubmitting,
 }) {
   const titulos = [
     "DATOS PERSONALES",
@@ -163,7 +165,7 @@ export function ColumnaIzquierda({
       <div className="flex flex-wrap sm:flex-nowrap gap-4 justify-between mt-auto pt-12">
         <button
           onClick={prev}
-          disabled={currentStep === 0}
+          disabled={currentStep === 0 || isSubmitting}
           className="bg-[#BFAC94] w-full sm:w-32 text-white font-bold py-2 px-4 rounded-lg h-12 cursor-pointer
         hover:bg-[#f3f3f3] hover:text-[#847666a9] text-[14px] tracking-wider transition-all duration-300 disabled:opacity-30"
           style={{ boxShadow: "6px 6px 10px #D9D4CF, -6px -6px 10px #FFFEF7" }}
@@ -171,12 +173,13 @@ export function ColumnaIzquierda({
           Anterior
         </button>
         <button
-          onClick={next}
+          onClick={currentStep === steps.length - 1 ? handleSubmit : next}
+          disabled={isSubmitting}
           className="bg-[#BFAC94] w-full sm:w-32 text-white font-bold py-2 px-4 rounded-lg h-12 cursor-pointer
-        hover:bg-[#f3f3f3] hover:text-[#847666a9] text-[14px] tracking-wider transition-all duration-300"
+        hover:bg-[#f3f3f3] hover:text-[#847666a9] text-[14px] tracking-wider transition-all duration-300 disabled:opacity-30"
           style={{ boxShadow: "6px 6px 10px #D9D4CF, -6px -6px 10px #FFFEF7" }}
         >
-          {currentStep === steps.length - 1 ? "Finalizar" : "Siguiente"}
+          {isSubmitting ? "Enviando..." : (currentStep === steps.length - 1 ? "Finalizar" : "Siguiente")}
         </button>
       </div>
     </div>

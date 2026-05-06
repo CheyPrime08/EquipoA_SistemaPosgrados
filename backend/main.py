@@ -4,6 +4,8 @@ from fastapi.staticfiles import StaticFiles
 from rutas_tesis import app as tesis_rutas
 from rutas_documentos import app as documentos_rutas
 from rutas_tutorias import app as tutorias_rutas
+from rutas_login import app as login_rutas
+from rutas_preregistro import app as preregistro_rutas
 
 app = FastAPI()
 
@@ -29,3 +31,5 @@ app.mount("/static_documentos", StaticFiles(directory="uploads/documentos"), nam
 app.include_router(tesis_rutas)
 app.include_router(documentos_rutas)
 app.include_router(tutorias_rutas)
+app.include_router(login_rutas)
+app.include_router(preregistro_rutas)
