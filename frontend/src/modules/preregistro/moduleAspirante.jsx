@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Sidebar, SidebarProvider } from "@/components/ui/sidebar";
 import HeaderSidebar from "./components/header/headerSidebar";
-import ContentSidebar from "./components/content/contentSidebar";
+import ContentSidebar from "./components/content/preregistro/contentSidebar";
 import FooterSidebar from "./components/footerSidebar/footerSidebar";
 import ContentAspirante from "./content/contentAspirante";
 

@@ -1,5 +1,9 @@
 import React from "react";
-import { InputText, TextArea, ElegirPosgrado } from "../inputs/inputsGenerales";
+import {
+  InputText,
+  TextArea,
+  ElegirPosgrado,
+} from "../../inputs/inputsGenerales";
 
 //#############################################################################################
 //#############################################################################################

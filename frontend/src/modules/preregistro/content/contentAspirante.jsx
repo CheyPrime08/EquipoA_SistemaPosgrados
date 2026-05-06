@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import HeaderMain from "../components/header/headerMain";
-import { ColumnaIzquierda } from "../components/content/contentMainIzquierda";
-import { ColumnaDerecha } from "../components/content/contentMainDerecha";
+import { ColumnaIzquierda } from "../components/content/preregistro/contentMainIzquierda";
+import { ColumnaDerecha } from "../components/content/preregistro/contentMainDerecha";
 
 // Aqui hace la cosa de los pasos y lo renderiza, un componenten de esta area
 export default function ContentAspirante({ currentStep, setCurrentStep }) {

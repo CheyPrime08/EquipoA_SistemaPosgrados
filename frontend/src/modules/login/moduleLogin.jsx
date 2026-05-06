@@ -18,6 +18,7 @@ import {
   COORDINADOR_ROL,
   ADMIN_ROL,
   ALUMNO_ROL,
+  ASPIRANTE_ROL,
   RUTAS,
 } from "../../constants/login/roles";
 //######################################
@@ -58,6 +59,16 @@ export default function Login() {
     if (codigo === ALUMNO_ROL.CODIGO && password === ALUMNO_ROL.PASSWORD) {
       setResultado("Acceso permitido como Alumno");
       navigate(RUTAS.ALUMNO_ROL);
+      return;
+    }
+
+    //  aqui valida el aspirante
+    if (
+      codigo === ASPIRANTE_ROL.CODIGO &&
+      password === ASPIRANTE_ROL.PASSWORD
+    ) {
+      setResultado("Acceso permitido como Aspirante");
+      navigate(RUTAS.ASPIRANTE_ROL);
       return;
     }
 

@@ -13,8 +13,15 @@ export const ALUMNO_ROL = {
     PASSWORD: "123",
 };
 
+export const ASPIRANTE_ROL = {
+    CODIGO: "aspirante",
+    PASSWORD: "123",
+};
+
 export const RUTAS = {
     COORDINADOR_ROL: "/inicioCoord",
     ADMIN_ROL: "/agregar",
     ALUMNO_ROL: "/tesis",
+    ASPIRANTE_ROL: "/aspirante",
 };
+

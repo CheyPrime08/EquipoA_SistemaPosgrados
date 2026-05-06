@@ -41,7 +41,7 @@ const routesLogin = [
     element: <RediPreregistro />,
   },
   {
-    path: "/aspirante-archivos",
+    path: "/aspirante",
     element: <ModuleArchivos />,
   },
   {

@@ -2,8 +2,8 @@
 //#############################################################################################
 //Componentes para la parte de la derecha
 import React from "react";
-import { CardAyuda } from "../cards/cardsAyuda";
-import Stepper from "../stepper/stepper";
+import { CardAyuda } from "../../cards/cardsAyuda";
+import Stepper from "../../stepper/stepper";
 import { TituloColumna } from "./contentMainIzquierda";
 
 const NotaAyudaPaso1 = () => {
